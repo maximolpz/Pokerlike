@@ -1,6 +1,6 @@
 # Póker Roguelike (clon de Balatro)
 
-Juego web (`index.html` + sonidos `compra.mp3`, `ganar.mp3`, `derrota2.mp3`), sin dependencias. Subí todos los archivos juntos al repositorio.
+Juego web (`index.html` + sonidos `Logo_pixelado_PokerLike.png`, `compra.mp3`, `ganar.mp3`, `derrota2.mp3`), sin dependencias. Subí todos los archivos juntos al repositorio.
 
 ## Cómo jugar
 - Selecciona hasta 5 cartas y pulsa **Jugar mano** para formar una mano de póker.
