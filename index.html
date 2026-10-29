@@ -40,6 +40,9 @@ td,th{padding:3px 10px;border-bottom:1px solid #fff2}
 #guide .g{max-width:760px;margin:auto;background:var(--panel);border:2px solid var(--gold);border-radius:12px;padding:18px 22px;line-height:1.5}
 #guide h2{margin-top:0}#guide h3{color:var(--gold);margin:14px 0 4px}#guide p,#guide li{font-size:15px;margin:3px 0}
 #gbtn{position:fixed;right:10px;bottom:10px;z-index:5;background:#7c3aed}
+body.lost{background:#262626}
+body.lost #app>*:not(.lostbox){filter:grayscale(1) brightness(.65);pointer-events:none;transition:filter .6s}
+.lostbox h2{color:#ef4444;font-size:46px;margin:10px 0;text-shadow:0 0 18px #ef444488}
 </style>
 </head>
 <body>
@@ -122,8 +125,8 @@ function play(){
  G.hand=G.hand.filter((_,i)=>!G.sel.includes(i));G.sel=[];
  G.msg=`<span class="calc"><span class="chips">${r.ch}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br>${HT[r.t][4]}`;
  draw();
- if(G.score>=G.target){G.phase="won";render();return}
- if(G.hands==0){G.phase="lost"}
+ if(G.score>=G.target){G.phase="won";sfx("ganar.mp3");render();return}
+ if(G.hands==0){G.phase="lost";sfx("derrota2.mp3")}
  render();
 }
 function discard(){
@@ -142,7 +145,7 @@ function fillShop(){
  G.shop.push({k:"p",t,c:3});
 }
 let UID=0;
-function sfx(){try{const a=new Audio("compra.mp3");a.play().catch(()=>{})}catch(e){}}
+function sfx(f="compra.mp3"){try{const a=new Audio(f);a.play().catch(()=>{})}catch(e){}}
 function buy(i){
  const it=G.shop[i];
  if(!it||G.money<it.c)return;
@@ -159,7 +162,7 @@ function reroll(){if(G.money<G.rr)return;G.money-=G.rr;G.rr++;fillShop();render(
 function next(){
  G.bi++;
  if(G.bi>2){G.bi=0;G.ante++}
- if(G.ante>8){G.phase="victory";render();return}
+ if(G.ante>8){G.phase="victory";sfx("ganar.mp3");render();return}
  startBlind();
 }
 function cardH(c,i,cls=""){
@@ -169,6 +172,7 @@ function jokersH(shopMode){
  return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}><b>${j.n}</b>${j.d}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"<small>Sin jokers todavía (máx. 5)</small>";
 }
 function render(){
+ document.body.classList.toggle("lost",G.phase=="lost");
  const A=$("app"),b=BL[G.bi];
  const head=`<div class="top">
  <div class="box"><small>Ante</small><b>${G.ante}/8</b></div>
@@ -183,8 +187,8 @@ function render(){
   <div class="center"><button class="b4" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll $${G.rr}</button> <button class="b1" onclick="next()">Siguiente ciega ▶</button></div>
   <h3 class="center">Tus jokers ${G.jokers.length}/5 (clic para vender)</h3><p class="center gold">${G.shopMsg||""}</p><div class="row">${jokersH(1)}</div>${lvTable()}`;return}
  const pv=G.sel.length?calc(G.sel.map(i=>G.hand[i])):null;
- const over=G.phase=="lost"?`<div class="center"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:
-  G.phase=="won"?`<div class="center"><h2>✅ ¡Ciega superada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
+ const over=G.phase=="lost"?`<div class="center lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:
+  G.phase=="won"?`<div class="center"><h2>🎉 ¡Ciega superada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
  A.innerHTML=`${head}<div class="row">${jokersH(0)}</div>
  <div class="row" style="min-height:100px">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
  <div class="info">${pv?`${HT[pv.t][4]} (Nv ${G.lv[pv.t]}): <span class="chips">${pv.ch}</span> × <span class="mult">${pv.mu}</span>`:G.msg}</div>
