@@ -69,15 +69,22 @@ body.shop{--panel:#1a1208;background:radial-gradient(circle,#0000 30%,#000d 100%
 .card.rv{box-shadow:inset 0 0 0 3px #a78bfa,0 0 14px #a78bfa;animation:glow 1.6s ease-in-out infinite}
 .card.rv::before{content:"👁️";position:absolute;top:1px;left:2px;font-size:14px}
 @keyframes glow{50%{box-shadow:inset 0 0 0 3px #c4b5fd,0 0 22px #a78bfa}}
+.lg{font-size:12px;opacity:.8;margin-top:4px;font-weight:400}
+.note{font-size:12px;opacity:.85;max-width:560px;margin:8px auto;line-height:1.5}
+.hname{font-size:34px;font-weight:800;letter-spacing:1px;text-shadow:0 2px 0 #000a}
+.cv{position:absolute;bottom:3px;font-size:10px;font-weight:800;font-style:normal;line-height:1;text-shadow:none}
+.cv.l{left:4px;color:#2563eb}.cv.m{right:4px;color:#dc2626}
+#hbtn{position:fixed;right:100px;bottom:10px;z-index:5;background:#0ea5e9}
 </style>
 </head>
 <body>
-<div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><button onclick="startGame()">JUGAR</button></div><div id="app"></div><div id="guide" style="display:none"></div><button id="gbtn" onclick="showGuide(false)">📖 Guía</button>
+<div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><button onclick="startGame()">JUGAR</button></div><div id="app"></div><div id="guide" style="display:none"></div><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button>
 <script>
 const SU=["♠","♥","♦","♣"],RK={11:"J",12:"Q",13:"K",14:"A"};
 // [fichas, multi, +fichas/nivel, +multi/nivel, nombre]
 const HT={hi:[5,1,10,1,"Carta alta"],pa:[10,2,15,1,"Pareja"],tp:[20,2,20,1,"Doble pareja"],tk:[30,3,20,2,"Trío"],
  st:[30,4,30,3,"Escalera"],fl:[35,4,15,2,"Color"],fh:[40,4,25,2,"Full"],fk:[60,7,30,3,"Póker"],sf:[100,8,40,4,"Escalera de color"]};
+const HC={hi:"#cbd5e1",pa:"#93c5fd",tp:"#67e8f9",tk:"#86efac",st:"#fde047",fl:"#fdba74",fh:"#f9a8d4",fk:"#f87171",sf:"#c084fc"};
 const PAIRY=["pa","tp","tk","fh","fk"];
 const BL=[["Ronda 1",1,3],["Ronda 2",1.5,4],["Jefe",2,5]];
 const ANTE=[300,800,2000,5000,11000,20000,35000,50000];
@@ -99,7 +106,7 @@ const JK=[
  suitJ("Codicioso","2".length+1,"Diamante"),suitJ("Lujurioso",1,"Corazón"),suitJ("Colérico",0,"Pica"),suitJ("Glotón",3,"Trébol")
 ];
 JK[11].f=c=>[0,3*cnt(c,x=>x.s==2),1];
-const HUM=[["Joker Clásico","+4 Multi. Sencillo, honesto y sin letra chica."],["Joker Cita Doble","+8 Multi si hay una pareja. El amor paga."],["Joker Pícaro","+50 Fichas si hay una pareja. Jura que no tocó nada."],["Dúo Dinámico","X2 Multi si hay una pareja. Mejor juntos que separados."],["Medio Joker","+20 Multi si jugás 3 cartas o menos. Hace más con menos."],["Estandarte del Ahorrista","+30 Fichas por descarte que te sobre. Premio al que no gasta."],["Cara de Póker","+30 Fichas por figura que puntúe. Nunca sabés qué piensa."],["Joker Club de Fans","+3 Multi por cada Joker que tengas. Más amigos, más aplausos."],["Joker Matemático","+8 Multi por A,2,3,5,8 que puntúe. Presume que sabe contar."],["Toro Millonario","+2 Fichas por cada $ que tengas. Cuanto más rico, más fuerte."],["Joker Escalador","X1.5 Multi con Escalera o Color. Siempre busca el próximo nivel."],["Joker Brillitos","+3 Multi por cada Diamante que puntúe. Ama todo lo que brilla."],["Joker Romántico","+3 Multi por cada Corazón que puntúe. Todo lo hace con amor."],["Joker Pala","+3 Multi por cada Pica que puntúe. Cava que cava."],["Joker Jardinero","+3 Multi por cada Trébol que puntúe. Lo que plantás, florece."]];
+const HUM=[["Joker Clásico","+4 Multi. Sencillo, honesto y sin letra chica."],["Joker Cita Doble","+8 Multi si hay una pareja. El amor paga."],["Joker Pícaro","+50 Fichas si hay una pareja. Jura que no tocó nada."],["Dúo Dinámico","X2 Multi si hay una pareja. Mejor juntos que separados."],["Medio Joker","+20 Multi si jugás 3 cartas o menos. Hace más con menos."],["Estandarte del Ahorrista","+30 Fichas por cada descarte que te sobre, con cualquier mano. Premio al que no gasta."],["Cara de Póker","+30 Fichas por figura que puntúe. Nunca sabés qué piensa."],["Joker Club de Fans","+3 Multi por cada Joker que tengas. Más amigos, más aplausos."],["Joker Matemático","+8 Multi por A,2,3,5,8 que puntúe. Presume que sabe contar."],["Toro Millonario","+2 Fichas por cada $ que tengas. Cuanto más rico, más fuerte."],["Joker Escalador","X1.5 Multi con Escalera o Color. Siempre busca el próximo nivel."],["Joker Brillitos","+3 Multi por cada Diamante que puntúe. Ama todo lo que brilla."],["Joker Romántico","+3 Multi por cada Corazón que puntúe. Todo lo hace con amor."],["Joker Pala","+3 Multi por cada Pica que puntúe. Cava que cava."],["Joker Jardinero","+3 Multi por cada Trébol que puntúe. Lo que plantás, florece."]];
 JK.forEach((j,i)=>{j.n=HUM[i][0];j.d=HUM[i][1]});
 const PLN={hi:"Planeta Solitario",pa:"Planeta Pareja Feliz",tp:"Planeta Doble Cita",tk:"Planeta Tres Mosqueteros",st:"Planeta Escalera al Cielo",fl:"Planeta Monocolor",fh:"Planeta Banquete",fk:"Planeta Cuatro Fantásticos",sf:"Planeta Súper Escalera"};
 const PLJ={hi:"Para los que juegan en solitario.",pa:"Dos corazones, un solo destino.",tp:"Doble cita, doble premio.",tk:"Tres es compañía, y paga.",st:"Un escalón a la vez.",fl:"Todo del mismo color, como un uniforme.",fh:"Hay mesa para todos.",fk:"Cuatro iguales: insuperable.",sf:"Lo mejor de dos mundos."};
@@ -136,12 +143,20 @@ function ev(cs){
  return{t,sc,pr:PAIRY.includes(t)};
 }
 function calc(cs){
- const e=ev(cs),h=HT[e.t],l=G.lv[e.t];
+ const e=ev(cs),h=HT[e.t],l=G.lv[e.t],lg=[];
  let ch=h[0]+l*h[2],mu=h[1]+l*h[3];
- e.sc.forEach(c=>{ch+=c.r>13?11:c.r>10?10:c.r;if(c.rv){ch+=25;mu+=3}if(c.e=="b")ch+=30;if(c.e=="m")mu+=4;if(c.e=="g")mu*=1.5});
+ lg.push(`${h[4]} base: ${ch}f ×${mu}`);
+ e.sc.forEach(c=>{const v=c.r>13?11:c.r>10?10:c.r;ch+=v;let t=`${RK[c.r]||c.r}${SU[c.s]} +${v}f`;
+  if(c.rv){ch+=25;mu+=3;t+=" · 👁️ +25f +3m"}
+  if(c.e=="b"){ch+=30;t+=" · Gordita +30f"}
+  if(c.e=="m"){mu+=4;t+=" · Turbo +4m"}
+  if(c.e=="g"){mu*=1.5;t+=" · Cristal ×1.5"}
+  if(c.e=="o")t+=" · Ricachona +$2";
+  lg.push(t)});
  const ctx={...e,n:cs.length};
- G.jokers.forEach(j=>{const[a,b,x]=j.f(ctx);ch+=a;mu+=b;mu*=x});
- return{...e,gold:e.sc.filter(c=>c.e=="o").length,ch,mu:Math.round(mu*10)/10,total:Math.round(ch*mu)};
+ G.jokers.forEach(j=>{const[a,b,x]=j.f(ctx);ch+=a;mu+=b;mu*=x;
+  const t=[a?`+${a}f`:"",b?`+${b}m`:"",x!=1?`×${x}`:""].filter(Boolean).join(" ");if(t)lg.push(`${j.n} ${t}`)});
+ return{...e,lg,gold:e.sc.filter(c=>c.e=="o").length,ch,mu:Math.round(mu*10)/10,total:Math.round(ch*mu)};
 }
 function toggle(i){
  if(G.phase!="play")return;
@@ -160,7 +175,7 @@ function play(){
  const cs=G.sel.map(i=>G.hand[i]),r=calc(cs);
  sfx("colocar.mp3");G.score+=r.total;G.money+=2*r.gold;G.hands--;G.played=cs;
  G.hand=G.hand.filter((_,i)=>!G.sel.includes(i));G.sel=[];
- G.msg=`<span class="calc"><span class="chips">${r.ch}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br>${HT[r.t][4]}${r.gold?` <span class="gold">+$${2*r.gold}</span>`:""}`;
+ G.msg=`<span class="calc"><span class="chips">${r.ch}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br><span class="hname" style="color:${HC[r.t]}">${HT[r.t][4]}</span>${r.gold?` <span class="gold">+$${2*r.gold}</span>`:""}`;
  draw();
  if(G.score>=G.target){if(G.flipCd>0)G.flipCd--;G.phase="won";sfx("ganar.mp3");render();return}
  if(G.hands==0){G.phase="lost";sfx("derrota2.mp3")}
@@ -225,9 +240,12 @@ function next(){
  if(G.ante>8){G.phase="victory";sfx("ganar.mp3");render();return}
  startBlind();
 }
+const valOf=c=>c.r>13?11:c.r>10?10:c.r;
+const chipsOf=c=>valOf(c)+(c.e=="b"?30:0)+(c.rv?25:0);
+function multOf(c){const m=(c.e=="m"?4:0)+(c.rv?3:0),t=[m?"+"+m:"",c.e=="g"?"×1.5":""].filter(Boolean).join(" ");return t?`<i class="cv m">${t}</i>`:""}
 function cardH(c,i,cls=""){
  if(c.down)return`<div class="card back" onclick="toggle(${i})" title="Boca abajo: tocá para dar vuelta">?</div>`;
- return`<div class="card ${c.s%3==1||c.s==2?"r":""} ${c.e?"e-"+c.e:""} ${c.fl?"flip":""} ${c.rv?"rv":""} ${cls}" ${c.e?`title="${ENH[c.e][0]}: ${ENH[c.e][1]}"`:""} ${cls=="played"?"":`onclick="toggle(${i})"`}>${RK[c.r]||c.r}<span>${SU[c.s]}</span></div>`;
+ return`<div class="card ${c.s%3==1||c.s==2?"r":""} ${c.e?"e-"+c.e:""} ${c.fl?"flip":""} ${c.rv?"rv":""} ${cls}" ${c.e?`title="${ENH[c.e][0]}: ${ENH[c.e][1]}"`:""} ${cls=="played"?"":`onclick="toggle(${i})"`}>${RK[c.r]||c.r}<span>${SU[c.s]}</span><i class="cv l">+${chipsOf(c)}</i>${multOf(c)}</div>`;
 }
 function jokersH(shopMode){
  return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}><b>${j.n}</b>${j.d}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"<small>Sin jokers todavía (máx. 5)</small>";
@@ -260,26 +278,44 @@ function render(){
   G.phase=="won"?`<div class="center"><h2>🎉 ¡Ronda ganada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
  A.innerHTML=`${head}<div class="row">${jokersH(0)}</div>
  <div class="row" style="min-height:100px">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
- <div class="info">${pv?`${HT[pv.t][4]} (Nv ${G.lv[pv.t]}): <span class="chips">${pv.ch}</span> × <span class="mult">${pv.mu}</span>`:G.msg}</div>
+ <div class="info">${pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span>`:G.msg}</div>
  <div class="row">${G.hand.map((c,i)=>cardH(c,i,G.sel.includes(i)?"sel":"")).join("")}</div>
  ${over||`<div class="center"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
  <button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button>
  <button class="b4" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">Ordenar: ${sortBy=="r"?"valor":"palo"}</button></div>`}
- <p class="center"><small>Mazo: ${G.deck.length} cartas</small></p>${lvTable()}`;
+ <p class="center"><small>Mazo: ${G.deck.length} cartas</small></p>`;
 }
 const EX={sf:[[9,1],[8,1],[7,1],[6,1],[5,1]],fk:[[10,0],[10,1],[10,2],[10,3],[3,0]],fh:[[13,0],[13,1],[13,2],[4,1],[4,3]],fl:[[14,2],[11,2],[8,2],[5,2],[3,2]],st:[[9,0],[8,1],[7,3],[6,2],[5,0]],tk:[[7,0],[7,1],[7,2],[12,3],[2,1]],tp:[[11,0],[11,3],[6,1],[6,2],[3,0]],pa:[[12,1],[12,3],[9,0],[5,2],[2,1]],hi:[[14,0],[10,3],[8,1],[6,2],[3,3]]};
-function lvTable(){
- return`<table><tr><th>Mano</th><th>Ejemplo</th><th>Nv</th><th>Fichas</th><th>Multi</th></tr>${Object.keys(HT).reverse().map(k=>{
+function handsH(){
+ const mc=c=>`<span class="mc ${c.s==1||c.s==2?"r":""}">${RK[c.r]||c.r}${SU[c.s]}</span>`;
+ const rows=Object.keys(HT).reverse().map(k=>{
   const h=HT[k],l=G.lv[k],cs=EX[k].map(([r,s])=>({r,s})),sc=ev(cs).sc;
   const mini=cs.map(c=>`<span class="mc ${c.s==1||c.s==2?"r":""} ${sc.includes(c)?"":"dim"}">${RK[c.r]||c.r}${SU[c.s]}</span>`).join("");
-  return`<tr><td>${h[4]}</td><td class="mcs">${mini}</td><td>${l}</td><td class="chips">${h[0]+l*h[2]}</td><td class="mult">${h[1]+l*h[3]}</td></tr>`}).join("")}</table>`;
+  return`<tr><td>${h[4]}</td><td class="mcs">${mini}</td><td>${l}</td><td class="chips">${h[0]+l*h[2]}</td><td class="mult">${h[1]+l*h[3]}</td></tr>`}).join("");
+ const pa=HT.pa,l=G.lv.pa,bc=pa[0]+l*pa[2],bm=pa[1]+l*pa[3];
+ const ench=G.cards.filter(c=>c.e);
+ const en=ench.map(c=>{const v=valOf(c),d={b:`${v} + 30 = <b class="chips">${v+30}</b> fichas`,m:`${v} fichas y <b class="mult">+4</b> multi`,g:`${v} fichas y <b class="mult">×1.5</b> multi`,o:`${v} fichas y <b class="gold">+$2</b>`}[c.e];
+  return`<div>${mc(c)} ${ENH[c.e][0]}: ${d}</div>`}).join("");
+ return`<h2>📊 Manos y puntaje</h2>
+ <h3>¿Cómo se suman los puntos?</h3>
+ <p>Ejemplo: jugás <b>${mc({r:12,s:1})} ${mc({r:12,s:3})}</b>, una Pareja.</p>
+ <p>① La Pareja empieza con <b class="chips">${bc} Fichas</b> y <b class="mult">${bm} de Multi</b>.</p>
+ <p>② Cada Q que puntúa suma sus Fichas: 10 + 10 = <b class="chips">+20 Fichas</b>.</p>
+ <p>③ Resultado: <b class="chips">${bc+20} Fichas</b> × <b class="mult">${bm} Multi</b> = <b class="gold">${(bc+20)*bm} puntos</b>.</p>
+ <p>Las cartas mejoradas, el Giro 👁️ y los jokers suman más Fichas o Multi antes de multiplicar.</p>
+ <h3>Valor de cada carta</h3><p>2 a 10 = su número · J, Q, K = 10 · A = 11.</p>
+ <h3>Todas las manos</h3><p><small>En el ejemplo, las cartas apagadas no puntúan.</small></p>
+ <table><tr><th>Mano</th><th>Ejemplo</th><th>Nv</th><th>Fichas base</th><th>Multi base</th></tr>${rows}</table>
+ <h3>✨ Tus cartas mejoradas (${ench.length})</h3><p>${en||"Todavía ninguna: conseguilas en los sobres Misteriosos de la tienda."}</p>
+ <div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(false)">Cerrar</button></div>`;
 }
+function showHands(){const g=$("guide");g.innerHTML=`<div class="g">${handsH()}</div>`;g.style.display="block"}
 function showGuide(first){
  const g=$("guide");
  g.innerHTML=`<div class="g"><h2>📖 Guía del juego</h2>
  <h3>🎯 Objetivo</h3><p>Superá 8 <b>antes</b>. Cada ante tiene 3 rondas: Ronda 1, Ronda 2 y Jefe. En cada ronda tenés que llegar a los <b>puntos objetivo</b> usando como máximo 4 manos.</p>
  <h3>🃏 Cartas y manos</h3><p>Tenés 8 cartas. Seleccioná hasta 5 y tocá <b>Jugar mano</b> para formar una mano de póker (pareja, trío, escalera, color, full, póker, escalera de color...). Mientras seleccionás, ves arriba la mano y su puntaje.</p>
- <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales).</p>
+ <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales). Abajo de cada carta ves sus <span class="chips">Fichas</span> (izquierda) y su <span class="mult">Multi</span> extra (derecha). Tocá <b>📊 Manos</b> para ver todas las manos con ejemplos.</p>
  <h3>🗑️ Descartes</h3><p>Tenés 3 descartes por ronda: tirá cartas seleccionadas y recibí nuevas, sin gastar manos.</p>
  <h3>🧙 Jokers (máx. 5)</h3><p>Pasivas que modifican el puntaje: dan fichas, multi o X multi según condiciones. Se compran en la tienda y se pueden vender a mitad de precio para liberar espacio.</p>
  <h3>🪐 Planetas</h3><p>Suben de nivel un tipo de mano: más fichas y más multi cada vez. Mirá la tabla de niveles al pie.</p>
