@@ -36,7 +36,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 table{margin:auto;border-collapse:collapse;font-size:13px}
 td,th{padding:3px 10px;border-bottom:1px solid #fff2}
 .center{text-align:center}
-#guide{position:fixed;inset:0;background:#000d;z-index:9;overflow:auto;padding:14px}
+#guide{position:fixed;inset:0;background:#000d;z-index:30;overflow:auto;padding:14px}
 #guide .g{max-width:760px;margin:auto;background:var(--panel);border:2px solid var(--gold);border-radius:12px;padding:18px 22px;line-height:1.5}
 #guide h2{margin-top:0}#guide h3{color:var(--gold);margin:14px 0 4px}#guide p,#guide li{font-size:15px;margin:3px 0}
 #gbtn{position:fixed;right:10px;bottom:10px;z-index:5;background:#7c3aed}
@@ -75,10 +75,85 @@ body.shop{--panel:#1a1208;background:radial-gradient(circle,#0000 30%,#000d 100%
 .cv{position:absolute;bottom:3px;font-size:10px;font-weight:800;font-style:normal;line-height:1;text-shadow:none}
 .cv.l{left:4px;color:#2563eb}.cv.m{right:4px;color:#dc2626}
 #hbtn{position:fixed;right:100px;bottom:10px;z-index:5;background:#0ea5e9}
+.bar{position:relative}.bar i.ghost{position:absolute;top:0;background:repeating-linear-gradient(45deg,#fffb,#fffb 4px,#fff5 4px,#fff5 8px)}
+.strip{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:6px;font-size:22px}
+.sb{display:inline-flex;flex-direction:column;border-radius:8px;padding:3px 12px;font-size:10px;font-weight:700;letter-spacing:1px;background:#0007;min-width:84px;line-height:1.1}
+.sb b{font-size:26px;letter-spacing:0}.sb.chips{border:2px solid #60a5fa}.sb.mult{border:2px solid #f87171}.sb.gold{border:2px solid var(--gold)}
+.card.sc{filter:drop-shadow(0 0 8px #f5c542)}.card.sc .cv{font-size:13px}
+.card.ns{outline-color:#888;opacity:.5;filter:grayscale(.8)}.card.ns .cv{visibility:hidden}
+.joker{position:relative}
+.jb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1208;font-weight:800;border-radius:10px;padding:2px 9px;font-size:13px;white-space:nowrap;animation:bob 1s ease-in-out infinite}
+.row{min-height:0}
+.row.jr{margin:26px 0 8px}
+.row.pl{margin:4px 0}.row.pl:empty{display:none}
+.row.hand{margin:34px 0 14px}
+.info{margin-top:4px}
+#start .alt{font-size:16px;padding:8px 22px;background:#7c3aed;color:#fff;box-shadow:none;letter-spacing:0;margin-top:6px}
+.b5{background:#d97706}
+#guide .x{position:fixed;top:14px;right:18px;z-index:31;width:44px;height:44px;border-radius:50%;background:#ef4444;color:#fff;font-size:20px;padding:0;box-shadow:0 2px 8px #0008}
+.item select{font:inherit;margin:2px;max-width:70px}
+.tcg{width:150px;height:216px;border-radius:10px;padding:6px;background:#fde68a;color:#1a1a2e;font-size:11px;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 8px #0008;text-align:left}
+.tcg.rare{background:#bfdbfe}
+.tcg.holo,.tcg.ultra{background:linear-gradient(115deg,#ff9a9e,#fad0c4,#a1ffce,#7fd3ff,#c3a5ff,#ff9a9e);background-size:300% 300%;animation:holoShift 5s linear infinite}
+.tcg.holo::after,.tcg.ultra::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,#fff4 0 5px,#0000 5px 10px),repeating-linear-gradient(-45deg,#fff3 0 5px,#0000 5px 10px);mix-blend-mode:overlay;pointer-events:none}
+.tcg.ultra{box-shadow:0 0 20px #c084fc}
+.tcg .th{display:flex;justify-content:space-between;font-size:12px}
+.tcg .art{background:#1a1a2e;border-radius:6px;height:112px;display:flex;justify-content:center;align-items:center;margin:4px 0}
+.tcg .art svg{width:96px;height:96px}
+.tcg .tb{flex:1;font-size:11px}.tcg .tf{display:flex;justify-content:space-between;font-size:10px;opacity:.8}
+.tcg.lock .art svg{filter:brightness(0) opacity(.5)}
+@keyframes holoShift{to{background-position:300% 0}}@keyframes hue{to{filter:hue-rotate(360deg)}}
+.grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:10px 0}
+.bk{width:64px;height:92px;border-radius:6px;margin:auto}
+.item.hp{border-color:#a78bfa;box-shadow:0 0 14px #a78bfa;animation:hue 5s linear infinite}
+body.hb .card.back::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,#fff8 50%,transparent 70%);animation:sheen 2.4s infinite;pointer-events:none}
+#cbtn{position:fixed;right:190px;bottom:10px;z-index:5;background:#db2777}
+.ms{display:flex;align-items:center;gap:10px;background:#0006;border-radius:8px;padding:8px 10px;margin:6px 0;font-size:14px}.ms.cl{opacity:.5}
+/* ===== Responsive: celular, tablet y PC ===== */
+:root{--cw:80px}
+html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
+#app{padding:12px 12px 84px}
+.top{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;align-items:start}
+.box{min-width:0;padding:6px 10px}.box b{font-size:clamp(17px,4.6vw,22px)}.box small{font-size:12px}
+.card{width:var(--cw);height:calc(var(--cw)*1.42);font-size:calc(var(--cw)*.34)}
+.card span{font-size:calc(var(--cw)*.38)}
+.cv{font-size:clamp(9px,calc(var(--cw)*.16),13px);bottom:calc(var(--cw)*.05)}
+.card.sc .cv{font-size:clamp(10px,calc(var(--cw)*.2),15px)}
+.card.e-b::before,.card.e-m::before,.card.e-g::before,.card.e-o::before,.card.rv::before{font-size:clamp(11px,calc(var(--cw)*.22),18px)}
+.row.hand{gap:8px}
+.hname{font-size:clamp(24px,7vw,34px)}
+.sb{min-width:clamp(66px,24vw,88px);padding:3px 8px}.sb b{font-size:clamp(19px,5.4vw,26px)}.strip{gap:6px;font-size:clamp(16px,4.5vw,22px)}
+.joker{width:clamp(92px,27vw,120px);font-size:clamp(10.5px,2.8vw,12px)}
+#tools{position:fixed;right:8px;bottom:8px;z-index:5;display:flex;gap:6px}
+#tools button{position:static;padding:8px 12px;font-size:14px;box-shadow:0 2px 8px #0008}
+.btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tw{overflow-x:auto}.tw table{min-width:320px}
+#guide .g{max-width:780px}
+@media (max-width:640px){
+ :root{--cw:calc((100vw - 56px)/4)}
+ #app{padding:8px 8px 76px}
+ .top{grid-template-columns:repeat(3,1fr);gap:6px}
+ .row.hand{margin:22px 0 10px}.card.sel{transform:translateY(-8px)}
+ .btns button{flex:1 1 44%;padding:12px 6px;font-size:15px}
+ #tools{right:6px;bottom:6px}#tools button{padding:7px 9px;font-size:12px}
+ #guide{padding:8px}#guide .g{padding:14px}#guide h2{font-size:20px}#guide .x{top:10px;right:12px;width:40px;height:40px}
+ .shop .item{width:calc(50% - 8px);padding:8px}.shop .item p{font-size:12px;min-height:40px}.shop .item button{font-size:13px;padding:8px 10px}
+ #start button{font-size:22px;padding:12px 44px}#start .alt{font-size:15px;padding:8px 18px}
+ .win h1{font-size:28px}h2{font-size:21px}.note{font-size:12px}
+ .tw table{font-size:12px}td,th{padding:3px 5px}
+}
+@media (min-width:641px) and (max-width:1024px){:root{--cw:clamp(66px,calc((100vw - 110px)/8),92px)}}
+@media (min-width:1025px){:root{--cw:82px}#app{max-width:1000px}}
+.tcg .art{background:linear-gradient(#e3eaff,#b9c8f6)!important}
+.tcg .th{gap:4px;align-items:baseline}.tcg .th b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}.tcg .th span{white-space:nowrap;font-size:10px}
+.tcg.lock .art svg{filter:brightness(0) opacity(.35)}
+.row.hidd{margin:4px 0 14px;gap:6px}.row.hidd .card{width:calc(var(--cw)*.78);height:calc(var(--cw)*1.1)}
+#start #dif button{background:#3b3b5c;color:#fff;box-shadow:none;font-size:15px;padding:7px 14px;letter-spacing:0;margin:2px}
+#start #dif button.on{background:#f5c542;color:#1a1208}
 </style>
 </head>
 <body>
-<div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><button onclick="startGame()">JUGAR</button></div><div id="app"></div><div id="guide" style="display:none"></div><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button>
+<div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><div id="dif" class="center" style="color:#f4f1e6"></div><button onclick="startGame()">JUGAR</button><button class="alt" onclick="showGuide(false)">📖 Cómo jugar</button><button class="alt" style="background:#db2777" onclick="showCol()">🎨 Colección</button></div><div id="app"></div><div id="guide" style="display:none"></div><div id="tools"><button id="cbtn" onclick="showCol()">🎨 Colección</button><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button></div>
 <script>
 const SU=["♠","♥","♦","♣"],RK={11:"J",12:"Q",13:"K",14:"A"};
 // [fichas, multi, +fichas/nivel, +multi/nivel, nombre]
@@ -87,7 +162,8 @@ const HT={hi:[5,1,10,1,"Carta alta"],pa:[10,2,15,1,"Pareja"],tp:[20,2,20,1,"Dobl
 const HC={hi:"#cbd5e1",pa:"#93c5fd",tp:"#67e8f9",tk:"#86efac",st:"#fde047",fl:"#fdba74",fh:"#f9a8d4",fk:"#f87171",sf:"#c084fc"};
 const PAIRY=["pa","tp","tk","fh","fk"];
 const BL=[["Ronda 1",1,3],["Ronda 2",1.5,4],["Jefe",2,5]];
-const ANTE=[300,800,2000,5000,11000,20000,35000,50000];
+const ANTE=[600,1700,4500,9500,21000,44000,80000,130000];
+const DIF={f:["Fácil",.75],n:["Normal",1],d:["Difícil",1.4]};
 // Jokers: f(ctx) -> [fichas, multi, xmulti]
 const cnt=(c,fn)=>c.sc.filter(fn).length;
 const suitJ=(n,s,t)=>({n,d:`+3 Multi por cada ${t} que puntúe`,c:5,f:c=>[0,3*cnt(c,x=>x.s==s),1]});
@@ -108,12 +184,34 @@ const JK=[
 JK[11].f=c=>[0,3*cnt(c,x=>x.s==2),1];
 const HUM=[["Joker Clásico","+4 Multi. Sencillo, honesto y sin letra chica."],["Joker Cita Doble","+8 Multi si hay una pareja. El amor paga."],["Joker Pícaro","+50 Fichas si hay una pareja. Jura que no tocó nada."],["Dúo Dinámico","X2 Multi si hay una pareja. Mejor juntos que separados."],["Medio Joker","+20 Multi si jugás 3 cartas o menos. Hace más con menos."],["Estandarte del Ahorrista","+30 Fichas por cada descarte que te sobre, con cualquier mano. Premio al que no gasta."],["Cara de Póker","+30 Fichas por figura que puntúe. Nunca sabés qué piensa."],["Joker Club de Fans","+3 Multi por cada Joker que tengas. Más amigos, más aplausos."],["Joker Matemático","+8 Multi por A,2,3,5,8 que puntúe. Presume que sabe contar."],["Toro Millonario","+2 Fichas por cada $ que tengas. Cuanto más rico, más fuerte."],["Joker Escalador","X1.5 Multi con Escalera o Color. Siempre busca el próximo nivel."],["Joker Brillitos","+3 Multi por cada Diamante que puntúe. Ama todo lo que brilla."],["Joker Romántico","+3 Multi por cada Corazón que puntúe. Todo lo hace con amor."],["Joker Pala","+3 Multi por cada Pica que puntúe. Cava que cava."],["Joker Jardinero","+3 Multi por cada Trébol que puntúe. Lo que plantás, florece."]];
 JK.forEach((j,i)=>{j.n=HUM[i][0];j.d=HUM[i][1]});
+JK.push(
+ {n:"Reloj Despierto",d:"+15 Multi en tu última mano. Más vale tarde que nunca.",c:4,f:()=>[0,G.hands==1?15:0,1]},
+ {n:"Gato Dormilón",d:"+60 Fichas si jugás 1 sola carta. Hace mucho sin hacer nada.",c:3,f:c=>[c.n==1?60:0,0,1]},
+ {n:"Joker Doble Dosis",d:"+10 Multi con Doble pareja. Dos veces mejor.",c:4,f:c=>[0,c.t=="tp"?10:0,1]},
+ {n:"Tres son Multitud",d:"X2 Multi con Trío, Full o Póker.",c:8,f:c=>[0,0,["tk","fh","fk"].includes(c.t)?2:1]},
+ {n:"Rey Cabezón",d:"+4 Multi por cada K que puntúe. Se cree el dueño de la mesa.",c:5,f:c=>[0,4*cnt(c,x=>x.r==13),1]},
+ {n:"Dama Elegante",d:"+20 Fichas por cada Q que puntúe. Llega con estilo.",c:4,f:c=>[20*cnt(c,x=>x.r==12),0,1]},
+ {n:"Joker Equipo",d:"+2 Multi por cada carta que puntúe. Todos aportan.",c:5,f:c=>[0,2*c.sc.length,1]},
+ {n:"Bolsillo Lleno",d:"+1 Multi por cada $5 que tengas. Ahorrar tiene premio.",c:6,f:()=>[0,Math.floor(G.money/5),1]},
+ {n:"Joker Reciclador",d:"+20 Fichas por cada descarte que ya usaste. Nada se tira.",c:4,f:()=>[20*(G.md-G.disc),0,1]},
+ {n:"Fénix Curioso",d:"+5 Multi por cada Giro usado esta ronda. Mira todo.",c:5,f:()=>[0,5*G.gu,1]},
+ {n:"Joker Coloreado",d:"+60 Fichas si hay un Color. Todo del mismo tono.",c:4,f:c=>[["fl","sf"].includes(c.t)?60:0,0,1]},
+ {n:"Diamante en Bruto",d:"X3 Multi con Escalera de color. Rarísimo y brillante.",c:12,f:c=>[0,0,c.t=="sf"?3:1]}
+);
+const VCH=[
+ {n:"Mano Extra",d:"+1 Mano por ronda (permanente).",c:10,f:()=>G.mh++},
+ {n:"Descarte Extra",d:"+1 Descarte por ronda (permanente).",c:8,f:()=>G.md++},
+ {n:"Manos Grandes",d:"+1 carta en tu mano (máx. 10).",c:9,f:()=>G.hs=Math.min(10,G.hs+1)},
+ {n:"Giro Extra",d:"+1 Giro Bonus por ronda (máx. 4).",c:7,f:()=>G.maxG=Math.min(4,G.maxG+1)},
+ {n:"Fábrica de Cartas",d:"Suma al mazo una carta al azar ya mejorada.",c:6,f:()=>{G.cards.push({r:2+Math.random()*13|0,s:Math.random()*4|0,id:Date.now()+Math.random(),e:Object.keys(ENH)[Math.random()*4|0]})}},
+ {n:"Alcancía",d:"Te regala $8 ahora. Plata fresca.",c:3,f:()=>G.money+=8}
+];
 const PLN={hi:"Planeta Solitario",pa:"Planeta Pareja Feliz",tp:"Planeta Doble Cita",tk:"Planeta Tres Mosqueteros",st:"Planeta Escalera al Cielo",fl:"Planeta Monocolor",fh:"Planeta Banquete",fk:"Planeta Cuatro Fantásticos",sf:"Planeta Súper Escalera"};
 const PLJ={hi:"Para los que juegan en solitario.",pa:"Dos corazones, un solo destino.",tp:"Doble cita, doble premio.",tk:"Tres es compañía, y paga.",st:"Un escalón a la vez.",fl:"Todo del mismo color, como un uniforme.",fh:"Hay mesa para todos.",fk:"Cuatro iguales: insuperable.",sf:"Lo mejor de dos mundos."};
 let G={};
 const $=id=>document.getElementById(id);
 function newRun(){
- G={ante:1,bi:0,money:4,jokers:[],lv:{},phase:"play",msg:"",shop:[],sel:[],played:[],rr:3,flipCd:0};
+ G={ante:1,bi:0,money:4,jokers:[],lv:{},phase:"play",msg:"",shop:[],sel:[],played:[],rr:3,gu:0,maxG:2,hs:8,mh:4,md:3,boost:[]};
  for(const k in HT)G.lv[k]=0;
  G.cards=[];let id=0;for(let q=0;q<4;q++)for(let r=2;r<=14;r++)G.cards.push({r,s:q,id:id++});
  startBlind();
@@ -121,11 +219,16 @@ function newRun(){
 function startBlind(){
  const d=G.cards.map(c=>({...c}));
  for(let i=d.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[d[i],d[j]]=[d[j],d[i]]}
- Object.assign(G,{deck:d,hand:[],sel:[],played:[],hands:4,disc:3,score:0,phase:"play",
-  target:Math.round(ANTE[G.ante-1]*BL[G.bi][1]),msg:"Selecciona hasta 5 cartas. Tocá las cartas boca abajo para darles vuelta."});
+ Object.assign(G,{deck:d,hand:[],sel:[],played:[],hands:G.mh,disc:G.md,gu:0,score:0,phase:"play",
+  target:Math.round(ANTE[G.ante-1]*BL[G.bi][1]*DIF[COL.dif||"n"][1]/10)*10,msg:"Selecciona hasta 5 cartas. Tocá las cartas boca abajo para darles vuelta."});
  draw();render();
 }
-function draw(){while(G.hand.length<8&&G.deck.length){const c=G.deck.pop();if(Math.random()<.25)c.down=1;G.hand.push(c)}sortHand()}
+function draw(){
+ let vis=G.hand.filter(c=>!c.down).length,nd=G.hand.filter(c=>c.down).length;
+ while(vis<G.hs&&G.deck.length){G.hand.push(G.deck.pop());vis++}
+ while(nd<3&&G.deck.length){const c=G.deck.pop();c.down=1;G.hand.push(c);nd++}
+ sortHand();
+}
 let sortBy="r";
 function sortHand(){G.hand.sort((a,b)=>a.down||b.down?(a.down?1:0)-(b.down?1:0):sortBy=="r"?b.r-a.r||a.s-b.s:a.s-b.s||b.r-a.r)}
 function ev(cs){
@@ -146,38 +249,46 @@ function calc(cs){
  const e=ev(cs),h=HT[e.t],l=G.lv[e.t],lg=[];
  let ch=h[0]+l*h[2],mu=h[1]+l*h[3];
  lg.push(`${h[4]} base: ${ch}f ×${mu}`);
- e.sc.forEach(c=>{const v=c.r>13?11:c.r>10?10:c.r;ch+=v;let t=`${RK[c.r]||c.r}${SU[c.s]} +${v}f`;
-  if(c.rv){ch+=25;mu+=3;t+=" · 👁️ +25f +3m"}
+ e.sc.forEach(c=>{const v=c.rv?rvVal(c):valOf(c);ch+=v;let t=`${RK[c.r]||c.r}${SU[c.s]} +${v}f`;
+  if(c.rv)t+=" · 👁️ Giro (valor ×2)";
   if(c.e=="b"){ch+=30;t+=" · Gordita +30f"}
   if(c.e=="m"){mu+=4;t+=" · Turbo +4m"}
   if(c.e=="g"){mu*=1.5;t+=" · Cristal ×1.5"}
   if(c.e=="o")t+=" · Ricachona +$2";
   lg.push(t)});
  const ctx={...e,n:cs.length};
- G.jokers.forEach(j=>{const[a,b,x]=j.f(ctx);ch+=a;mu+=b;mu*=x;
+ const jb=[];
+ G.jokers.forEach(j=>{const[a,b,x]=j.f(ctx);jb.push([a,b,x]);ch+=a;mu+=b;mu*=x;
   const t=[a?`+${a}f`:"",b?`+${b}m`:"",x!=1?`×${x}`:""].filter(Boolean).join(" ");if(t)lg.push(`${j.n} ${t}`)});
- return{...e,lg,gold:e.sc.filter(c=>c.e=="o").length,ch,mu:Math.round(mu*10)/10,total:Math.round(ch*mu)};
+ return{...e,lg,jb,gold:e.sc.filter(c=>c.e=="o").length,ch,mu:Math.round(mu*10)/10,total:Math.round(ch*mu)};
 }
 function toggle(i){
  if(G.phase!="play")return;
  const c=G.hand[i];
- if(c.down){delete c.down;c.fl=1;setTimeout(()=>delete c.fl,500);sfx("girar.mp3");
-  if(!G.flipCd){c.rv=1;G.flipCd=2;G.msg="👁️ ¡Giro con bonus! Esa carta da +25 Fichas y +3 Multi si puntúa. Recarga: 2 rondas."}
-  else G.msg="Carta revelada (sin bonus: el Giro se está recargando).";
-  render();return}
+ if(c.down&&G.gu<G.maxG){delete c.down;c.rv=1;c.fl=1;setTimeout(()=>delete c.fl,500);G.gu++;stat("flips");sfx("girar.mp3");
+  G.msg=`👁️ Giro Bonus: esa carta ahora vale ${rvVal(c)} fichas (en vez de ${valOf(c)}) si puntúa.`;render();return}
  const k=G.sel.indexOf(i);
  if(k>=0)G.sel.splice(k,1);
  else if(G.sel.length<5){G.sel.push(i);sfx("select.mp3")}
  render();
 }
+function best(){
+ const idx=G.hand.map((c,i)=>c.down?-1:i).filter(i=>i>=0);let bs=-1,bsel=[];
+ const rec=(st,cur)=>{
+  if(cur.length){const t=calc(cur.map(i=>G.hand[i])).total;if(t>bs||(t==bs&&cur.length<bsel.length)){bs=t;bsel=[...cur]}}
+  if(cur.length==5)return;
+  for(let k=st;k<idx.length;k++){cur.push(idx[k]);rec(k+1,cur);cur.pop()}};
+ rec(0,[]);return bsel;
+}
+function suggest(){if(G.phase!="play")return;G.sel=best();if(G.sel.length)sfx("select.mp3");render()}
 function play(){
  if(!G.sel.length||G.hands<1||G.phase!="play")return;
- const cs=G.sel.map(i=>G.hand[i]),r=calc(cs);
- sfx("colocar.mp3");G.score+=r.total;G.money+=2*r.gold;G.hands--;G.played=cs;
+ const cs=G.sel.map(i=>G.hand[i]),r=calc(cs);cs.forEach(c=>delete c.down);
+ sfx("colocar.mp3");stat("h_"+r.t);statMax("big",r.total);G.score+=r.total;G.money+=2*r.gold;G.hands--;G.played=cs;
  G.hand=G.hand.filter((_,i)=>!G.sel.includes(i));G.sel=[];
- G.msg=`<span class="calc"><span class="chips">${r.ch}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br><span class="hname" style="color:${HC[r.t]}">${HT[r.t][4]}</span>${r.gold?` <span class="gold">+$${2*r.gold}</span>`:""}`;
+ G.msg=`<span class="calc"><span class="chips">${fx(r.ch)}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br><span class="hname" style="color:${HC[r.t]}">${HT[r.t][4]}</span>${r.gold?` <span class="gold">+$${2*r.gold}</span>`:""}`;
  draw();
- if(G.score>=G.target){if(G.flipCd>0)G.flipCd--;G.phase="won";sfx("ganar.mp3");render();return}
+ if(G.score>=G.target){G.phase="won";winStats();sfx("ganar.mp3");render();return}
  if(G.hands==0){G.phase="lost";sfx("derrota2.mp3")}
  render();
 }
@@ -186,12 +297,12 @@ function discard(){
  G.disc--;G.hand=G.hand.filter((_,i)=>!G.sel.includes(i));G.sel=[];G.played=[];
  draw();G.msg="Cartas descartadas.";render();
 }
-const PC={c:4,a:4,j:6},PN={c:"Sobre Cósmico",a:"Sobre Misterioso",j:"Sobre de Bufones"};
+const PC={c:4,a:4,j:6,d:14,t:18},PN={c:"Sobre Cósmico",a:"Sobre Misterioso",j:"Sobre de Bufones",d:"Sobre Dorso Holo",t:"Sobre PokerLike Holo"};
 const ENH={b:["Carta Gordita","+30 Fichas al puntuar. Viene bien cargada."],m:["Carta Turbo","+4 Multi al puntuar. Le pusieron cohete."],g:["Carta de Cristal","X1.5 Multi al puntuar. Frágil por fuera, potente por dentro."],o:["Carta Ricachona","+$2 al puntuar. Siempre deja propina."]};
 const pick=(a,n)=>[...a].sort(()=>Math.random()-.5).slice(0,n);
 function mkPack(p){return{p,o:p=="c"?pick(Object.keys(HT),3):p=="a"?pick(Object.keys(ENH),3):pick(JK,3)}}
-function iN(it){return it.k=="j"?it.j.n:it.k=="p"?PLN[it.t]:PN[it.p]}
-function iD(it){return it.k=="j"?it.j.d:it.k=="p"?`Sube ${HT[it.t][4]} (nv ${G.lv[it.t]}): +${HT[it.t][2]} Fichas y +${HT[it.t][3]} Multi. ${PLJ[it.t]}`:"Elegí 1 de 3 "+(it.p=="c"?"planetas. Viaje sin escalas.":it.p=="a"?"mejoras: se aplican a 2 cartas al azar de tu mazo. Sorpresa garantizada.":"jokers. Prometen portarse bien.")}
+function iN(it){return it.k=="j"?it.j.n:it.k=="p"?PLN[it.t]:it.k=="v"?"⭐ "+it.v.n:PN[it.p]}
+function iD(it){return it.k=="j"?it.j.d:it.k=="v"?it.v.d:it.k=="k"&&it.p=="d"?"Revela 1 dorso holográfico de un palo al azar. Se guarda en tu colección.":it.k=="k"&&it.p=="t"?"Revela 1 carta coleccionable pixelada, ¡con efecto holo!":it.k=="p"?`Sube ${HT[it.t][4]} (nv ${G.lv[it.t]}): +${HT[it.t][2]} Fichas y +${HT[it.t][3]} Multi. ${PLJ[it.t]}`:"Elegí 1 de 3 "+(it.p=="c"?"planetas. Viaje sin escalas.":it.p=="a"?"mejoras: se aplican a 2 cartas al azar de tu mazo. Sorpresa garantizada.":"jokers. Prometen portarse bien.")}
 function packH(){
  const P=G.pack;
  return`<h2 class="center">🎁 ${PN[P.p]} – elegí 1 (costo $${PC[P.p]})</h2><div class="row shop">${P.o.map((x,i)=>`<div class="item"><b>${P.p=="c"?PLN[x]:P.p=="a"?ENH[x][0]:x.n}</b><p>${P.p=="c"?`Nivel ${G.lv[x]} → ${G.lv[x]+1}. ${PLJ[x]}`:P.p=="a"?ENH[x][1]:x.d}</p><button class="b3" ${P.p=="j"&&G.jokers.length>=5?"disabled":""} onclick="choose(${i})">${P.p=="j"&&G.jokers.length>=5?"Sin espacio":"Elegir"}</button></div>`).join("")}</div>
@@ -207,27 +318,54 @@ function choose(i){
  }else{G.jokers.push({...x,uid:++UID});G.shopMsg=`Obtuviste ${x.n}.`}
  G.pack=null;sfx();render();
 }
-function cash(){
- const pay=BL[G.bi][2]+G.hands+Math.min(5,Math.floor(G.money/5));
- G.money+=pay;G.payout=pay;G.phase="shop";G.shopMsg="";G.rr=3;G.shop=[];fillShop();render();
+function pay(){const p=BL[G.bi][2]+G.hands+Math.min(5,Math.floor(G.money/5));G.money+=p;G.payout=p}
+function cash(){pay();G.phase="shop";G.shopMsg="";G.rr=3;fillShop();render()}
+const rnd6=()=>{const a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=4294967292);return a[0]%6+1};
+function roll(){
+ pay();stat("dice");G.phase="dice";G.dice={n:rnd6(),rolling:true};render();
+ let k=0;const t=setInterval(()=>{if(!G.dice||G.phase!="dice"){clearInterval(t);return}const d=$("die");if(d)d.textContent="⚀⚁⚂⚃⚄⚅"[Math.random()*6|0];if(++k>12){clearInterval(t);G.dice.rolling=false;sfx("girar.mp3");render()}},100);
+}
+function diceH(){
+ const D=G.dice,F="⚀⚁⚂⚃⚄⚅",n=D.n,no=n==1,dis=no?"disabled":"";
+ if(D.rolling)return`<h2 class="center">🎲 Tirando el dado...</h2><div class="center" id="die" style="font-size:110px">${F[n-1]}</div>`;
+ const o=(a,f)=>a.map(f).join("");
+ const sb=SU.map((x,s)=>`<button class="${s==1||s==2?"b2":"b4"}" ${dis} style="padding:6px 12px" onclick="applyDice(2,${s})">${n}${x}</button>`).join(" ");
+ return`<h2 class="center">🎲 Salió el ${n}</h2><div class="center" style="font-size:90px">${F[n-1]}</div>
+ <p class="center">${no?"Con el 1 solo podés usar la opción C.":"Elegí tu mejora (dura hasta que pierdas):"}</p><div class="row shop">
+ <div class="item"><b>A) +1.5 a todos los ${n}</b><p>Suma 1.5 al valor del ${n} en los 4 palos (pasa a ${n+1.5}).</p><button class="b3" ${dis} onclick="applyDice(1)">Elegir</button></div>
+ <div class="item"><b>B) +2 a un ${n}</b><p>Suma 2 al ${n} del palo que elijas:</p>${sb}</div>
+ <div class="item"><b>C) +1 a cualquier carta</b><p>Número o letra, del palo que quieras:</p>
+ <select id="dr">${o([2,3,4,5,6,7,8,9,10,11,12,13,14],x=>`<option value="${x}">${RK[x]||x}</option>`)}</select><select id="ds">${o(SU,(x,i)=>`<option value="${i}">${x}</option>`)}</select><br><button class="b3" style="margin-top:6px" onclick="applyDice(3)">Aplicar</button></div></div>`;
+}
+function applyDice(o,s){
+ const n=G.dice.n;let m;
+ if(o==1&&n>1){G.cards.filter(c=>c.r==n).forEach(c=>c.b=(c.b||0)+1.5);m=`+1.5 a todos los ${n}`}
+ else if(o==2&&n>1){const c=G.cards.find(c=>c.r==n&&c.s==s);c.b=(c.b||0)+2;m=`+2 al ${n}${SU[s]}`}
+ else if(o==3){const rr=+$("dr").value,ss=+$("ds").value,c=G.cards.find(c=>c.r==rr&&c.s==ss);if(c)c.b=(c.b||0)+1;m=`+1 al ${RK[rr]||rr}${SU[ss]}`}
+ else return;
+ G.boost.push({t:m});G.dice=null;next();G.msg="🎲 "+m+". Dura hasta que pierdas.";render();
 }
 function fillShop(){
- G.shop=[];
- for(let i=0;i<2;i++){const j=JK[Math.random()*JK.length|0];G.shop.push({k:"j",j,c:j.c})}
- const t=Object.keys(HT)[Math.random()*9|0];
- G.shop.push({k:"p",t,c:3});
- const pk=["c","a","j"];for(let i=0;i<2;i++){const p=pk[Math.random()*3|0];G.shop.push({k:"k",p,c:PC[p]})}
+ const keep=(G.shop||[]).filter(i=>i.pin),gen=[];
+ pick(JK,3).forEach(j=>gen.push({k:"j",j,c:j.c+(Math.random()<.4?1:0)}));
+ pick(Object.keys(HT),2).forEach(t=>gen.push({k:"p",t,c:3+(Math.random()<.5?1:0)}));
+ for(let i=0;i<2;i++){const p=["c","a","j"][Math.random()*3|0];gen.push({k:"k",p,c:PC[p]})}
+ const v=VCH[Math.random()*VCH.length|0];gen.push({k:"v",v,c:v.c});
+ if(Math.random()<.75){const p=Math.random()<.5?"d":"t";gen.push({k:"k",p,c:PC[p]})}
+ G.shop=[...keep,...gen.slice(0,Math.max(3,10-keep.length))];
 }
+function pin(i){G.shop[i].pin=!G.shop[i].pin;render()}
 let UID=0;
 function sfx(f="compra.mp3",v=1){try{const a=new Audio(f);a.volume=v;a.play().catch(()=>{})}catch(e){}}
 function buy(i){
  const it=G.shop[i];
  if(!it||G.money<it.c)return;
+ if(it.k=="k"&&(it.p=="d"||it.p=="t")){G.money-=it.c;G.shop.splice(i,1);G.reveal=openHolo(it.p);G.shopMsg="";sfx();render();return}
  if(it.k=="k"){it.o=it.o||mkPack(it.p).o;G.pack={p:it.p,o:it.o,idx:i};G.shopMsg="";render();return}
  if(it.k=="j"&&G.jokers.length>=5){G.shopMsg="⚠️ No tenés espacio: vendé un joker primero.";render();return}
  G.money-=it.c;
- if(it.k=="j")G.jokers.push({...it.j,uid:++UID});else G.lv[it.t]++;
- G.shop.splice(i,1);G.shopMsg="";sfx();render();
+ if(it.k=="j")G.jokers.push({...it.j,uid:++UID});else if(it.k=="v")it.v.f();else G.lv[it.t]++;
+ G.shop.splice(i,1);G.shopMsg="";stat("buys");if(G.jokers.length>=5)statMax("j5",1);sfx();render();
 }
 function sell(i){
  if(!G.jokers[i])return;
@@ -237,51 +375,65 @@ function reroll(){if(G.money<G.rr)return;G.money-=G.rr;G.rr++;fillShop();render(
 function next(){
  G.bi++;
  if(G.bi>2){G.bi=0;G.ante++}
- if(G.ante>8){G.phase="victory";sfx("ganar.mp3");render();return}
+ if(G.ante>8){stat("runs");G.phase="victory";sfx("ganar.mp3");render();return}
  startBlind();
 }
-const valOf=c=>c.r>13?11:c.r>10?10:c.r;
-const chipsOf=c=>valOf(c)+(c.e=="b"?30:0)+(c.rv?25:0);
-function multOf(c){const m=(c.e=="m"?4:0)+(c.rv?3:0),t=[m?"+"+m:"",c.e=="g"?"×1.5":""].filter(Boolean).join(" ");return t?`<i class="cv m">${t}</i>`:""}
+const valOf=c=>(c.r>13?11:c.r>10?10:c.r)+(c.b||0);
+const fx=n=>Math.round(n*10)/10;
+const rvVal=c=>Math.round(valOf(c)*(c.r==14?25/11:2));
+const chipsOf=c=>(c.rv?rvVal(c):valOf(c))+(c.e=="b"?30:0);
+function multOf(c){const m=(c.e=="m"?4:0),t=[m?"+"+m:"",c.e=="g"?"×1.5":""].filter(Boolean).join(" ");return t?`<i class="cv m">${t}</i>`:""}
 function cardH(c,i,cls=""){
- if(c.down)return`<div class="card back" onclick="toggle(${i})" title="Boca abajo: tocá para dar vuelta">?</div>`;
- return`<div class="card ${c.s%3==1||c.s==2?"r":""} ${c.e?"e-"+c.e:""} ${c.fl?"flip":""} ${c.rv?"rv":""} ${cls}" ${c.e?`title="${ENH[c.e][0]}: ${ENH[c.e][1]}"`:""} ${cls=="played"?"":`onclick="toggle(${i})"`}>${RK[c.r]||c.r}<span>${SU[c.s]}</span><i class="cv l">+${chipsOf(c)}</i>${multOf(c)}</div>`;
+ if(c.down)return`<div class="card back ${cls}" onclick="toggle(${i})" title="Tocá: gasta 1 Giro para darla vuelta">?</div>`;
+ return`<div class="card ${c.s%3==1||c.s==2?"r":""} ${c.e?"e-"+c.e:""} ${c.fl?"flip":""} ${c.rv?"rv":""} ${cls}" ${c.e?`title="${ENH[c.e][0]}: ${ENH[c.e][1]}"`:""} ${cls=="played"?"":`onclick="toggle(${i})"`}>${RK[c.r]||c.r}<span>${SU[c.s]}</span><i class="cv l">+${fx(chipsOf(c))}</i>${multOf(c)}</div>`;
 }
-function jokersH(shopMode){
- return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}><b>${j.n}</b>${j.d}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"<small>Sin jokers todavía (máx. 5)</small>";
+const jbH=(pv,i)=>{const[a,b,x]=pv&&pv.jb[i]||[0,0,1],t=[a?`+${a}f`:"",b?`+${b}m`:"",x!=1?`×${x}`:""].filter(Boolean).join(" ");return t?`<span class="jb">${t}</span>`:""};
+function jokersH(shopMode,pv){
+ return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}>${jbH(pv,i)}<b>${j.n}</b>${j.d}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"<small>Sin jokers todavía (máx. 5)</small>";
 }
 const moneyH=()=>`<div class="top"><div class="box" style="max-width:220px;margin:auto"><small>Dinero</small><b class="gold">$${G.money}</b></div></div>`;
+function handH(pv){
+ const cl=(c,i)=>G.sel.includes(i)?"sel "+(c.down?"":pv.sc.includes(c)?"sc":"ns"):"",h=G.hand.map((c,i)=>[c,i]);
+ const up=h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn=h.filter(([c])=>c.down);
+ return`<div class="row hand">${up}</div>`+(dn.length?`<div class="note center">🎴 ${dn.length} cartas extra boca abajo · tocá una para girarla (te quedan ${G.maxG-G.gu} Giros)</div><div class="row hidd">${dn.map(([c,i])=>cardH(c,i,cl(c,i))).join("")}</div>`:"");
+}
 function render(){
- document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop");
+ document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop"||G.phase=="dice");
  const A=$("app"),b=BL[G.bi];
+ const fu=G.sel.map(i=>G.hand[i]).filter(c=>!c.down),pv=G.phase=="play"&&fu.length?calc(fu):null;
  const head=`<div class="top">
  <div class="box"><small>Ante</small><b>${G.ante}/8</b></div>
- <div class="box"><small>${b[0]}</small><b>Objetivo ${G.target}</b><div class="bar"><i style="width:${Math.min(100,G.score/G.target*100)}%"></i></div></div>
+ <div class="box"><small>${b[0]} · Objetivo</small><b>${G.target}</b><div class="bar"><i style="width:${Math.min(100,G.score/G.target*100)}%"></i><i class="ghost" style="left:${Math.min(100,G.score/G.target*100)}%;width:${pv?Math.max(0,Math.min(100-G.score/G.target*100,pv.total/G.target*100)):0}%"></i></div></div>
  <div class="box"><small>Puntos</small><b class="gold">${G.score}</b></div>
  <div class="box"><small>Manos / Descartes</small><b><span class="chips">${G.hands}</span> / <span class="mult">${G.disc}</span></b></div>
- <div class="box"><small>Giro 👁️</small><b>${G.flipCd?`⏳ ${G.flipCd} ronda${G.flipCd>1?"s":""}`:"¡Listo!"}</b></div>
+ <div class="box"><small>Giro Bonus</small><b>${G.gu}/${G.maxG}</b></div>
  <div class="box"><small>Dinero</small><b class="gold">$${G.money}</b></div></div>`;
  if(G.phase=="victory"){A.innerHTML=`<div class="center"><h1>🏆 ¡Has ganado la partida!</h1><p>Superaste los 8 antes.</p><button class="b3" onclick="newRun()">Jugar de nuevo</button></div>`;return}
+ if(G.phase=="dice"){A.innerHTML=moneyH()+diceH();return}
  if(G.phase=="shop"){
+  if(G.reveal){A.innerHTML=moneyH()+revealH();return}
   if(G.pack){A.innerHTML=moneyH()+packH();return}
   A.innerHTML=`${moneyH()}<h2 class="center">🛒 Tienda <small>(+$${G.payout} de recompensa)</small></h2>
-  <div class="row shop">${G.shop.map((it,i)=>`<div class="item"><b>${iN(it)}</b><p>${iD(it)}</p><button class="b3" ${G.money<it.c||(it.k=="j"&&G.jokers.length>=5)?"disabled":""} onclick="buy(${i})">${it.k=="j"&&G.jokers.length>=5?"Sin espacio":it.k=="k"?"Ver · $"+it.c:"Comprar $"+it.c}</button></div>`).join("")||"<small>Agotado</small>"}</div>
+  <div class="row shop">${G.shop.map((it,i)=>`<div class="item ${it.k=="k"&&"dt".includes(it.p)?"hp":""}"><b>${iN(it)}</b><p>${iD(it)}</p><button class="b3" ${G.money<it.c||(it.k=="j"&&G.jokers.length>=5)?"disabled":""} onclick="buy(${i})">${it.k=="j"&&G.jokers.length>=5?"Sin espacio":it.k=="k"?(it.p=="d"||it.p=="t"?"Abrir · $":"Ver · $")+it.c:"Comprar $"+it.c}</button><br><button class="b4" style="margin-top:6px;padding:5px 12px;font-size:13px" onclick="pin(${i})">${it.pin?"📌 Fijado":"📌 Fijar"}</button></div>`).join("")||"<small>Agotado</small>"}</div>
   <div class="center"><button class="b4" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll $${G.rr}</button> <button class="b1" onclick="next()">Siguiente ronda ▶</button></div>
   <h3 class="center">Tus jokers ${G.jokers.length}/5 (clic para vender)</h3><p class="center gold">${G.shopMsg||""}</p><div class="row">${jokersH(1)}</div>`;return}
  if(G.phase=="won"){
   const base=b[2],hl=G.hands,it=Math.min(5,Math.floor(G.money/5));
   A.innerHTML=`${head}<div class="center win"><h1>🎉 ${G.bi==2?"¡Jefe derrotado!":"¡Ronda ganada!"}</h1><p>Hiciste <b class="gold">${G.score}</b> puntos (objetivo ${G.target})</p>
   <table><tr><td>Recompensa de la ronda</td><td class="gold">+$${base}</td></tr><tr><td>Manos sin usar (${hl})</td><td class="gold">+$${hl}</td></tr><tr><td>Interés</td><td class="gold">+$${it}</td></tr><tr><th>Total</th><th class="gold">+$${base+hl+it}</th></tr></table>
-  <p><button class="b3" style="font-size:20px" onclick="cash()">Ir a la tienda ▶</button></p></div>`;return}
- const pv=G.sel.length?calc(G.sel.map(i=>G.hand[i])):null;
+  <p class="note">Elegí una opción (el dado se tira una sola vez):</p><p><button class="b3" style="font-size:20px" onclick="cash()">🛒 Ir a la tienda</button> <button class="b4" style="font-size:20px" onclick="roll()">🎲 Tirar el dado</button></p></div>`;return}
+ 
  const over=G.phase=="lost"?`<div class="center lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:
   G.phase=="won"?`<div class="center"><h2>🎉 ¡Ronda ganada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
- A.innerHTML=`${head}<div class="row">${jokersH(0)}</div>
- <div class="row" style="min-height:100px">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
- <div class="info">${pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span>`:G.msg}</div>
- <div class="row">${G.hand.map((c,i)=>cardH(c,i,G.sel.includes(i)?"sel":"")).join("")}</div>
- ${over||`<div class="center"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
+ A.innerHTML=`${head}<div class="row jr">${jokersH(0,pv)}</div>
+ <div class="row pl">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
+ <div class="info">${pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span>
+ <div class="strip"><span class="sb chips">FICHAS<b>${fx(pv.ch)}</b></span><span>×</span><span class="sb mult">MULTI<b>${pv.mu}</b></span><span>=</span><span class="sb gold">PUNTOS<b>${pv.total}</b></span></div>
+ ${pv.sc.length<fu.length?'<div class="lg">Solo suman las cartas con brillo dorado</div>':""}${fu.length<G.sel.length?'<div class="lg">+ cartas ocultas: se revelan al jugar</div>':""}`:G.msg}</div>
+ ${handH(pv)}
+ ${over||`<div class="center btns"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
  <button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button>
+ <button class="b5" onclick="suggest()">💡 Mejor jugada</button>
  <button class="b4" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">Ordenar: ${sortBy=="r"?"valor":"palo"}</button></div>`}
  <p class="center"><small>Mazo: ${G.deck.length} cartas</small></p>`;
 }
@@ -293,9 +445,9 @@ function handsH(){
   const mini=cs.map(c=>`<span class="mc ${c.s==1||c.s==2?"r":""} ${sc.includes(c)?"":"dim"}">${RK[c.r]||c.r}${SU[c.s]}</span>`).join("");
   return`<tr><td>${h[4]}</td><td class="mcs">${mini}</td><td>${l}</td><td class="chips">${h[0]+l*h[2]}</td><td class="mult">${h[1]+l*h[3]}</td></tr>`}).join("");
  const pa=HT.pa,l=G.lv.pa,bc=pa[0]+l*pa[2],bm=pa[1]+l*pa[3];
- const ench=G.cards.filter(c=>c.e);
- const en=ench.map(c=>{const v=valOf(c),d={b:`${v} + 30 = <b class="chips">${v+30}</b> fichas`,m:`${v} fichas y <b class="mult">+4</b> multi`,g:`${v} fichas y <b class="mult">×1.5</b> multi`,o:`${v} fichas y <b class="gold">+$2</b>`}[c.e];
-  return`<div>${mc(c)} ${ENH[c.e][0]}: ${d}</div>`}).join("");
+ const ench=G.cards.filter(c=>c.e||c.b);
+ const en=ench.map(c=>{const v=fx(valOf(c)),d=c.e?{b:`${v} + 30 = <b class="chips">${v+30}</b> fichas`,m:`${v} fichas y <b class="mult">+4</b> multi`,g:`${v} fichas y <b class="mult">×1.5</b> multi`,o:`${v} fichas y <b class="gold">+$2</b>`}[c.e]:`base ${v} fichas (era ${fx(v-c.b)})`;
+  return`<div>${mc(c)} ${c.e?ENH[c.e][0]:"Base mejorada"}: ${d}</div>`}).join("");
  return`<h2>📊 Manos y puntaje</h2>
  <h3>¿Cómo se suman los puntos?</h3>
  <p>Ejemplo: jugás <b>${mc({r:12,s:1})} ${mc({r:12,s:3})}</b>, una Pareja.</p>
@@ -303,25 +455,30 @@ function handsH(){
  <p>② Cada Q que puntúa suma sus Fichas: 10 + 10 = <b class="chips">+20 Fichas</b>.</p>
  <p>③ Resultado: <b class="chips">${bc+20} Fichas</b> × <b class="mult">${bm} Multi</b> = <b class="gold">${(bc+20)*bm} puntos</b>.</p>
  <p>Las cartas mejoradas, el Giro 👁️ y los jokers suman más Fichas o Multi antes de multiplicar.</p>
- <h3>Valor de cada carta</h3><p>2 a 10 = su número · J, Q, K = 10 · A = 11.</p>
+ <h3>Valor de cada carta</h3><p>2 a 10 = su número · J, Q, K = 10 · A = 11.</p><p><b>Giro Bonus 👁️:</b> la carta girada vale el doble mientras dure la ronda: 2 a 10 = su valor ×2 · J, Q, K = 20 · A = 25 (sin Multi).</p>
  <h3>Todas las manos</h3><p><small>En el ejemplo, las cartas apagadas no puntúan.</small></p>
- <table><tr><th>Mano</th><th>Ejemplo</th><th>Nv</th><th>Fichas base</th><th>Multi base</th></tr>${rows}</table>
+ <div class="tw"><table><tr><th>Mano</th><th>Ejemplo</th><th>Nv</th><th>Fichas base</th><th>Multi base</th></tr>${rows}</table></div>
  <h3>✨ Tus cartas mejoradas (${ench.length})</h3><p>${en||"Todavía ninguna: conseguilas en los sobres Misteriosos de la tienda."}</p>
+ <h3>🎲 Mejoras del dado (${(G.boost||[]).length})</h3><p>${(G.boost||[]).map(b=>b.t).join(" · ")||"Ninguna todavía."}</p>
  <div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(false)">Cerrar</button></div>`;
 }
-function showHands(){const g=$("guide");g.innerHTML=`<div class="g">${handsH()}</div>`;g.style.display="block"}
+function showHands(){const g=$("guide");g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button>${handsH()}</div>`;g.style.display="block"}
 function showGuide(first){
  const g=$("guide");
- g.innerHTML=`<div class="g"><h2>📖 Guía del juego</h2>
+ g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button><h2>📖 Guía del juego</h2>
  <h3>🎯 Objetivo</h3><p>Superá 8 <b>antes</b>. Cada ante tiene 3 rondas: Ronda 1, Ronda 2 y Jefe. En cada ronda tenés que llegar a los <b>puntos objetivo</b> usando como máximo 4 manos.</p>
  <h3>🃏 Cartas y manos</h3><p>Tenés 8 cartas. Seleccioná hasta 5 y tocá <b>Jugar mano</b> para formar una mano de póker (pareja, trío, escalera, color, full, póker, escalera de color...). Mientras seleccionás, ves arriba la mano y su puntaje.</p>
- <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales). Abajo de cada carta ves sus <span class="chips">Fichas</span> (izquierda) y su <span class="mult">Multi</span> extra (derecha). Tocá <b>📊 Manos</b> para ver todas las manos con ejemplos.</p>
+ <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales). Abajo de cada carta ves sus <span class="chips">Fichas</span> (izquierda) y su <span class="mult">Multi</span> extra (derecha). Tocá <b>📊 Manos</b> para ver todas las manos con ejemplos. Al seleccionar cartas ves arriba FICHAS × MULTI = PUNTOS estimados: las cartas con brillo dorado son las que suman, las apagadas no, y los jokers que se activan muestran su aporte. El botón <b>💡 Mejor jugada</b> selecciona solo la combinación que más puntos da (no mira las cartas boca abajo).</p>
  <h3>🗑️ Descartes</h3><p>Tenés 3 descartes por ronda: tirá cartas seleccionadas y recibí nuevas, sin gastar manos.</p>
  <h3>🧙 Jokers (máx. 5)</h3><p>Pasivas que modifican el puntaje: dan fichas, multi o X multi según condiciones. Se compran en la tienda y se pueden vender a mitad de precio para liberar espacio.</p>
  <h3>🪐 Planetas</h3><p>Suben de nivel un tipo de mano: más fichas y más multi cada vez. Mirá la tabla de niveles al pie.</p>
- <h3>🎴 Cartas boca abajo y Giro</h3><p>En cualquier ronda algunas cartas llegan boca abajo. Tocalas para darlas vuelta: se pueden girar siempre, y las ocultas van al final de tu mano. Si tu <b>Giro 👁️</b> está listo, la carta que girás recibe un bonus <b>solo esa ronda</b>: +25 Fichas y +3 Multi cuando puntúa. Después el Giro se recarga y vuelve a estar listo tras ganar 2 rondas (lo ves en el panel superior).</p>
+ <h3>🎴 Cartas boca abajo y Giro Bonus</h3><p>Además de tus 8 cartas visibles, siempre tenés 3 cartas extra boca abajo. Cada ronda tenés <b>2 Giros</b> (panel Giro Bonus): tocá una carta oculta para darla vuelta y gastar 1 Giro. Mientras dure la ronda, la carta girada vale el doble: 2 a 10 = su valor ×2 · J, Q, K = 20 · A = 25 (sin Multi). Sin Giros, tocar una oculta la selecciona a ciegas: podés descartarla o jugarla sin saber qué es.</p>
  <h3>✨ Mejoras de carta</h3><p>Algunas cartas de tu mazo pueden mejorarse (se ven con color): <b>Carta Gordita</b> +30 fichas, <b>Carta Turbo</b> +4 multi, <b>Carta de Cristal</b> X1.5 multi, <b>Carta Ricachona</b> +$2. Solo actúan cuando la carta puntúa, y se conservan toda la partida.</p>
  <h3>🎁 Sobres</h3><p>En la tienda hay sobres: <b>Cósmico</b> (elegís un planeta), <b>Misterioso</b> (elegís una mejora que se aplica a 2 cartas al azar de tu mazo) y <b>de Bufones</b> (elegís un joker). Tocá <b>Ver</b> para mirar las 3 opciones: solo pagás si elegís una; si no, volvés a la tienda sin gastar.</p>
+ <h3>⚙️ Dificultad</h3><p>En la pantalla de inicio elegís <b>Fácil</b> (objetivos −25%), <b>Normal</b> o <b>Difícil</b> (objetivos +40%). Se guarda para la próxima vez.</p>
+ <h3>🎨 Colección y misiones</h3><p>Hay 100 criaturas de Casino, Póker y Bingo para coleccionar. Se consiguen con los <b>Sobres PokerLike Holo</b> de la tienda o cumpliendo <b>misiones</b> (por ejemplo, ganar rondas sin usar descartes). Son solo para coleccionar. Entrá desde 🎨 Colección.</p>
+ <h3>🎲 Dado</h3><p>Al ganar una ronda elegís: <b>🛒 ir a la tienda</b> o <b>🎲 tirar el dado</b> (una sola tirada). Si sale del 2 al 6 elegís: <b>A)</b> +1.5 al valor de ese número en los 4 palos, <b>B)</b> +2 a ese número en un solo palo, o <b>C)</b> +1 a cualquier carta (número o letra). Con el 1 solo vale la C. Duran hasta que pierdas.</p>
+ <h3>🛒 Tienda ampliada</h3><p>Hay más jokers (con precios que varían), planetas, sobres y <b>mejoras permanentes</b> (+1 mano, +1 descarte, +1 carta en mano, +1 Giro...). Con <b>📌 Fijar</b> guardás una oferta para la próxima visita y así juntás dinero para comprarla.</p>
  <h3>💰 Dinero y tienda</h3><p>Al superar una ronda cobrás $3/$4/$5 según la ronda, +$1 por mano que te sobre y +$1 de interés por cada $5 que tengas (máx. $5). En la tienda comprás jokers y planetas; <b>Reroll</b> renueva las ofertas (el costo sube cada vez).</p>
  <h3>💀 Derrota</h3><p>Si te quedás sin manos sin llegar al objetivo, perdés la partida.</p>
  <div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(${first})">${first?"¡Empezar partida!":"Cerrar"}</button></div></div>`;
@@ -330,20 +487,126 @@ function showGuide(first){
 function closeGuide(first){$("guide").style.display="none";if(first){fadeIntro();newRun()}}
 const intro=new Audio("introGame.mp3");intro.volume=.25;intro.loop=true;
 const playIntro=()=>{if(intro.currentTime>0)return;intro.play().catch(()=>{})};
-function fadeIntro(){const t=setInterval(()=>{if(intro.volume>.03)intro.volume=Math.max(0,intro.volume-.03);else{intro.pause();clearInterval(t)}},150)}
+function fadeIntro(){const t=setInterval(()=>{if(intro.volume>.012)intro.volume=Math.max(0,intro.volume-.012);else{intro.pause();clearInterval(t)}},150)}
 playIntro();["pointerdown","keydown"].forEach(e=>document.addEventListener(e,playIntro,{once:true}));
-function startGame(){$("start").style.display="none";showGuide(true)}
+document.addEventListener("keydown",e=>{if(e.key=="Escape")closeGuide(false)});
+function renderDif(){$("dif").innerHTML="Dificultad: "+Object.keys(DIF).map(k=>`<button class="${COL.dif==k?"on":""}" onclick="setDif('${k}')">${DIF[k][0]}</button>`).join("")}
+function setDif(k){COL.dif=k;saveCol();renderDif()}
+function startGame(){$("start").style.display="none";fadeIntro();newRun()}
 (()=>{const f=(x,y,c,n,t)=>`<path d='M${x} ${y-60}L${x+60} ${y}L${x} ${y+60}L${x-60} ${y}Z' fill='none' stroke='%23874a12' stroke-width='2'/><text x='${x}' y='${y+16}' font-size='46' text-anchor='middle' fill='%23${c}' font-family='serif'>${t}</text>`;
  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><rect width='240' height='240' fill='%230d0905'/>${f(60,60,"a8611d",0,"♠")}${f(180,60,"a8611d",0,"♥")}${f(60,180,"a8611d",0,"♣")}${f(180,180,"a8611d",0,"♦")}</svg>`;
  document.documentElement.style.setProperty("--shopbg",`url("data:image/svg+xml,${svg.replace(/</g,"%3C").replace(/>/g,"%3E")}")`)})();
+
+const COL=(()=>{let d={cards:{},backs:{},back:-1,st:{},claimed:{},dif:"n"};try{Object.assign(d,JSON.parse(localStorage.getItem("pokerlike_col")||"{}"))}catch(e){}return d})();
+const saveCol=()=>{try{localStorage.setItem("pokerlike_col",JSON.stringify(COL))}catch(e){}};
+let DEFBACK;
+const PAL={k:"#1a1a2e",w:"#fff",c:"#5eead4",o:"#fb923c",p:"#f9a8d4",r:"#ef4444",y:"#fde047",a:"#94a3b8",u:"#a78bfa",g:"#4ade80",b:"#60a5fa",R:"#ef4444",W:"#fff",K:"#111",Y:"#fde047",G:"#22c55e",B:"#3b82f6",O:"#fb923c"};
+const MAINS=["c","o","r","u","y","g","b","p","a"],RARN=["Común","Rara","Holo","Ultra"];
+const BODY=[
+ ["Slime","c",[".....","..kkk",".kccc","kcccc","kcwkc","kcwkc","kcccc","kcccc",".kkkk","....."]],
+ ["Robot","a",["..y..","..k..","kkkkk","kaaaa","kaaya","kaaaa","kkkkk","kaaak","kaayy","kk.kk"]],
+ ["Gato","o",[".....","kk...","kook.","koooo","koooo","kwkoo","koooo","kooop",".kkkk","....."]],
+ ["Fantasma","w",[".....","..kkk",".kwww","kwwww","kwkww","kwwww","kwwww","kwwww","kw.wk",".k.k."]],
+ ["Dragón","r",["..k..",".krrr","krrrr","krwkr","krrrr",".kyyy","kryyy","krrrr","kk.kk","....."]],
+ ["Pulpo","u",[".kkkk","kuuuu","kuuuu","kuwku","kuuuu","kuuuu","kukuk","ku.u.","k.k.k","....."]],
+ ["Conejo","w",[".kk..",".kwk.",".kwk.","kwwwk","kwwww","kwkww","kwwwp","kwwww",".kkkk","....."]],
+ ["Pollo","y",[".....","..kkk",".kyyy","kyyyy","kywky","kyyoo","kyyyy",".kyyy","..o.o","....."]]
+];
+const IC=[
+ ["Fichín","c","Apuesta","Nunca se retira a tiempo.",[".YYY.","YRYRY","YRYRY",".YYY."]],
+ ["Dadito","c","Tirada","Todo depende del azar.",["WWWWW","WKWKW","WWKWW","WWWWW"]],
+ ["Picoso","p","Estocada","Corta con la mano derecha.",["..K..",".KKK.","KKKKK","..K.."]],
+ ["Cora","p","Flechazo","Juega por amor al arte.",[".R.R.","RRRRR",".RRR.","..R.."]],
+ ["Brillos","p","Destello","Vale más de lo que parece.",["..R..",".RRR.",".RRR.","..R.."]],
+ ["Trebolín","p","Suerte","Trae suerte, a veces.",[".KKK.","KKKKK",".KKK.","..K.."]],
+ ["Bingo","b","Cantada","¡Cantó línea!",[".OOO.","OWWWO","OWKWO",".OOO."]],
+ ["Triple 7","c","Jackpot","Siempre cae en premio.",["RRRRR","...R.","..R..",".R..."]],
+ ["Cereza","c","Tragamonedas","Dulce, pero apuesta fuerte.",["..GG.",".G..G","RR.RR","RR.RR"]],
+ ["Crupier","c","Reparto","La casa siempre gana.",["Y.Y.Y","YYYYY","YYYYY","YRYRY"]],
+ ["Comodín","p","Truco","Sirve para cualquier jugada.",["R...B","RRYBB","RRYBB",".RYB."]],
+ ["Cartón","b","Línea","Tacha todo menos el premio.",["OOOOO","OWOWO","OOOOO","OWOWO"]],
+ ["Ruleta","c","Giro","Rojo, negro o verde: quién sabe.",[".KKK.","KRKGK","KGKRK",".KKK."]]
+];
+const TH={c:"🎰 Casino",p:"♠ Póker",b:"🎱 Bingo"};
+const CR=[];for(let i=0;i<100;i++){const b=BODY[(i/13|0)%8],k=IC[i%13],q=(i*37)%100,rar=q<50?"Común":q<80?"Rara":q<94?"Holo":"Ultra",ri=RARN.indexOf(rar);
+ CR.push({n:`${b[0]} ${k[0]}`,th:k[1],hp:30+(i*17)%50+ri*25,at:`${k[2]} ${20+(i*13)%40+ri*25}`,d:k[3],r:rar,body:b,ic:k[4],map:MAINS[(i*5)%MAINS.length]})}
+const spr=c=>{const m=c.body[1];let e="";
+ c.body[2].forEach((row,y)=>{const f=row+[...row].reverse().join("");[...f].forEach((ch,x)=>{if(ch!=".")e+=`<rect x='${x}' y='${y}' width='1.02' height='1.02' fill='${PAL[ch==m?c.map:ch]}'/>`})});
+ c.ic.forEach((row,y)=>[...row].forEach((ch,x)=>{if(ch!=".")e+=`<rect x='${x+5}' y='${y+6}' width='1.02' height='1.02' fill='${PAL[ch]}'/>`}));
+ return`<svg viewBox='0 0 10 10' shape-rendering='crispEdges'>${e}</svg>`};
+const tcgH=(i,lock,n)=>{const c=CR[i],cl=c.r=="Común"?"":c.r=="Rara"?"rare":c.r=="Holo"?"holo":"ultra";
+ return`<div class="tcg ${cl} ${lock?"lock":""}"><div class="th"><b>${lock?"???":c.n}</b><span>PS ${lock?"??":c.hp}</span></div><div class="art">${spr(c)}</div><div class="tb"><b>${lock?"":c.at}</b><br><i>${lock?"":c.d}</i></div><div class="tf"><span>${TH[c.th].split(" ")[0]} #${i+1}/${CR.length}${n>1?" ×"+n:""}</span><span>${c.r}</span></div></div>`};
+const SPX=[["...x...","..xxx..",".xxxxx.","xxxxxxx","xxxxxxx","...x...","..xxx.."],[".xx.xx.","xxxxxxx","xxxxxxx",".xxxxx.","..xxx..","...x..."],["...x...","..xxx..",".xxxxx.","xxxxxxx",".xxxxx.","..xxx..","...x..."],["..xxx..",".xxxxx.","..xxx..","xx.x.xx","xxxxxxx","xx.x.xx","...x..."]];
+const BN=["Holo Picas","Holo Corazones","Holo Diamantes","Holo Tréboles"],HUE=[260,340,185,120];
+function hbUrl(s){
+ const px=SPX[s],w=8,ox=50-3.5*w,oy=72-px.length*w/2;let e="";
+ px.forEach((r,y)=>[...r].forEach((c,x)=>{if(c=="x")e+=`<rect x='${ox+x*w}' y='${oy+y*w}' width='${w}' height='${w}' fill='#fff'/>`}));
+ const h=HUE[s],svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 144' shape-rendering='crispEdges'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='hsl(${h},90%,62%)'/><stop offset='.35' stop-color='hsl(${h+60},90%,66%)'/><stop offset='.7' stop-color='hsl(${h+140},90%,62%)'/><stop offset='1' stop-color='hsl(${h+220},90%,66%)'/></linearGradient><pattern id='f' width='10' height='10' patternUnits='userSpaceOnUse'><path d='M5 0L10 5L5 10L0 5Z' fill='none' stroke='white' stroke-opacity='.5'/></pattern></defs><rect width='100' height='144' rx='7' fill='url(#g)'/><rect width='100' height='144' rx='7' fill='url(#f)'/><rect x='3' y='3' width='94' height='138' rx='5' fill='none' stroke='white' stroke-width='2'/><rect x='18' y='38' width='64' height='68' rx='4' fill='#0b1020' opacity='.55'/>${e}</svg>`;
+ return`url("data:image/svg+xml,${encodeURIComponent(svg).replace(/'/g,"%27")}")`;
+}
+function applyBack(){document.documentElement.style.setProperty("--backbg",COL.back>=0?hbUrl(COL.back):DEFBACK);document.body.classList.toggle("hb",COL.back>=0)}
+function openHolo(p){stat("packs");
+ if(p=="d"){const s=Math.random()*4|0,nw=!COL.backs[s];COL.backs[s]=1;if(nw)COL.back=s;else G.money+=5;saveCol();applyBack();return{p,s,nw}}
+ const r=Math.random(),rar=r<.5?"Común":r<.8?"Rara":r<.95?"Holo":"Ultra",pool=CR.map((c,i)=>i).filter(i=>CR[i].r==rar),i=pool[Math.random()*pool.length|0],nw=!COL.cards[i];
+ COL.cards[i]=(COL.cards[i]||0)+1;if(!nw)G.money+=3;saveCol();return{p,i,nw};
+}
+function revealH(){
+ const R=G.reveal,body=R.p=="d"?`<div class="bk" style='width:128px;height:184px;background:${hbUrl(R.s)} center/100% 100%'></div><h3>${BN[R.s]}</h3>`:`<div class="center">${tcgH(R.i,false,0)}</div><h3>${CR[R.i].n} · ${CR[R.i].r}</h3>`;
+ return`<h2 class="center">✨ ¡Sobre abierto!</h2><div class="center">${body}<p class="gold">${R.nw?(R.p=="d"?"¡Nuevo dorso! Ya lo estás usando.":"¡Carta nueva en tu colección!"):`Repetida: te devolvemos $${R.p=="d"?5:3}.`}</p><button class="b3" onclick="G.reveal=null;render()">Continuar</button></div>`;
+}
+
+function stat(k,n=1){COL.st[k]=(COL.st[k]||0)+n;saveCol()}
+function statMax(k,v){if(v>(COL.st[k]||0)){COL.st[k]=v;saveCol()}}
+function winStats(){stat("wins");if(G.disc==G.md)stat("wnd");if(!G.gu)stat("wng");if(G.mh-G.hands==1)stat("w1h");if(G.bi==2)stat("boss")}
+const MT=[
+ ["wins","Ganá {n} rondas",[[3,0],[10,1],[30,2],[60,3]]],
+ ["wnd","Ganá {n} rondas sin usar descartes",[[2,0],[5,1],[15,2]]],
+ ["wng","Ganá {n} rondas sin usar el Giro",[[3,0],[8,1],[20,2]]],
+ ["w1h","Ganá {n} rondas usando una sola mano",[[1,1],[3,2],[8,3]]],
+ ["boss","Derrotá {n} Jefes",[[1,0],[5,1],[15,2]]],
+ ["runs","Ganá {n} partidas completas",[[1,2],[3,3]]],
+ ["h_pa","Jugá {n} Parejas",[[10,0],[50,1]]],["h_tp","Jugá {n} Dobles parejas",[[8,0],[40,1]]],["h_tk","Jugá {n} Tríos",[[5,0],[30,1]]],
+ ["h_st","Jugá {n} Escaleras",[[3,0],[20,1],[60,2]]],["h_fl","Jugá {n} Colores",[[3,0],[20,1],[60,2]]],["h_fh","Jugá {n} Full",[[2,0],[10,1],[40,2]]],
+ ["h_fk","Jugá {n} Pókers",[[1,1],[5,2],[15,3]]],["h_sf","Jugá {n} Escaleras de color",[[1,2],[3,3]]],
+ ["big","Hacé una mano de {n} puntos",[[300,0],[2000,1],[20000,2],[200000,3]]],
+ ["dice","Tirá el dado {n} veces",[[1,0],[5,1],[15,2]]],["buys","Comprá {n} cosas en la tienda",[[5,0],[25,1],[80,2]]],
+ ["packs","Abrí {n} sobres holográficos",[[1,0],[5,1],[15,2]]],["flips","Girá {n} cartas con el Giro",[[5,0],[30,1],[100,2]]],
+ ["j5","Tené 5 jokers a la vez",[[1,1]]]
+];
+const MS=MT.flatMap(([k,t,ti])=>ti.map(([n,r])=>({id:k+n,k,n,r,txt:t.replace("{n}",n)})));
+const CU={tab:"c",th:"all",pg:0,got:-1};
+function claim(id){
+ const m=MS.find(x=>x.id==id);if(!m||COL.claimed[id]||(COL.st[m.k]||0)<m.n)return;
+ COL.claimed[id]=1;const pool=CR.map((c,i)=>i).filter(i=>CR[i].r==RARN[m.r]),un=pool.filter(i=>!COL.cards[i]),a=un.length?un:pool,i=a[Math.random()*a.length|0];
+ COL.cards[i]=(COL.cards[i]||0)+1;saveCol();CU.got=i;showCol();
+}
+function colH(){
+ const own=Object.keys(COL.cards).length,done=m=>(COL.st[m.k]||0)>=m.n,rdy=MS.filter(m=>!COL.claimed[m.id]&&done(m)).length,g=CU.got;CU.got=-1;
+ const tabs=[["c","Cartas"],["d","Dorsos"],["m","Misiones"+(rdy?` (${rdy}🎁)`:"")]].map(([k,t])=>`<button class="${CU.tab==k?"b4":"b1"}" style="padding:8px 12px" onclick="CU.tab='${k}';CU.pg=0;showCol()">${t}</button>`).join(" ");
+ let body="";
+ if(CU.tab=="c"){
+  const list=CR.map((c,i)=>i).filter(i=>CU.th=="all"||CR[i].th==CU.th),pgs=Math.ceil(list.length/12),pg=Math.min(CU.pg,pgs-1);
+  const chips=[["all","Todas"],["c","🎰 Casino"],["p","♠ Póker"],["b","🎱 Bingo"]].map(([k,t])=>`<button class="${CU.th==k?"b4":"b1"}" style="padding:5px 10px;font-size:13px" onclick="CU.th='${k}';CU.pg=0;showCol()">${t}</button>`).join(" ");
+  body=`<p class="center">${own}/${CR.length} obtenidas</p><div class="center">${chips}</div><div class="grid">${list.slice(pg*12,pg*12+12).map(i=>tcgH(i,!COL.cards[i],COL.cards[i]||0)).join("")}</div><div class="center"><button class="b1" ${pg?"":"disabled"} onclick="CU.pg=${pg-1};showCol()">◀</button> Página ${pg+1}/${pgs} <button class="b1" ${pg<pgs-1?"":"disabled"} onclick="CU.pg=${pg+1};showCol()">▶</button></div>`;
+ }else if(CU.tab=="d"){
+  body=`<div class="grid">${[-1,0,1,2,3].map(s=>{const has=s<0||COL.backs[s];return`<div class="center"><div class="bk" style='background:${s<0?DEFBACK:hbUrl(s)} center/100% 100%'></div><small>${s<0?"Clásico":BN[s]}</small><br>${has?(COL.back==s?"✔ En uso":`<button class="b3" style="padding:4px 12px" onclick="equip(${s})">Usar</button>`):"<small>🔒 Bloqueado</small>"}</div>`}).join("")}</div><p class="note">Los dorsos holográficos salen en los Sobres Dorso Holo de la tienda.</p>`;
+ }else{
+  const rk=m=>COL.claimed[m.id]?2:done(m)?0:1;
+  body=`<p class="note">Cumplí misiones y reclamá una carta de la rareza indicada. Las cartas también salen en los Sobres PokerLike Holo de la tienda.</p>`+MS.slice().sort((a,b)=>rk(a)-rk(b)).map(m=>{const v=Math.min(COL.st[m.k]||0,m.n),cl=COL.claimed[m.id];
+   return`<div class="ms ${cl?"cl":""}"><div style="flex:1"><b>${m.txt}</b><br><small>Premio: carta ${RARN[m.r]} · ${v}/${m.n}</small><div class="bar"><i style="width:${v/m.n*100}%"></i></div></div>${cl?"✔":done(m)?`<button class="b3" style="padding:6px 12px" onclick="claim('${m.id}')">Reclamar</button>`:"🔒"}</div>`}).join("");
+ }
+ return`<h2>🎨 Colección</h2><div class="center">${tabs}</div>${g>=0?`<div class="center"><p class="gold">¡Misión cumplida! Obtuviste:</p>${tcgH(g,false,0)}</div>`:""}${body}`;
+}
+function showCol(){const g=$("guide");g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button>${colH()}<div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(false)">Cerrar</button></div></div>`;g.style.display="block"}
+function equip(s){COL.back=s;saveCol();applyBack();showCol()}
 (()=>{let t="",f="";
  for(let x=8;x<=92;x+=6)t+=`<path d='M${x} 5l3 6 3-6zM${x} 139l3-6 3 6z' fill='#fff'/>`;
  for(let y=14;y<=128;y+=6)t+=`<path d='M5 ${y}l6 3-6 3zM95 ${y}l-6 3 6 3z' fill='#fff'/>`;
  for(let k=0;k<8;k++)f+=`<ellipse cx='50' cy='57' rx='${k%2?4:6}' ry='${k%2?11:15}' transform='rotate(${k*45} 50 72)' fill='${k%2?"#fff":"none"}' stroke='#fff' stroke-width='1.3'/>`;
  const sc=`<path d='M50 34C34 22 22 38 34 46M50 34C66 22 78 38 66 46M50 34V44' fill='none' stroke='#fff' stroke-width='1.6'/><circle cx='50' cy='46' r='2' fill='#fff'/>`;
  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 144'><rect width='100' height='144' rx='7' fill='#25319a'/><rect x='2' y='2' width='96' height='140' rx='6' fill='none' stroke='#fff' stroke-width='2'/>${t}<rect x='14' y='17' width='72' height='110' fill='none' stroke='#fff' stroke-width='1.2'/>${sc}<g transform='rotate(180 50 72)'>${sc}</g>${f}<circle cx='50' cy='72' r='8' fill='#fff'/><circle cx='50' cy='72' r='4' fill='#25319a'/><path d='M30 56v-8h8M70 56v-8h-8M30 88v8h8M70 88v8h-8' fill='none' stroke='#fff' stroke-width='1.5'/></svg>`;
- document.documentElement.style.setProperty("--backbg",`url("data:image/svg+xml,${encodeURIComponent(svg)}")`)})();
-G={phase:"intro"};
+ DEFBACK=`url("data:image/svg+xml,${encodeURIComponent(svg).replace(/'/g,"%27")}")`;applyBack()})();
+renderDif();G={phase:"intro"};
 </script>
 </body>
 </html>
