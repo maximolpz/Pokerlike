@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Póker Roguelike – clon de Balatro</title>
+<title>PokerLike</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
 <style>
 :root{--bg:#0f3d2e;--panel:#0a2a20;--ink:#f4f1e6;--red:#d6453d;--blue:#3b82f6;--gold:#f5c542}
 *{box-sizing:border-box}
@@ -150,10 +151,42 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
 .row.hidd{margin:4px 0 14px;gap:6px}.row.hidd .card{width:calc(var(--cw)*.78);height:calc(var(--cw)*1.1)}
 #start #dif button{background:#3b3b5c;color:#fff;box-shadow:none;font-size:15px;padding:7px 14px;letter-spacing:0;margin:2px}
 #start #dif button.on{background:#f5c542;color:#1a1208}
+.scene{--ds:clamp(88px,26vw,130px);width:var(--ds);height:var(--ds);margin:34px auto 30px;perspective:700px;position:relative}
+.scene::after{content:"";position:absolute;left:8%;right:8%;bottom:-28px;height:16px;border-radius:50%;background:radial-gradient(#0009,#0000 70%)}
+.cube{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+.face{position:absolute;inset:0;background:linear-gradient(135deg,#fff,#e9e9f2);border-radius:16%;border:1px solid #bbb;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:14%;backface-visibility:hidden;box-shadow:inset 0 0 14px #0003}
+.face b{display:flex;align-items:center;justify-content:center}.face i{width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#555,#000)}
+.face.f1 i{background:radial-gradient(circle at 35% 30%,#ff7b72,#b3261e)}
+.face.f2,.face.f5{filter:brightness(.93)}.face.f3,.face.f4{filter:brightness(.85)}
+#story{position:fixed;inset:0;z-index:25;overflow:auto;padding:8px;background:radial-gradient(circle,#0000 30%,#000d 100%),var(--shopbg) #0d0905;background-size:auto,240px 240px}
+.sbox{font-size:16px;margin:auto;width:100%;max-width:42em;background:#0d0905ea;border:2px solid #f5c542;border-radius:.9em;padding:1em 1.3em;color:#f4f1e6;line-height:1.42;animation:fadeIn .8s both}
+.sbox img{width:min(15em,60%);display:block;margin:0 auto .2em;image-rendering:pixelated}
+.sbox p{margin:.55em 0;font-size:1em;animation:fadeIn 1s both}
+.sbox p.sh{margin:1em 0 .35em;font-size:1.18em;font-weight:700;color:#fff}
+.sbox p.fin{margin:1em 0 .2em;font-size:1.3em;font-weight:800;color:#f5c542;text-align:center;line-height:1.3}
+.sbox .bt{margin-top:.8em;text-align:center}
+.sbox button{background:#f5c542;color:#1a1208;font-size:1.25em;padding:.55em 2em;box-shadow:0 .25em 0 #b8861a}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><div id="dif" class="center" style="color:#f4f1e6"></div><button onclick="startGame()">JUGAR</button><button class="alt" onclick="showGuide(false)">📖 Cómo jugar</button><button class="alt" style="background:#db2777" onclick="showCol()">🎨 Colección</button></div><div id="app"></div><div id="guide" style="display:none"></div><div id="tools"><button id="cbtn" onclick="showCol()">🎨 Colección</button><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button></div>
+<div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><div id="dif" class="center" style="color:#f4f1e6"></div><button onclick="startGame()">JUGAR</button><button class="alt" onclick="showGuide(false)">📖 Cómo jugar</button><button class="alt" style="background:#db2777" onclick="showCol()">🎨 Colección</button></div><div id="story" style="display:none"><div class="sbox">
+ <img src="Logo_pixelado_PokerLike.png" alt="PokerLike">
+ <p class="n" style="animation-delay:0.30s">El Gran Casino Dorado fue construido por tu abuelo, un hombre que dedicó su vida a levantar un imperio entre apuestas, fortuna y ambición.</p>
+ <p class="sh" style="animation-delay:0.65s">Pero todo terminó en una sola noche.</p>
+ <p class="n" style="animation-delay:1.00s">Una partida privada de póker, una apuesta demasiado grande y un rival que nunca estuvo dispuesto a perder. Tu abuelo entregó el casino para saldar parte de su deuda. Lo que quedó pendiente pasó de generación en generación, acumulando intereses hasta convertirse en una condena para toda tu familia.</p>
+ <p class="sh" style="animation-delay:1.35s">Hoy, la Casa tiene el control absoluto.</p>
+ <p class="n" style="animation-delay:1.70s">No es un casino cualquiera. Detrás de sus puertas se mueve una organización que no olvida, no perdona y jamás deja una deuda sin cobrar.</p>
+ <p class="n" style="animation-delay:2.05s">El plazo está por terminar. Ocho noches. Ese es todo el tiempo que te queda antes de que la Casa reclame lo último que tu familia todavía conserva.</p>
+ <p class="sh" style="animation-delay:2.40s">Entonces llega una invitación.</p>
+ <p class="n" style="animation-delay:2.75s">Una oportunidad para saldar la deuda enfrentando a los hombres que controlan el casino. Ocho mesas, ocho rivales y una última posibilidad de salir de allí con vida y sin cuentas pendientes.</p>
+ <p class="n" style="animation-delay:3.10s">No tenés experiencia con gente como ellos. No conocés sus reglas ni sabés hasta dónde están dispuestos a llegar.</p>
+ <p class="n" style="animation-delay:3.45s">Pero hay algo que tenés claro: no vas a permitir que tu familia pague por los errores de tu abuelo.</p>
+ <p class="n" style="animation-delay:3.80s">Las luces están encendidas. Las mesas están preparadas. La Casa está esperando.</p>
+ <p class="fin" style="animation-delay:4.15s">Esta noche, la deuda empieza a cobrarse.</p>
+ <div class="bt"><button onclick="endStory()">Continuar</button></div>
+</div></div>
+<div id="app"></div><div id="guide" style="display:none"></div><div id="tools"><button id="cbtn" onclick="showCol()">🎨 Colección</button><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button></div>
 <script>
 const SU=["♠","♥","♦","♣"],RK={11:"J",12:"Q",13:"K",14:"A"};
 // [fichas, multi, +fichas/nivel, +multi/nivel, nombre]
@@ -163,7 +196,8 @@ const HC={hi:"#cbd5e1",pa:"#93c5fd",tp:"#67e8f9",tk:"#86efac",st:"#fde047",fl:"#
 const PAIRY=["pa","tp","tk","fh","fk"];
 const BL=[["Ronda 1",1,3],["Ronda 2",1.5,4],["Jefe",2,5]];
 const ANTE=[350,1000,2800,7500,19000,40000,75000,130000];
-const DIF={f:["Fácil",.8],n:["Normal",1],d:["Difícil",1.5]};
+const DIF={f:["Fácil",.8,1.5],n:["Normal",1,1],d:["Difícil",1.5,.75]};
+const DV=()=>{const m=DIF[COL.dif||"n"][2],r=v=>Math.round(v*m*2)/2;return{a:r(1.5),b:r(2),c:r(7)}};
 // Jokers: f(ctx) -> [fichas, multi, xmulti]
 const cnt=(c,fn)=>c.sc.filter(fn).length;
 const suitJ=(n,s,t)=>({n,d:`+3 Multi por cada ${t} que puntúe`,c:5,f:c=>[0,3*cnt(c,x=>x.s==s),1]});
@@ -305,7 +339,7 @@ function iN(it){return it.k=="j"?it.j.n:it.k=="p"?PLN[it.t]:it.k=="v"?"⭐ "+it.
 function iD(it){return it.k=="j"?it.j.d:it.k=="v"?it.v.d:it.k=="k"&&it.p=="d"?"Revela 1 dorso holográfico de un palo al azar. Se guarda en tu colección.":it.k=="k"&&it.p=="t"?"Revela 1 carta coleccionable pixelada, ¡con efecto holo!":it.k=="p"?`Sube ${HT[it.t][4]} (nv ${G.lv[it.t]}): +${HT[it.t][2]} Fichas y +${HT[it.t][3]} Multi. ${PLJ[it.t]}`:"Elegí 1 de 3 "+(it.p=="c"?"planetas. Viaje sin escalas.":it.p=="a"?"mejoras: se aplican a 2 cartas al azar de tu mazo. Sorpresa garantizada.":"jokers. Prometen portarse bien.")}
 function packH(){
  const P=G.pack;
- return`<h2 class="center">🎁 ${PN[P.p]} – elegí 1 (costo $${PC[P.p]})</h2><div class="row shop">${P.o.map((x,i)=>`<div class="item"><b>${P.p=="c"?PLN[x]:P.p=="a"?ENH[x][0]:x.n}</b><p>${P.p=="c"?`Nivel ${G.lv[x]} → ${G.lv[x]+1}. ${PLJ[x]}`:P.p=="a"?ENH[x][1]:x.d}</p><button class="b3" ${P.p=="j"&&G.jokers.length>=5?"disabled":""} onclick="choose(${i})">${P.p=="j"&&G.jokers.length>=5?"Sin espacio":"Elegir"}</button></div>`).join("")}</div>
+ return`<h2 class="center">🎁 ${PN[P.p]}: elegí 1 (costo $${PC[P.p]})</h2><div class="row shop">${P.o.map((x,i)=>`<div class="item"><b>${P.p=="c"?PLN[x]:P.p=="a"?ENH[x][0]:x.n}</b><p>${P.p=="c"?`Nivel ${G.lv[x]} → ${G.lv[x]+1}. ${PLJ[x]}`:P.p=="a"?ENH[x][1]:x.d}</p><button class="b3" ${P.p=="j"&&G.jokers.length>=5?"disabled":""} onclick="choose(${i})">${P.p=="j"&&G.jokers.length>=5?"Sin espacio":"Elegir"}</button></div>`).join("")}</div>
  <div class="center"><button class="b2" onclick="G.pack=null;render()">Volver a la tienda</button></div><h3 class="center">Tus jokers ${G.jokers.length}/5</h3><div class="row">${jokersH(0)}</div>`;
 }
 function choose(i){
@@ -321,27 +355,35 @@ function choose(i){
 function pay(){const p=BL[G.bi][2]+G.hands+Math.min(5,Math.floor(G.money/5));G.money+=p;G.payout=p}
 function cash(){pay();G.phase="shop";G.shopMsg="";G.rr=3;fillShop();render()}
 const rnd6=()=>{const a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=4294967292);return a[0]%6+1};
+const rndInt=n=>{const a=new Uint32Array(1),lim=4294967296-4294967296%n;do{crypto.getRandomValues(a)}while(a[0]>=lim);return a[0]%n};
+const DF={1:[0,0],2:[0,-90],3:[-90,0],4:[90,0],5:[0,90],6:[0,180]};
+const cubeT=(n,fin)=>fin?`rotateX(-24deg) rotateY(-28deg) rotateX(${DF[n][0]+720}deg) rotateY(${DF[n][1]+1080}deg)`:"rotateX(-24deg) rotateY(-28deg)";
 function roll(){
  pay();stat("dice");G.phase="dice";G.dice={n:rnd6(),rolling:true};render();
- let k=0;const t=setInterval(()=>{if(!G.dice||G.phase!="dice"){clearInterval(t);return}const d=$("die");if(d)d.textContent="⚀⚁⚂⚃⚄⚅"[Math.random()*6|0];if(++k>12){clearInterval(t);G.dice.rolling=false;sfx("girar.mp3");render()}},100);
+ const n=G.dice.n;
+ setTimeout(()=>{const c=$("cube");if(c&&G.dice){c.style.transition="transform 1.9s cubic-bezier(.15,.7,.2,1)";c.style.transform=cubeT(n,true)}},60);
+ setTimeout(()=>{if(!G.dice||G.phase!="dice")return;G.dice.rolling=false;sfx("girar.mp3");render()},2100);
+}
+function cubeH(n,fin){
+ const P={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]},Z="calc(var(--ds)/2)",
+  T={1:`translateZ(${Z})`,6:`rotateY(180deg) translateZ(${Z})`,2:`rotateY(90deg) translateZ(${Z})`,5:`rotateY(-90deg) translateZ(${Z})`,3:`rotateX(90deg) translateZ(${Z})`,4:`rotateX(-90deg) translateZ(${Z})`};
+ return`<div class="scene"><div class="cube" id="cube" style="transform:${cubeT(n,fin)}">${[1,2,3,4,5,6].map(v=>`<div class="face f${v}" style="transform:${T[v]}">${[...Array(9)].map((_,k)=>`<b>${P[v].includes(k)?"<i></i>":""}</b>`).join("")}</div>`).join("")}</div></div>`;
 }
 function diceH(){
- const D=G.dice,F="⚀⚁⚂⚃⚄⚅",n=D.n,no=n==1,dis=no?"disabled":"";
- if(D.rolling)return`<h2 class="center">🎲 Tirando el dado...</h2><div class="center" id="die" style="font-size:110px">${F[n-1]}</div>`;
- const o=(a,f)=>a.map(f).join("");
+ const D=G.dice,n=D.n,no=n==1,dis=no?"disabled":"",v=DV();
+ if(D.rolling)return`<h2 class="center">🎲 Tirando el dado...</h2>${cubeH(n,false)}`;
  const sb=SU.map((x,s)=>`<button class="${s==1||s==2?"b2":"b4"}" ${dis} style="padding:6px 12px" onclick="applyDice(2,${s})">${n}${x}</button>`).join(" ");
- return`<h2 class="center">🎲 Salió el ${n}</h2><div class="center" style="font-size:90px">${F[n-1]}</div>
- <p class="center">${no?"Con el 1 solo podés usar la opción C.":"Elegí tu mejora (dura hasta que pierdas):"}</p><div class="row shop">
- <div class="item"><b>A) +1.5 a todos los ${n}</b><p>Suma 1.5 al valor del ${n} en los 4 palos (pasa a ${n+1.5}).</p><button class="b3" ${dis} onclick="applyDice(1)">Elegir</button></div>
- <div class="item"><b>B) +2 a un ${n}</b><p>Suma 2 al ${n} del palo que elijas:</p>${sb}</div>
- <div class="item"><b>C) +1 a cualquier carta</b><p>Número o letra, del palo que quieras:</p>
- <select id="dr">${o([2,3,4,5,6,7,8,9,10,11,12,13,14],x=>`<option value="${x}">${RK[x]||x}</option>`)}</select><select id="ds">${o(SU,(x,i)=>`<option value="${i}">${x}</option>`)}</select><br><button class="b3" style="margin-top:6px" onclick="applyDice(3)">Aplicar</button></div></div>`;
+ return`<h2 class="center">🎲 Salió el ${n}</h2>${cubeH(n,true)}
+ <p class="center">${no?"Con el 1 solo podés usar la opción C.":"Elegí tu mejora (dura hasta que pierdas):"}<br><small>Premios de dificultad ${DIF[COL.dif||"n"][0]}</small></p><div class="row shop">
+ <div class="item"><b>A) +${v.a} a todos los ${n}</b><p>Suma ${v.a} al valor del ${n} en los 4 palos (pasa a ${n+v.a}).</p><button class="b3" ${dis} onclick="applyDice(1)">Elegir</button></div>
+ <div class="item"><b>B) +${v.b} a un ${n}</b><p>Suma ${v.b} al ${n} del palo que elijas:</p>${sb}</div>
+ <div class="item" style="border-color:#fff;box-shadow:0 0 14px var(--gold)"><b>C) +${v.c} a una carta al azar</b><p>El premio más alto: sube +${v.c} la base de una carta cualquiera (número o letra, de cualquier palo).</p><button class="b3" onclick="applyDice(3)">Elegir</button></div></div>`;
 }
 function applyDice(o,s){
- const n=G.dice.n;let m;
- if(o==1&&n>1){G.cards.filter(c=>c.r==n).forEach(c=>c.b=(c.b||0)+1.5);m=`+1.5 a todos los ${n}`}
- else if(o==2&&n>1){const c=G.cards.find(c=>c.r==n&&c.s==s);c.b=(c.b||0)+2;m=`+2 al ${n}${SU[s]}`}
- else if(o==3){const rr=+$("dr").value,ss=+$("ds").value,c=G.cards.find(c=>c.r==rr&&c.s==ss);if(c)c.b=(c.b||0)+1;m=`+1 al ${RK[rr]||rr}${SU[ss]}`}
+ const n=G.dice.n,v=DV();let m;
+ if(o==1&&n>1){G.cards.filter(c=>c.r==n).forEach(c=>c.b=(c.b||0)+v.a);m=`+${v.a} a todos los ${n}`}
+ else if(o==2&&n>1){const c=G.cards.find(c=>c.r==n&&c.s==s);c.b=(c.b||0)+v.b;m=`+${v.b} al ${n}${SU[s]}`}
+ else if(o==3){const c=G.cards[rndInt(G.cards.length)];c.b=(c.b||0)+v.c;m=`+${v.c} al ${RK[c.r]||c.r}${SU[c.s]} (carta al azar)`}
  else return;
  G.boost.push({t:m});G.dice=null;next();G.msg="🎲 "+m+". Dura hasta que pierdas.";render();
 }
@@ -486,7 +528,7 @@ function showGuide(first){
  <h3>🎁 Sobres</h3><p>En la tienda hay sobres: <b>Cósmico</b> (elegís un planeta), <b>Misterioso</b> (elegís una mejora que se aplica a 2 cartas al azar de tu mazo) y <b>de Bufones</b> (elegís un joker). Tocá <b>Ver</b> para mirar las 3 opciones: solo pagás si elegís una; si no, volvés a la tienda sin gastar.</p>
  <h3>⚙️ Dificultad</h3><p>En la pantalla de inicio elegís <b>Fácil</b> (objetivos −20%), <b>Normal</b> o <b>Difícil</b> (objetivos +50%). Se guarda para la próxima vez.</p>
  <h3>🎨 Colección y misiones</h3><p>Hay 100 criaturas de Casino, Póker y Bingo para coleccionar. Se consiguen con los <b>Sobres PokerLike Holo</b> de la tienda o cumpliendo <b>misiones</b> (por ejemplo, ganar rondas sin usar descartes). Son solo para coleccionar. Entrá desde 🎨 Colección.</p>
- <h3>🎲 Dado</h3><p>Al ganar una ronda elegís: <b>🛒 ir a la tienda</b> o <b>🎲 tirar el dado</b> (una sola tirada). Si sale del 2 al 6 elegís: <b>A)</b> +1.5 al valor de ese número en los 4 palos, <b>B)</b> +2 a ese número en un solo palo, o <b>C)</b> +1 a cualquier carta (número o letra). Con el 1 solo vale la C. Duran hasta que pierdas.</p>
+ <h3>🎲 Dado</h3><p>Al ganar una ronda elegís: <b>🛒 ir a la tienda</b> o <b>🎲 tirar el dado</b> (una sola tirada). Si sale del 2 al 6 elegís: <b>A)</b> suma al valor de ese número en los 4 palos, <b>B)</b> suma un poco más a ese número en un solo palo, o <b>C)</b> suma muchísimo más a una carta al azar (el premio más alto). Con el 1 solo vale la C. Los premios se ajustan a la dificultad elegida (Fácil ×1.5, Difícil ×0.75) y duran hasta que pierdas. En Normal: A +1.5, B +2 y C +7.</p>
  <h3>🛒 Tienda ampliada</h3><p>Hay más jokers (con precios que varían), planetas, sobres y <b>mejoras permanentes</b> (+1 mano, +1 descarte, +1 carta en mano, +1 Giro...). Con <b>📌 Fijar</b> guardás una oferta para la próxima visita y así juntás dinero para comprarla.</p>
  <h3>💰 Dinero y tienda</h3><p>Al superar una ronda cobrás $3/$4/$5 según la ronda, +$1 por mano que te sobre y +$1 de interés por cada $5 que tengas (máx. $5). En la tienda comprás jokers y planetas; <b>Reroll</b> renueva las ofertas (el costo sube cada vez).</p>
  <h3>💀 Derrota</h3><p>Si te quedás sin manos sin llegar al objetivo, perdés la partida.</p>
@@ -501,7 +543,13 @@ playIntro();["pointerdown","keydown"].forEach(e=>document.addEventListener(e,pla
 document.addEventListener("keydown",e=>{if(e.key=="Escape")closeGuide(false)});
 function renderDif(){$("dif").innerHTML="Dificultad: "+Object.keys(DIF).map(k=>`<button class="${COL.dif==k?"on":""}" onclick="setDif('${k}')">${DIF[k][0]}</button>`).join("")}
 function setDif(k){COL.dif=k;saveCol();renderDif()}
-function startGame(){$("start").style.display="none";fadeIntro();newRun()}
+function fitStory(){
+ try{const st=$("story"),b=st.querySelector(".sbox"),W=window.innerWidth,H=window.innerHeight;let f=Math.min(22,W/18);
+  b.style.fontSize=f+"px";while(f>10.5&&b.offsetHeight>H-16){f-=.5;b.style.fontSize=f+"px"}}catch(e){}
+}
+if(typeof addEventListener=="function")addEventListener("resize",()=>{if($("story").style.display=="flex")fitStory()});
+function startGame(){$("start").style.display="none";$("story").style.display="flex";fitStory()}
+function endStory(){$("story").style.display="none";fadeIntro();newRun()}
 (()=>{const f=(x,y,c,n,t)=>`<path d='M${x} ${y-60}L${x+60} ${y}L${x} ${y+60}L${x-60} ${y}Z' fill='none' stroke='%23874a12' stroke-width='2'/><text x='${x}' y='${y+16}' font-size='46' text-anchor='middle' fill='%23${c}' font-family='serif'>${t}</text>`;
  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><rect width='240' height='240' fill='%230d0905'/>${f(60,60,"a8611d",0,"♠")}${f(180,60,"a8611d",0,"♥")}${f(60,180,"a8611d",0,"♣")}${f(180,180,"a8611d",0,"♦")}</svg>`;
  document.documentElement.style.setProperty("--shopbg",`url("data:image/svg+xml,${svg.replace(/</g,"%3C").replace(/>/g,"%3E")}")`)})();
