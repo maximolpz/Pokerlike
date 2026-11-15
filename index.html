@@ -162,8 +162,8 @@ const HT={hi:[5,1,10,1,"Carta alta"],pa:[10,2,15,1,"Pareja"],tp:[20,2,20,1,"Dobl
 const HC={hi:"#cbd5e1",pa:"#93c5fd",tp:"#67e8f9",tk:"#86efac",st:"#fde047",fl:"#fdba74",fh:"#f9a8d4",fk:"#f87171",sf:"#c084fc"};
 const PAIRY=["pa","tp","tk","fh","fk"];
 const BL=[["Ronda 1",1,3],["Ronda 2",1.5,4],["Jefe",2,5]];
-const ANTE=[600,1700,4500,9500,21000,44000,80000,130000];
-const DIF={f:["Fácil",.75],n:["Normal",1],d:["Difícil",1.4]};
+const ANTE=[350,1000,2800,7500,19000,40000,75000,130000];
+const DIF={f:["Fácil",.8],n:["Normal",1],d:["Difícil",1.5]};
 // Jokers: f(ctx) -> [fichas, multi, xmulti]
 const cnt=(c,fn)=>c.sc.filter(fn).length;
 const suitJ=(n,s,t)=>({n,d:`+3 Multi por cada ${t} que puntúe`,c:5,f:c=>[0,3*cnt(c,x=>x.s==s),1]});
@@ -211,16 +211,16 @@ const PLJ={hi:"Para los que juegan en solitario.",pa:"Dos corazones, un solo des
 let G={};
 const $=id=>document.getElementById(id);
 function newRun(){
- G={ante:1,bi:0,money:4,jokers:[],lv:{},phase:"play",msg:"",shop:[],sel:[],played:[],rr:3,gu:0,maxG:2,hs:8,mh:4,md:3,boost:[]};
+ G={ante:1,bi:0,money:6,jokers:[],lv:{},phase:"pick",score:0,target:0,hands:0,disc:0,hand:[],deck:[],msg:"",shop:[],sel:[],played:[],rr:3,gu:0,maxG:2,hs:8,mh:4,md:3,boost:[]};
  for(const k in HT)G.lv[k]=0;
  G.cards=[];let id=0;for(let q=0;q<4;q++)for(let r=2;r<=14;r++)G.cards.push({r,s:q,id:id++});
- startBlind();
+ G.pickOpts=[JK[0],...pick(JK.filter(j=>j.c<=4&&j!==JK[0]),2)];render();
 }
 function startBlind(){
  const d=G.cards.map(c=>({...c}));
  for(let i=d.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[d[i],d[j]]=[d[j],d[i]]}
  Object.assign(G,{deck:d,hand:[],sel:[],played:[],hands:G.mh,disc:G.md,gu:0,score:0,phase:"play",
-  target:Math.round(ANTE[G.ante-1]*BL[G.bi][1]*DIF[COL.dif||"n"][1]/10)*10,msg:"Selecciona hasta 5 cartas. Tocá las cartas boca abajo para darles vuelta."});
+  target:Math.round(ANTE[G.ante-1]*BL[G.bi][1]*DIF[COL.dif||"n"][1]/10)*10,msg:"Tocá 💡 Mejor jugada para ver tu mejor combinación, o ♻️ Sugerir descarte para buscar una mejor."});
  draw();render();
 }
 function draw(){
@@ -392,13 +392,20 @@ function jokersH(shopMode,pv){
  return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}>${jbH(pv,i)}<b>${j.n}</b>${j.d}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"<small>Sin jokers todavía (máx. 5)</small>";
 }
 const moneyH=()=>`<div class="top"><div class="box" style="max-width:220px;margin:auto"><small>Dinero</small><b class="gold">$${G.money}</b></div></div>`;
+function pickH(){return`<h2 class="center">🃏 Elegí tu joker inicial</h2><p class="center note">Es gratis y lo conservás toda la partida. Después podés comprar más en la tienda.</p><div class="row shop">${G.pickOpts.map((j,i)=>`<div class="item"><b>${j.n}</b><p>${j.d}</p><button class="b3" onclick="choosePick(${i})">Elegir</button></div>`).join("")}</div>`}
+function choosePick(i){G.jokers.push({...G.pickOpts[i],uid:++UID});G.pickOpts=null;sfx();startBlind()}
+function suggestDisc(){
+ if(G.phase!="play")return;
+ const keep=new Set(best()),cand=G.hand.map((c,i)=>({c,i})).filter(o=>!keep.has(o.i)&&!o.c.down).sort((a,b)=>a.c.r-b.c.r).slice(0,5);
+ G.sel=cand.map(o=>o.i);if(G.sel.length)sfx("select.mp3");render();
+}
 function handH(pv){
  const cl=(c,i)=>G.sel.includes(i)?"sel "+(c.down?"":pv.sc.includes(c)?"sc":"ns"):"",h=G.hand.map((c,i)=>[c,i]);
  const up=h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn=h.filter(([c])=>c.down);
  return`<div class="row hand">${up}</div>`+(dn.length?`<div class="note center">🎴 ${dn.length} cartas extra boca abajo · tocá una para girarla (te quedan ${G.maxG-G.gu} Giros)</div><div class="row hidd">${dn.map(([c,i])=>cardH(c,i,cl(c,i))).join("")}</div>`:"");
 }
 function render(){
- document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop"||G.phase=="dice");
+ document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop"||G.phase=="dice"||G.phase=="pick");
  const A=$("app"),b=BL[G.bi];
  const fu=G.sel.map(i=>G.hand[i]).filter(c=>!c.down),pv=G.phase=="play"&&fu.length?calc(fu):null;
  const head=`<div class="top">
@@ -409,6 +416,7 @@ function render(){
  <div class="box"><small>Giro Bonus</small><b>${G.gu}/${G.maxG}</b></div>
  <div class="box"><small>Dinero</small><b class="gold">$${G.money}</b></div></div>`;
  if(G.phase=="victory"){A.innerHTML=`<div class="center"><h1>🏆 ¡Has ganado la partida!</h1><p>Superaste los 8 antes.</p><button class="b3" onclick="newRun()">Jugar de nuevo</button></div>`;return}
+ if(G.phase=="pick"){A.innerHTML=pickH();return}
  if(G.phase=="dice"){A.innerHTML=moneyH()+diceH();return}
  if(G.phase=="shop"){
   if(G.reveal){A.innerHTML=moneyH()+revealH();return}
@@ -434,6 +442,7 @@ function render(){
  ${over||`<div class="center btns"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
  <button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button>
  <button class="b5" onclick="suggest()">💡 Mejor jugada</button>
+ <button class="b5" onclick="suggestDisc()">♻️ Sugerir descarte</button>
  <button class="b4" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">Ordenar: ${sortBy=="r"?"valor":"palo"}</button></div>`}
  <p class="center"><small>Mazo: ${G.deck.length} cartas</small></p>`;
 }
@@ -468,14 +477,14 @@ function showGuide(first){
  g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button><h2>📖 Guía del juego</h2>
  <h3>🎯 Objetivo</h3><p>Superá 8 <b>antes</b>. Cada ante tiene 3 rondas: Ronda 1, Ronda 2 y Jefe. En cada ronda tenés que llegar a los <b>puntos objetivo</b> usando como máximo 4 manos.</p>
  <h3>🃏 Cartas y manos</h3><p>Tenés 8 cartas. Seleccioná hasta 5 y tocá <b>Jugar mano</b> para formar una mano de póker (pareja, trío, escalera, color, full, póker, escalera de color...). Mientras seleccionás, ves arriba la mano y su puntaje.</p>
- <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales). Abajo de cada carta ves sus <span class="chips">Fichas</span> (izquierda) y su <span class="mult">Multi</span> extra (derecha). Tocá <b>📊 Manos</b> para ver todas las manos con ejemplos. Al seleccionar cartas ves arriba FICHAS × MULTI = PUNTOS estimados: las cartas con brillo dorado son las que suman, las apagadas no, y los jokers que se activan muestran su aporte. El botón <b>💡 Mejor jugada</b> selecciona solo la combinación que más puntos da (no mira las cartas boca abajo).</p>
+ <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales). Abajo de cada carta ves sus <span class="chips">Fichas</span> (izquierda) y su <span class="mult">Multi</span> extra (derecha). Tocá <b>📊 Manos</b> para ver todas las manos con ejemplos. Al seleccionar cartas ves arriba FICHAS × MULTI = PUNTOS estimados: las cartas con brillo dorado son las que suman, las apagadas no, y los jokers que se activan muestran su aporte. El botón <b>💡 Mejor jugada</b> selecciona solo la combinación que más puntos da (no mira las cartas boca abajo). <b>♻️ Sugerir descarte</b> marca las cartas que menos aportan para que las cambies con Descartar.</p>
  <h3>🗑️ Descartes</h3><p>Tenés 3 descartes por ronda: tirá cartas seleccionadas y recibí nuevas, sin gastar manos.</p>
  <h3>🧙 Jokers (máx. 5)</h3><p>Pasivas que modifican el puntaje: dan fichas, multi o X multi según condiciones. Se compran en la tienda y se pueden vender a mitad de precio para liberar espacio.</p>
  <h3>🪐 Planetas</h3><p>Suben de nivel un tipo de mano: más fichas y más multi cada vez. Mirá la tabla de niveles al pie.</p>
  <h3>🎴 Cartas boca abajo y Giro Bonus</h3><p>Además de tus 8 cartas visibles, siempre tenés 3 cartas extra boca abajo. Cada ronda tenés <b>2 Giros</b> (panel Giro Bonus): tocá una carta oculta para darla vuelta y gastar 1 Giro. Mientras dure la ronda, la carta girada vale el doble: 2 a 10 = su valor ×2 · J, Q, K = 20 · A = 25 (sin Multi). Sin Giros, tocar una oculta la selecciona a ciegas: podés descartarla o jugarla sin saber qué es.</p>
  <h3>✨ Mejoras de carta</h3><p>Algunas cartas de tu mazo pueden mejorarse (se ven con color): <b>Carta Gordita</b> +30 fichas, <b>Carta Turbo</b> +4 multi, <b>Carta de Cristal</b> X1.5 multi, <b>Carta Ricachona</b> +$2. Solo actúan cuando la carta puntúa, y se conservan toda la partida.</p>
  <h3>🎁 Sobres</h3><p>En la tienda hay sobres: <b>Cósmico</b> (elegís un planeta), <b>Misterioso</b> (elegís una mejora que se aplica a 2 cartas al azar de tu mazo) y <b>de Bufones</b> (elegís un joker). Tocá <b>Ver</b> para mirar las 3 opciones: solo pagás si elegís una; si no, volvés a la tienda sin gastar.</p>
- <h3>⚙️ Dificultad</h3><p>En la pantalla de inicio elegís <b>Fácil</b> (objetivos −25%), <b>Normal</b> o <b>Difícil</b> (objetivos +40%). Se guarda para la próxima vez.</p>
+ <h3>⚙️ Dificultad</h3><p>En la pantalla de inicio elegís <b>Fácil</b> (objetivos −20%), <b>Normal</b> o <b>Difícil</b> (objetivos +50%). Se guarda para la próxima vez.</p>
  <h3>🎨 Colección y misiones</h3><p>Hay 100 criaturas de Casino, Póker y Bingo para coleccionar. Se consiguen con los <b>Sobres PokerLike Holo</b> de la tienda o cumpliendo <b>misiones</b> (por ejemplo, ganar rondas sin usar descartes). Son solo para coleccionar. Entrá desde 🎨 Colección.</p>
  <h3>🎲 Dado</h3><p>Al ganar una ronda elegís: <b>🛒 ir a la tienda</b> o <b>🎲 tirar el dado</b> (una sola tirada). Si sale del 2 al 6 elegís: <b>A)</b> +1.5 al valor de ese número en los 4 palos, <b>B)</b> +2 a ese número en un solo palo, o <b>C)</b> +1 a cualquier carta (número o letra). Con el 1 solo vale la C. Duran hasta que pierdas.</p>
  <h3>🛒 Tienda ampliada</h3><p>Hay más jokers (con precios que varían), planetas, sobres y <b>mejoras permanentes</b> (+1 mano, +1 descarte, +1 carta en mano, +1 Giro...). Con <b>📌 Fijar</b> guardás una oferta para la próxima visita y así juntás dinero para comprarla.</p>
