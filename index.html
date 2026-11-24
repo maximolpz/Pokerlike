@@ -91,7 +91,6 @@ body.shop{--panel:#1a1208;background:radial-gradient(circle,#0000 30%,#000d 100%
 .info{margin-top:4px}
 #start .alt{font-size:16px;padding:8px 22px;background:#7c3aed;color:#fff;box-shadow:none;letter-spacing:0;margin-top:6px}
 .b5{background:#d97706}
-#guide .x{position:fixed;top:14px;right:18px;z-index:31;width:44px;height:44px;border-radius:50%;background:#ef4444;color:#fff;font-size:20px;padding:0;box-shadow:0 2px 8px #0008}
 .item select{font:inherit;margin:2px;max-width:70px}
 .tcg{width:150px;height:216px;border-radius:10px;padding:6px;background:#fde68a;color:#1a1a2e;font-size:11px;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 3px 8px #0008;text-align:left}
 .tcg.rare{background:#bfdbfe}
@@ -137,7 +136,7 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
  .row.hand{margin:22px 0 10px}.card.sel{transform:translateY(-8px)}
  .btns button{flex:1 1 44%;padding:12px 6px;font-size:15px}
  #tools{right:6px;bottom:6px}#tools button{padding:7px 9px;font-size:12px}
- #guide{padding:8px}#guide .g{padding:14px}#guide h2{font-size:20px}#guide .x{top:10px;right:12px;width:40px;height:40px}
+ #guide{padding:8px}#guide .g{padding:14px}#guide h2{font-size:20px}
  .shop .item{width:calc(50% - 8px);padding:8px}.shop .item p{font-size:12px;min-height:40px}.shop .item button{font-size:13px;padding:8px 10px}
  #start button{font-size:22px;padding:12px 44px}#start .alt{font-size:15px;padding:8px 18px}
  .win h1{font-size:28px}h2{font-size:21px}.note{font-size:12px}
@@ -167,12 +166,89 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
 .sbox .bt{margin-top:.8em;text-align:center}
 .sbox button{background:#f5c542;color:#1a1208;font-size:1.25em;padding:.55em 2em;box-shadow:0 .25em 0 #b8861a}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sbox.mini{padding:.7em 1em;line-height:1.35}.sbox.mini img{display:none}.sbox.mini p.sh{margin:.7em 0 .25em}.sbox.mini p.fin{margin:.7em 0 .1em}.sbox.mini .bt{margin-top:.5em}
+@media (min-width:700px) and (orientation:landscape){.sbox{max-width:62em}.sbox .txt{column-count:2;column-gap:2.4em}.sbox .txt p{break-inside:avoid}}
+.sbox.micro{line-height:1.25;padding:.5em .8em}.sbox.micro p{margin:.4em 0}.sbox.micro p.sh{margin:.55em 0 .15em}.sbox.micro p.fin{margin:.55em 0 0}
+/* ===== Ventanas: cierre dorado en la esquina ===== */
+#guide{display:none;align-items:center;justify-content:center;overflow:hidden;padding:12px}
+#guide .g{position:relative;width:min(100%,780px);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);display:flex;flex-direction:column;padding:0;margin:0}
+#guide .g.gcol{width:min(100%,1040px)}
+.gin{overflow:auto;padding:18px 22px;line-height:1.5}.gin>h2{padding-right:46px}
+#guide .x{position:absolute;top:8px;right:8px;z-index:3;width:38px;height:38px;border-radius:50%;background:#f5c542;color:#7a1021;border:2px solid #b8861a;font-size:19px;font-weight:900;padding:0;line-height:1;box-shadow:0 2px 6px #0008}
+#guide .x:hover{background:#ffd966}
+/* ===== Sonido ===== */
+#snd{position:fixed;left:8px;bottom:8px;z-index:40;display:flex;align-items:flex-end;gap:8px}
+#sbtn{width:44px;height:44px;border-radius:50%;background:#1f2937;border:2px solid var(--gold);font-size:20px;padding:0;box-shadow:0 2px 8px #0008}
+#sndp{background:var(--panel);border:2px solid var(--gold);border-radius:12px;padding:8px 10px;flex-direction:column;gap:8px;min-width:200px}
+#mbtn{background:#374151;font-size:14px;padding:8px 10px}
+.vrow{display:flex;align-items:center;gap:8px}.vrow input{flex:1;accent-color:#f5c542}.vrow b{min-width:38px;text-align:right;font-size:14px}
+/* ===== Tablero de ronda y tienda ===== */
+.board{display:grid;grid-template-columns:240px minmax(0,1fr);gap:14px;align-items:start}
+.side{display:flex;flex-direction:column;gap:8px}
+.pn{background:var(--panel);border:2px solid #ffffff22;border-radius:10px;padding:8px 10px;text-align:center;min-width:0}
+.pn small{display:block;opacity:.75;font-size:12px}.pn .big{display:block;font-size:30px;line-height:1.15}.pn .big2{display:block;font-size:22px}
+.pn.blind{padding:0;overflow:hidden}.blind .bh{background:#3b82f6;font-weight:800;padding:6px 8px;font-size:15px}.blind.boss .bh{background:#dc2626}.blind .bb{padding:8px 10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hpn{min-height:104px;display:flex;flex-direction:column;justify-content:center}
+.main .info{display:none}
+.rowlab{display:flex;justify-content:space-between;font-size:12px;opacity:.85;padding:0 6px}
+.cnt{text-align:center;font-size:12px;opacity:.8;margin:-6px 0 6px}
+.bigbtn{padding:12px;font-size:17px;border-radius:10px;box-shadow:0 4px 0 #0006}.bigbtn.nxt{background:#f97316}.bigbtn.rer{background:#16a34a}
+.smsg{min-height:20px;text-align:center;color:var(--gold);font-size:14px}
+.sh{margin:10px 0 2px;color:var(--gold);font-size:15px}.sh small{color:#f4f1e6;opacity:.7;font-weight:400}
+.row.shelf{align-items:stretch;gap:12px;margin:22px 0 8px}
+.shc{position:relative;width:158px;background:#1a1208;border:2px solid #f4f1e6;border-radius:12px;padding:16px 8px 8px;text-align:center;display:flex;flex-direction:column;gap:4px}
+.shc.t2{border-color:#60a5fa}.shc.t3{border-color:#c084fc;box-shadow:0 0 12px #c084fc88}.shc.pinned{border-style:dashed;border-color:var(--gold)}
+.shc .price{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1208;font-weight:800;border-radius:12px;padding:2px 14px;font-size:15px;box-shadow:0 2px 0 #b8861a}
+.shc b{font-size:14px}.shc p{font-size:12px;margin:0;opacity:.9;flex:1}
+.shc button{padding:7px 8px;font-size:14px}.shc .pinb{background:#374151;font-size:12px;padding:4px}
+.shc.hp{box-shadow:0 0 14px #a78bfa;border-color:#a78bfa}
+.jc,.ic{width:62px;height:86px;margin:0 auto 2px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:34px}
+.jc{background:linear-gradient(160deg,#fff,#e0dcff);border:2px solid #7c3aed;box-shadow:0 3px 6px #0008}.ic{background:radial-gradient(#3b2a63,#1a1208);border:2px solid #a78bfa}
+.pack{position:relative;width:84px;height:118px;margin:0 auto 4px;border-radius:6px;overflow:hidden;background:linear-gradient(160deg,#7dd3fc,#a78bfa 55%,#f0abfc);box-shadow:0 4px 10px #0009;transform:rotate(-3deg)}
+.pack.a{background:linear-gradient(160deg,#a78bfa,#6d28d9 60%,#f0abfc)}.pack.j{background:linear-gradient(160deg,#86efac,#22c55e 55%,#fde047)}
+.pack.d,.pack.t{background:linear-gradient(115deg,#ff9a9e,#fad0c4,#a1ffce,#7fd3ff,#c3a5ff,#ff9a9e);background-size:300% 300%;animation:holoShift 5s linear infinite}
+.pack .pc{position:absolute;left:0;right:0;top:0;height:12px;background:repeating-linear-gradient(90deg,#f1f5ff 0 3px,#bcc8f0 3px 6px)}.pack .pc.b{top:auto;bottom:0}
+.pack .pi{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;filter:drop-shadow(0 2px 0 #0006)}
+.pack em{position:absolute;left:0;right:0;bottom:15px;background:linear-gradient(90deg,#fbbf24,#f59e0b);color:#2a1a05;font:800 9.5px/1.7 system-ui;text-align:center;font-style:normal;letter-spacing:.4px}
+/* ===== Colección ===== */
+.tabsr{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 12px}
+.tab{background:#ef4444;border:2px solid #0000;padding:8px 18px;font-size:15px;box-shadow:0 3px 0 #7f1d1d}.tab.on{border-color:#fff;background:#f97316}
+.chip{background:#3b3b5c;padding:5px 11px;font-size:13px}.chip.on{background:var(--gold);color:#1a1208}
+.colw{display:grid;grid-template-columns:210px minmax(0,1fr);gap:14px;align-items:start}
+.colside{background:#0a1a14;border:2px solid #ffffff22;border-radius:10px;padding:10px 12px}
+.colside h3{margin:0 0 4px;text-align:center;color:#fff}.cbig{text-align:center;font-size:34px;font-weight:800;color:var(--gold)}.cbig small{font-size:16px;color:#f4f1e6;opacity:.7}
+.srow{display:flex;justify-content:space-between;font-size:14px;padding:3px 0}.colside hr{border:0;border-top:1px solid #ffffff22;margin:6px 0}
+.colmain .tcg{width:132px;height:188px;font-size:10px}.colmain .tcg .art{height:94px}.colmain .tcg .art svg{width:80px;height:80px}.colmain .grid{gap:10px}
+/* ===== Pantallas medianas y chicas ===== */
+@media (min-width:900px){:root{--cw:clamp(62px,calc((100vw - 24px - 254px - 70px)/8),82px)}}
+@media (max-width:899px){
+ .board{display:block}
+ .side{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px}
+ .side .blind{grid-column:span 2}.side .sp2{grid-column:span 2}.side .hpn{display:none}.side .two{display:contents}
+ .side .bigbtn{grid-column:span 2}
+ .main .info{display:block}
+ .pn{padding:6px}.pn .big{font-size:24px}.pn .big2{font-size:19px}
+ .colw{display:block}.colside{margin-bottom:10px;display:flex;flex-wrap:wrap;gap:2px 14px;align-items:center;justify-content:center}.colside h3,.colside .cbig{width:100%}.colside hr{display:none}.srow{gap:6px}
+ .shc{width:calc(50% - 8px)}
+}
+@media (max-width:640px){.gin{padding:14px 14px}.shc p{font-size:11.5px}.shc b{font-size:13px}.colmain .tcg{width:calc(50% - 6px);height:auto;min-height:176px}.colmain .tcg .art{height:86px}}
+
+.hpn .hname{font-size:clamp(20px,2.1vw,26px);line-height:1.1;display:block;margin-bottom:6px}
+.hpn .strip{width:100%;gap:2px;font-size:14px}
+.hpn .sb{flex:1;min-width:0;padding:3px 3px;font-size:9px;letter-spacing:.5px}.hpn .sb b{font-size:19px}
+.hpn .lg{font-size:11px}
+@media (min-width:1100px){#app{max-width:1120px}.shc{width:126px;padding:15px 6px 6px}.shc b{font-size:12.5px}.shc p{font-size:11px}.shc button{font-size:12.5px;padding:6px}.shc .jc,.shc .ic{width:50px;height:68px;font-size:28px}.shc .pack{width:68px;height:96px}.shc .pack .pi{font-size:30px}.shc .pack em{font-size:8px;bottom:12px}.row.shelf{gap:10px;margin:20px 0 6px}}
+#guide .g.gcol{max-width:1040px}
+@media (min-width:900px){.colmain .tcg{width:calc((100% - 30px)/4 - 1px);min-width:120px;height:196px}}
+.main .info{font-size:15px}
+@media (max-width:899px){.shopb .side .sp2{grid-column:span 4}}
 </style>
 </head>
 <body>
 <div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><div id="dif" class="center" style="color:#f4f1e6"></div><button onclick="startGame()">JUGAR</button><button class="alt" onclick="showGuide(false)">📖 Cómo jugar</button><button class="alt" style="background:#db2777" onclick="showCol()">🎨 Colección</button></div><div id="story" style="display:none"><div class="sbox">
  <img src="Logo_pixelado_PokerLike.png" alt="PokerLike">
- <p class="n" style="animation-delay:0.30s">El Gran Casino Dorado fue construido por tu abuelo, un hombre que dedicó su vida a levantar un imperio entre apuestas, fortuna y ambición.</p>
+ <div class="txt"><p class="n" style="animation-delay:0.30s">El Gran Casino Dorado fue construido por tu abuelo, un hombre que dedicó su vida a levantar un imperio entre apuestas, fortuna y ambición.</p>
  <p class="sh" style="animation-delay:0.65s">Pero todo terminó en una sola noche.</p>
  <p class="n" style="animation-delay:1.00s">Una partida privada de póker, una apuesta demasiado grande y un rival que nunca estuvo dispuesto a perder. Tu abuelo entregó el casino para saldar parte de su deuda. Lo que quedó pendiente pasó de generación en generación, acumulando intereses hasta convertirse en una condena para toda tu familia.</p>
  <p class="sh" style="animation-delay:1.35s">Hoy, la Casa tiene el control absoluto.</p>
@@ -184,9 +260,11 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
  <p class="n" style="animation-delay:3.45s">Pero hay algo que tenés claro: no vas a permitir que tu familia pague por los errores de tu abuelo.</p>
  <p class="n" style="animation-delay:3.80s">Las luces están encendidas. Las mesas están preparadas. La Casa está esperando.</p>
  <p class="fin" style="animation-delay:4.15s">Esta noche, la deuda empieza a cobrarse.</p>
+ </div>
  <div class="bt"><button onclick="endStory()">Continuar</button></div>
 </div></div>
-<div id="app"></div><div id="guide" style="display:none"></div><div id="tools"><button id="cbtn" onclick="showCol()">🎨 Colección</button><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button></div>
+<div id="app"></div><div id="guide" style="display:none"></div><div id="snd"><button id="sbtn" onclick="togSnd()" title="Sonido">🔊</button><div id="sndp" style="display:none"><button id="mbtn" onclick="toggleMute()">🔊 Silenciar</button><div class="vrow"><input id="vr" type="range" min="0" max="100" value="50" oninput="setVol(this.value)" onchange="sfx('select.mp3')"><b id="vpct">50%</b></div></div></div>
+<div id="tools"><button id="cbtn" onclick="showCol()">🎨 Colección</button><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button></div>
 <script>
 const SU=["♠","♥","♦","♣"],RK={11:"J",12:"Q",13:"K",14:"A"};
 // [fichas, multi, +fichas/nivel, +multi/nivel, nombre]
@@ -353,6 +431,21 @@ function choose(i){
  G.pack=null;sfx();render();
 }
 function pay(){const p=BL[G.bi][2]+G.hands+Math.min(5,Math.floor(G.money/5));G.money+=p;G.payout=p}
+function packArt(p){const I={c:"🪐",a:"🔮",j:"🃏",d:"🎴",t:"🐉"},L={c:"CÓSMICO",a:"MISTERIOSO",j:"BUFONES",d:"DORSO HOLO",t:"POKERLIKE HOLO"};return`<div class="pack ${p}"><i class="pc"></i><span class="pi">${I[p]}</span><em>${L[p]}</em><i class="pc b"></i></div>`}
+function shopCard(it,i){
+ const full=it.k=="j"&&G.jokers.length>=5,dis=G.money<it.c||full?"disabled":"",tier=it.k=="j"?(it.c<=3?"t1":it.c<=6?"t2":"t3"):"";
+ const art=it.k=="k"?packArt(it.p):it.k=="j"?`<div class="jc">🃏</div>`:`<div class="ic">${it.k=="p"?"🪐":"⭐"}</div>`;
+ const lab=full?"Sin espacio":it.k=="k"?(it.p=="d"||it.p=="t"?"Abrir":"Ver"):"Comprar";
+ return`<div class="shc ${tier} ${it.k=="k"&&"dt".includes(it.p)?"hp":""} ${it.pin?"pinned":""}"><span class="price">$${it.c}</span>${art}<b>${iN(it)}</b><p>${iD(it)}</p><button class="b3" ${dis} onclick="buy(${i})">${lab}</button><button class="pinb" onclick="pin(${i})">${it.pin?"📌 Fijado":"📌 Fijar"}</button></div>`;
+}
+function shopH(){
+ const idx=G.shop.map((it,i)=>[it,i]),a=idx.filter(([it])=>it.k!="k"),k=idx.filter(([it])=>it.k=="k");
+ return`<div class="board shopb"><aside class="side"><div class="pn sp2"><small>Dinero</small><b class="big gold">$${G.money}</b><small>Cobraste +$${G.payout}</small></div>
+ <button class="bigbtn nxt" onclick="next()">Siguiente ronda ▶</button><button class="bigbtn rer" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll · $${G.rr}</button></aside>
+ <main class="main"><div class="smsg">${G.shopMsg||"&nbsp;"}</div><h3 class="sh">Jokers y mejoras</h3><div class="row shelf">${a.map(([it,i])=>shopCard(it,i)).join("")||"<small>Agotado</small>"}</div>
+ <h3 class="sh">Sobres</h3><div class="row shelf">${k.map(([it,i])=>shopCard(it,i)).join("")||"<small>Agotado</small>"}</div>
+ <h3 class="sh">Tus jokers ${G.jokers.length}/5 <small>(tocá uno para venderlo)</small></h3><div class="row jr">${jokersH(1)}</div></main></div>`;
+}
 function cash(){pay();G.phase="shop";G.shopMsg="";G.rr=3;fillShop();render()}
 const rnd6=()=>{const a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=4294967292);return a[0]%6+1};
 const rndInt=n=>{const a=new Uint32Array(1),lim=4294967296-4294967296%n;do{crypto.getRandomValues(a)}while(a[0]>=lim);return a[0]%n};
@@ -398,7 +491,7 @@ function fillShop(){
 }
 function pin(i){G.shop[i].pin=!G.shop[i].pin;render()}
 let UID=0;
-function sfx(f="compra.mp3",v=1){try{const a=new Audio(f);a.volume=v;a.play().catch(()=>{})}catch(e){}}
+function sfx(f="compra.mp3",v=1){try{const a=new Audio(f);a.volume=Math.min(1,v*MV());a.play().catch(()=>{})}catch(e){}}
 function buy(i){
  const it=G.shop[i];
  if(!it||G.money<it.c)return;
@@ -444,7 +537,7 @@ function suggestDisc(){
 function handH(pv){
  const cl=(c,i)=>G.sel.includes(i)?"sel "+(c.down?"":pv.sc.includes(c)?"sc":"ns"):"",h=G.hand.map((c,i)=>[c,i]);
  const up=h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn=h.filter(([c])=>c.down);
- return`<div class="row hand">${up}</div>`+(dn.length?`<div class="note center">🎴 ${dn.length} cartas extra boca abajo · tocá una para girarla (te quedan ${G.maxG-G.gu} Giros)</div><div class="row hidd">${dn.map(([c,i])=>cardH(c,i,cl(c,i))).join("")}</div>`:"");
+ return`<div class="row hand">${up}</div><div class="cnt">Mano ${h.length-dn.length}/${G.hs}</div>`+(dn.length?`<div class="note center">🎴 ${dn.length} cartas extra boca abajo · tocá una para girarla (te quedan ${G.maxG-G.gu} Giros)</div><div class="row hidd">${dn.map(([c,i])=>cardH(c,i,cl(c,i))).join("")}</div>`:"");
 }
 function render(){
  document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop"||G.phase=="dice"||G.phase=="pick");
@@ -463,10 +556,7 @@ function render(){
  if(G.phase=="shop"){
   if(G.reveal){A.innerHTML=moneyH()+revealH();return}
   if(G.pack){A.innerHTML=moneyH()+packH();return}
-  A.innerHTML=`${moneyH()}<h2 class="center">🛒 Tienda <small>(+$${G.payout} de recompensa)</small></h2>
-  <div class="row shop">${G.shop.map((it,i)=>`<div class="item ${it.k=="k"&&"dt".includes(it.p)?"hp":""}"><b>${iN(it)}</b><p>${iD(it)}</p><button class="b3" ${G.money<it.c||(it.k=="j"&&G.jokers.length>=5)?"disabled":""} onclick="buy(${i})">${it.k=="j"&&G.jokers.length>=5?"Sin espacio":it.k=="k"?(it.p=="d"||it.p=="t"?"Abrir · $":"Ver · $")+it.c:"Comprar $"+it.c}</button><br><button class="b4" style="margin-top:6px;padding:5px 12px;font-size:13px" onclick="pin(${i})">${it.pin?"📌 Fijado":"📌 Fijar"}</button></div>`).join("")||"<small>Agotado</small>"}</div>
-  <div class="center"><button class="b4" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll $${G.rr}</button> <button class="b1" onclick="next()">Siguiente ronda ▶</button></div>
-  <h3 class="center">Tus jokers ${G.jokers.length}/5 (clic para vender)</h3><p class="center gold">${G.shopMsg||""}</p><div class="row">${jokersH(1)}</div>`;return}
+  A.innerHTML=shopH();return}
  if(G.phase=="won"){
   const base=b[2],hl=G.hands,it=Math.min(5,Math.floor(G.money/5));
   A.innerHTML=`${head}<div class="center win"><h1>🎉 ${G.bi==2?"¡Jefe derrotado!":"¡Ronda ganada!"}</h1><p>Hiciste <b class="gold">${G.score}</b> puntos (objetivo ${G.target})</p>
@@ -475,18 +565,27 @@ function render(){
  
  const over=G.phase=="lost"?`<div class="center lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:
   G.phase=="won"?`<div class="center"><h2>🎉 ¡Ronda ganada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
- A.innerHTML=`${head}<div class="row jr">${jokersH(0,pv)}</div>
- <div class="row pl">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
- <div class="info">${pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span>
- <div class="strip"><span class="sb chips">FICHAS<b>${fx(pv.ch)}</b></span><span>×</span><span class="sb mult">MULTI<b>${pv.mu}</b></span><span>=</span><span class="sb gold">PUNTOS<b>${pv.total}</b></span></div>
- ${pv.sc.length<fu.length?'<div class="lg">Solo suman las cartas con brillo dorado</div>':""}${fu.length<G.sel.length?'<div class="lg">+ cartas ocultas: se revelan al jugar</div>':""}`:G.msg}</div>
- ${handH(pv)}
- ${over||`<div class="center btns"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
- <button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button>
- <button class="b5" onclick="suggest()">💡 Mejor jugada</button>
- <button class="b5" onclick="suggestDisc()">♻️ Sugerir descarte</button>
- <button class="b4" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">Ordenar: ${sortBy=="r"?"valor":"palo"}</button></div>`}
- <p class="center"><small>Mazo: ${G.deck.length} cartas</small></p>`;
+ const pct=Math.min(100,G.score/G.target*100),prevH=pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span>
+  <div class="strip"><span class="sb chips">FICHAS<b>${fx(pv.ch)}</b></span><span>×</span><span class="sb mult">MULTI<b>${pv.mu}</b></span><span>=</span><span class="sb gold">PUNTOS<b>${pv.total}</b></span></div>
+  ${pv.sc.length<fu.length?'<div class="lg">Solo suman las cartas con brillo dorado</div>':""}${fu.length<G.sel.length?'<div class="lg">+ cartas ocultas: se revelan al jugar</div>':""}`:G.msg;
+  A.innerHTML=`<div class="board"><aside class="side">
+  <div class="pn blind ${G.bi==2?"boss":""}"><div class="bh">Ante ${G.ante}/8 · ${b[0]}</div><div class="bb"><small>Puntos para superar</small><b class="big">${G.target}</b><div class="bar"><i style="width:${pct}%"></i><i class="ghost" style="left:${pct}%;width:${pv?Math.max(0,Math.min(100-pct,pv.total/G.target*100)):0}%"></i></div><small>Recompensa: <span class="gold">$${b[2]}</span> + $1 por mano sobrante</small></div></div>
+  <div class="pn sp2"><small>Puntos de la ronda</small><b class="big gold">${G.score}</b></div>
+  <div class="pn hpn">${prevH}</div>
+  <div class="two"><div class="pn"><small>Manos</small><b class="big2 chips">${G.hands}</b></div><div class="pn"><small>Descartes</small><b class="big2 mult">${G.disc}</b></div></div>
+  <div class="two"><div class="pn"><small>Dinero</small><b class="big2 gold">$${G.money}</b></div><div class="pn"><small>Giro Bonus</small><b class="big2">${G.gu}/${G.maxG}</b></div></div>
+  </aside><main class="main">
+  <div class="rowlab"><span>Jokers ${G.jokers.length}/5</span><span>Mazo ${G.deck.length}/52</span></div>
+  <div class="row jr">${jokersH(0,pv)}</div>
+  <div class="row pl">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
+  <div class="info">${prevH}</div>
+  ${handH(pv)}
+  ${over||`<div class="center btns"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
+  <button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button>
+  <button class="b5" onclick="suggest()">💡 Mejor jugada</button>
+  <button class="b5" onclick="suggestDisc()">♻️ Sugerir descarte</button>
+  <button class="b4" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">Ordenar: ${sortBy=="r"?"valor":"palo"}</button></div>`}
+  </main></div>`;
 }
 const EX={sf:[[9,1],[8,1],[7,1],[6,1],[5,1]],fk:[[10,0],[10,1],[10,2],[10,3],[3,0]],fh:[[13,0],[13,1],[13,2],[4,1],[4,3]],fl:[[14,2],[11,2],[8,2],[5,2],[3,2]],st:[[9,0],[8,1],[7,3],[6,2],[5,0]],tk:[[7,0],[7,1],[7,2],[12,3],[2,1]],tp:[[11,0],[11,3],[6,1],[6,2],[3,0]],pa:[[12,1],[12,3],[9,0],[5,2],[2,1]],hi:[[14,0],[10,3],[8,1],[6,2],[3,3]]};
 function handsH(){
@@ -510,13 +609,13 @@ function handsH(){
  <h3>Todas las manos</h3><p><small>En el ejemplo, las cartas apagadas no puntúan.</small></p>
  <div class="tw"><table><tr><th>Mano</th><th>Ejemplo</th><th>Nv</th><th>Fichas base</th><th>Multi base</th></tr>${rows}</table></div>
  <h3>✨ Tus cartas mejoradas (${ench.length})</h3><p>${en||"Todavía ninguna: conseguilas en los sobres Misteriosos de la tienda."}</p>
- <h3>🎲 Mejoras del dado (${(G.boost||[]).length})</h3><p>${(G.boost||[]).map(b=>b.t).join(" · ")||"Ninguna todavía."}</p>
- <div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(false)">Cerrar</button></div>`;
+ <h3>🎲 Mejoras del dado (${(G.boost||[]).length})</h3><p>${(G.boost||[]).map(b=>b.t).join(" · ")||"Ninguna todavía."}</p>`;
 }
-function showHands(){const g=$("guide");g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button>${handsH()}</div>`;g.style.display="block"}
+function win(inner,cls=""){return`<div class="g ${cls}"><button class="x" onclick="closeGuide(false)" title="Cerrar">✕</button><div class="gin">${inner}</div></div>`}
+function showHands(){const g=$("guide");g.innerHTML=win(handsH());g.style.display="flex"}
 function showGuide(first){
  const g=$("guide");
- g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button><h2>📖 Guía del juego</h2>
+ g.innerHTML=win(`<h2>📖 Guía del juego</h2>
  <h3>🎯 Objetivo</h3><p>Superá 8 <b>antes</b>. Cada ante tiene 3 rondas: Ronda 1, Ronda 2 y Jefe. En cada ronda tenés que llegar a los <b>puntos objetivo</b> usando como máximo 4 manos.</p>
  <h3>🃏 Cartas y manos</h3><p>Tenés 8 cartas. Seleccioná hasta 5 y tocá <b>Jugar mano</b> para formar una mano de póker (pareja, trío, escalera, color, full, póker, escalera de color...). Mientras seleccionás, ves arriba la mano y su puntaje.</p>
  <h3>🔢 Puntaje: Fichas × Multi</h3><p><span class="chips">Fichas</span> = base de la mano + valor de las cartas que puntúan (A=11, J/Q/K=10, el resto su número). <span class="mult">Multi</span> = multiplicador de la mano. Puntos = Fichas × Multi. Solo puntúan las cartas que forman la mano (en una pareja, solo las dos iguales). Abajo de cada carta ves sus <span class="chips">Fichas</span> (izquierda) y su <span class="mult">Multi</span> extra (derecha). Tocá <b>📊 Manos</b> para ver todas las manos con ejemplos. Al seleccionar cartas ves arriba FICHAS × MULTI = PUNTOS estimados: las cartas con brillo dorado son las que suman, las apagadas no, y los jokers que se activan muestran su aporte. El botón <b>💡 Mejor jugada</b> selecciona solo la combinación que más puntos da (no mira las cartas boca abajo). <b>♻️ Sugerir descarte</b> marca las cartas que menos aportan para que las cambies con Descartar.</p>
@@ -532,8 +631,8 @@ function showGuide(first){
  <h3>🛒 Tienda ampliada</h3><p>Hay más jokers (con precios que varían), planetas, sobres y <b>mejoras permanentes</b> (+1 mano, +1 descarte, +1 carta en mano, +1 Giro...). Con <b>📌 Fijar</b> guardás una oferta para la próxima visita y así juntás dinero para comprarla.</p>
  <h3>💰 Dinero y tienda</h3><p>Al superar una ronda cobrás $3/$4/$5 según la ronda, +$1 por mano que te sobre y +$1 de interés por cada $5 que tengas (máx. $5). En la tienda comprás jokers y planetas; <b>Reroll</b> renueva las ofertas (el costo sube cada vez).</p>
  <h3>💀 Derrota</h3><p>Si te quedás sin manos sin llegar al objetivo, perdés la partida.</p>
- <div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(${first})">${first?"¡Empezar partida!":"Cerrar"}</button></div></div>`;
- g.style.display="block";
+ `);
+ g.style.display="flex";
 }
 function closeGuide(first){$("guide").style.display="none";if(first){fadeIntro();newRun()}}
 const intro=new Audio("introGame.mp3");intro.volume=.25;intro.loop=true;
@@ -543,9 +642,15 @@ playIntro();["pointerdown","keydown"].forEach(e=>document.addEventListener(e,pla
 document.addEventListener("keydown",e=>{if(e.key=="Escape")closeGuide(false)});
 function renderDif(){$("dif").innerHTML="Dificultad: "+Object.keys(DIF).map(k=>`<button class="${COL.dif==k?"on":""}" onclick="setDif('${k}')">${DIF[k][0]}</button>`).join("")}
 function setDif(k){COL.dif=k;saveCol();renderDif()}
+const MV=()=>COL.mute?0:COL.vol;
+function applyVol(){intro.volume=.5*MV()}
+function syncSnd(){const m=COL.mute||COL.vol==0;$("sbtn").textContent=m?"🔇":COL.vol<.4?"🔈":COL.vol<.75?"🔉":"🔊";$("vpct").textContent=Math.round(COL.vol*100)+"%";$("vr").value=Math.round(COL.vol*100);$("mbtn").textContent=COL.mute?"🔇 Activar sonido":"🔊 Silenciar"}
+function setVol(v){COL.vol=+v/100;if(+v>0)COL.mute=false;saveCol();applyVol();syncSnd()}
+function toggleMute(){COL.mute=!COL.mute;saveCol();applyVol();syncSnd()}
+function togSnd(){const p=$("sndp");p.style.display=p.style.display=="none"?"flex":"none"}
 function fitStory(){
  try{const st=$("story"),b=st.querySelector(".sbox"),W=window.innerWidth,H=window.innerHeight;let f=Math.min(22,W/18);
-  b.style.fontSize=f+"px";while(f>10.5&&b.offsetHeight>H-16){f-=.5;b.style.fontSize=f+"px"}}catch(e){}
+  b.classList.toggle("mini",H<700);b.classList.toggle("micro",H<600);b.style.fontSize=f+"px";while(f>10.5&&b.offsetHeight>H-16){f-=.5;b.style.fontSize=f+"px"}}catch(e){}
 }
 if(typeof addEventListener=="function")addEventListener("resize",()=>{if($("story").style.display=="flex")fitStory()});
 function startGame(){$("start").style.display="none";$("story").style.display="flex";fitStory()}
@@ -554,7 +659,7 @@ function endStory(){$("story").style.display="none";fadeIntro();newRun()}
  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><rect width='240' height='240' fill='%230d0905'/>${f(60,60,"a8611d",0,"♠")}${f(180,60,"a8611d",0,"♥")}${f(60,180,"a8611d",0,"♣")}${f(180,180,"a8611d",0,"♦")}</svg>`;
  document.documentElement.style.setProperty("--shopbg",`url("data:image/svg+xml,${svg.replace(/</g,"%3C").replace(/>/g,"%3E")}")`)})();
 
-const COL=(()=>{let d={cards:{},backs:{},back:-1,st:{},claimed:{},dif:"n"};try{Object.assign(d,JSON.parse(localStorage.getItem("pokerlike_col")||"{}"))}catch(e){}return d})();
+const COL=(()=>{let d={cards:{},backs:{},back:-1,st:{},claimed:{},dif:"n",vol:.5,mute:false};try{Object.assign(d,JSON.parse(localStorage.getItem("pokerlike_col")||"{}"))}catch(e){}return d})();
 const saveCol=()=>{try{localStorage.setItem("pokerlike_col",JSON.stringify(COL))}catch(e){}};
 let DEFBACK;
 const PAL={k:"#1a1a2e",w:"#fff",c:"#5eead4",o:"#fb923c",p:"#f9a8d4",r:"#ef4444",y:"#fde047",a:"#94a3b8",u:"#a78bfa",g:"#4ade80",b:"#60a5fa",R:"#ef4444",W:"#fff",K:"#111",Y:"#fde047",G:"#22c55e",B:"#3b82f6",O:"#fb923c"};
@@ -639,12 +744,16 @@ function claim(id){
 }
 function colH(){
  const own=Object.keys(COL.cards).length,done=m=>(COL.st[m.k]||0)>=m.n,rdy=MS.filter(m=>!COL.claimed[m.id]&&done(m)).length,g=CU.got;CU.got=-1;
- const tabs=[["c","Cartas"],["d","Dorsos"],["m","Misiones"+(rdy?` (${rdy}🎁)`:"")]].map(([k,t])=>`<button class="${CU.tab==k?"b4":"b1"}" style="padding:8px 12px" onclick="CU.tab='${k}';CU.pg=0;showCol()">${t}</button>`).join(" ");
+ const tabs=[["c","Cartas"],["d","Dorsos"],["m","Misiones"+(rdy?` (${rdy}🎁)`:"")]].map(([k,t])=>`<button class="tab ${CU.tab==k?"on":""}" onclick="CU.tab='${k}';CU.pg=0;showCol()">${t}</button>`).join("");
+ const cnt=f=>{const l=CR.map((c,i)=>i).filter(i=>f(CR[i]));return`${l.filter(i=>COL.cards[i]).length}/${l.length}`},row=(t,v)=>`<div class="srow"><span>${t}</span><b>${v}</b></div>`;
+ const side=`<aside class="colside"><h3>Álbum PokerLike</h3><div class="cbig">${own}<small>/${CR.length}</small></div>
+  ${row("🎰 Casino",cnt(c=>c.th=="c"))}${row("♠ Póker",cnt(c=>c.th=="p"))}${row("🎱 Bingo",cnt(c=>c.th=="b"))}<hr>
+  ${RARN.map(r=>row(r,cnt(c=>c.r==r))).join("")}<hr>${row("🎴 Dorsos",Object.keys(COL.backs).length+"/4")}${row("🎯 Misiones",Object.keys(COL.claimed).length+"/"+MS.length)}</aside>`;
  let body="";
  if(CU.tab=="c"){
   const list=CR.map((c,i)=>i).filter(i=>CU.th=="all"||CR[i].th==CU.th),pgs=Math.ceil(list.length/12),pg=Math.min(CU.pg,pgs-1);
-  const chips=[["all","Todas"],["c","🎰 Casino"],["p","♠ Póker"],["b","🎱 Bingo"]].map(([k,t])=>`<button class="${CU.th==k?"b4":"b1"}" style="padding:5px 10px;font-size:13px" onclick="CU.th='${k}';CU.pg=0;showCol()">${t}</button>`).join(" ");
-  body=`<p class="center">${own}/${CR.length} obtenidas</p><div class="center">${chips}</div><div class="grid">${list.slice(pg*12,pg*12+12).map(i=>tcgH(i,!COL.cards[i],COL.cards[i]||0)).join("")}</div><div class="center"><button class="b1" ${pg?"":"disabled"} onclick="CU.pg=${pg-1};showCol()">◀</button> Página ${pg+1}/${pgs} <button class="b1" ${pg<pgs-1?"":"disabled"} onclick="CU.pg=${pg+1};showCol()">▶</button></div>`;
+  const chips=[["all","Todas"],["c","🎰 Casino"],["p","♠ Póker"],["b","🎱 Bingo"]].map(([k,t])=>`<button class="chip ${CU.th==k?"on":""}" onclick="CU.th='${k}';CU.pg=0;showCol()">${t}</button>`).join("");
+  body=`<div class="center">${chips}</div><div class="grid">${list.slice(pg*12,pg*12+12).map(i=>tcgH(i,!COL.cards[i],COL.cards[i]||0)).join("")}</div><div class="center"><button class="b1" ${pg?"":"disabled"} onclick="CU.pg=${pg-1};showCol()">◀</button> Página ${pg+1}/${pgs} <button class="b1" ${pg<pgs-1?"":"disabled"} onclick="CU.pg=${pg+1};showCol()">▶</button></div>`;
  }else if(CU.tab=="d"){
   body=`<div class="grid">${[-1,0,1,2,3].map(s=>{const has=s<0||COL.backs[s];return`<div class="center"><div class="bk" style='background:${s<0?DEFBACK:hbUrl(s)} center/100% 100%'></div><small>${s<0?"Clásico":BN[s]}</small><br>${has?(COL.back==s?"✔ En uso":`<button class="b3" style="padding:4px 12px" onclick="equip(${s})">Usar</button>`):"<small>🔒 Bloqueado</small>"}</div>`}).join("")}</div><p class="note">Los dorsos holográficos salen en los Sobres Dorso Holo de la tienda.</p>`;
  }else{
@@ -652,9 +761,9 @@ function colH(){
   body=`<p class="note">Cumplí misiones y reclamá una carta de la rareza indicada. Las cartas también salen en los Sobres PokerLike Holo de la tienda.</p>`+MS.slice().sort((a,b)=>rk(a)-rk(b)).map(m=>{const v=Math.min(COL.st[m.k]||0,m.n),cl=COL.claimed[m.id];
    return`<div class="ms ${cl?"cl":""}"><div style="flex:1"><b>${m.txt}</b><br><small>Premio: carta ${RARN[m.r]} · ${v}/${m.n}</small><div class="bar"><i style="width:${v/m.n*100}%"></i></div></div>${cl?"✔":done(m)?`<button class="b3" style="padding:6px 12px" onclick="claim('${m.id}')">Reclamar</button>`:"🔒"}</div>`}).join("");
  }
- return`<h2>🎨 Colección</h2><div class="center">${tabs}</div>${g>=0?`<div class="center"><p class="gold">¡Misión cumplida! Obtuviste:</p>${tcgH(g,false,0)}</div>`:""}${body}`;
+ return`<h2 class="center">🎨 Colección</h2><div class="tabsr">${tabs}</div>${g>=0?`<div class="center"><p class="gold">¡Misión cumplida! Obtuviste:</p>${tcgH(g,false,0)}</div>`:""}<div class="colw">${side}<div class="colmain">${body}</div></div>`;
 }
-function showCol(){const g=$("guide");g.innerHTML=`<div class="g"><button class="x" onclick="closeGuide(false)">✕</button>${colH()}<div class="center" style="margin-top:14px"><button class="b3" onclick="closeGuide(false)">Cerrar</button></div></div>`;g.style.display="block"}
+function showCol(){const g=$("guide");g.innerHTML=win(colH(),"gcol");g.style.display="flex"}
 function equip(s){COL.back=s;saveCol();applyBack();showCol()}
 (()=>{let t="",f="";
  for(let x=8;x<=92;x+=6)t+=`<path d='M${x} 5l3 6 3-6zM${x} 139l3-6 3 6z' fill='#fff'/>`;
@@ -663,7 +772,7 @@ function equip(s){COL.back=s;saveCol();applyBack();showCol()}
  const sc=`<path d='M50 34C34 22 22 38 34 46M50 34C66 22 78 38 66 46M50 34V44' fill='none' stroke='#fff' stroke-width='1.6'/><circle cx='50' cy='46' r='2' fill='#fff'/>`;
  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 144'><rect width='100' height='144' rx='7' fill='#25319a'/><rect x='2' y='2' width='96' height='140' rx='6' fill='none' stroke='#fff' stroke-width='2'/>${t}<rect x='14' y='17' width='72' height='110' fill='none' stroke='#fff' stroke-width='1.2'/>${sc}<g transform='rotate(180 50 72)'>${sc}</g>${f}<circle cx='50' cy='72' r='8' fill='#fff'/><circle cx='50' cy='72' r='4' fill='#25319a'/><path d='M30 56v-8h8M70 56v-8h-8M30 88v8h8M70 88v8h-8' fill='none' stroke='#fff' stroke-width='1.5'/></svg>`;
  DEFBACK=`url("data:image/svg+xml,${encodeURIComponent(svg).replace(/'/g,"%27")}")`;applyBack()})();
-renderDif();G={phase:"intro"};
+applyVol();syncSnd();renderDif();G={phase:"intro"};
 </script>
 </body>
 </html>
