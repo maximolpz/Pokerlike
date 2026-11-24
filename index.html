@@ -243,9 +243,71 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
 @media (min-width:900px){.colmain .tcg{width:calc((100% - 30px)/4 - 1px);min-width:120px;height:196px}}
 .main .info{font-size:15px}
 @media (max-width:899px){.shopb .side .sp2{grid-column:span 4}}
+/* ===== Formato horizontal sin scroll ===== */
+html,body{height:100%;overflow:hidden}
+#app{position:fixed;inset:0;overflow:auto;padding:8px}
+#rotate{display:none;position:fixed;inset:0;z-index:100;background:#0d0905;color:#f4f1e6;align-items:center;justify-content:center;text-align:center;font-size:20px;padding:20px}
+#rotate .ri{font-size:68px;display:inline-block;animation:rot 2.2s ease-in-out infinite}@keyframes rot{50%{transform:rotate(-90deg)}}
+#rotate p{opacity:.8;font-size:15px;margin:6px 0 0}
+@media (orientation:portrait) and (max-width:1100px){#rotate{display:flex}}
+.gm{--lw:clamp(158px,22vw,250px);--cw:min(78px,calc((100vw - var(--lw) - 56px - var(--n,11)*5px)/(var(--n,11) + .3)),calc((100vh - 150px)/3.6));position:relative;height:calc(100vh - 16px);display:grid;grid-template-columns:var(--lw) minmax(0,1fr);gap:10px}
+@supports (height:100dvh){.gm{height:calc(100dvh - 16px);--cw:min(78px,calc((100vw - var(--lw) - 56px - var(--n,11)*5px)/(var(--n,11) + .3)),calc((100dvh - 150px)/3.6))}}
+.lc{display:flex;flex-direction:column;gap:6px;min-height:0;font-size:clamp(11px,2.3vh,15px)}
+.lc .pn{padding:.35em .5em;border-radius:8px}.lc .pn small{font-size:.75em;display:block;opacity:.75}.lc .pn b{display:block;font-size:1.2em;line-height:1.1}
+.lc .blind{padding:0}.lc .blind .bh{font-size:.9em;padding:.3em}.lc .blind .bb{padding:.35em .5em}
+.ob{display:flex;justify-content:space-around}.ob b{font-size:1.5em}
+.bossr{font-size:.8em;color:#fecaca;margin-top:.3em;line-height:1.2}
+.lc .hpn{min-height:3.8em;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:.3em}
+.lc .hpn .hname{font-size:1.45em;margin:0 0 .15em}.hpn .calc{font-size:1.15em}
+.st6{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.st6 .pn{padding:.25em .2em}.st6 b{font-size:1.05em}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:5px}.acts button{padding:.6em .3em;font-size:1em}
+.acts3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.acts3 button{padding:.5em .1em;font-size:.82em}
+.menu{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:auto}.menu button{padding:.45em 0;font-size:1.1em;background:#334155}
+.table{display:flex;flex-direction:column;justify-content:space-between;min-height:0;background:radial-gradient(ellipse at center,#16573f,#0e3b2c);border:2px solid #ffffff22;border-radius:14px;padding:8px 10px;gap:6px;overflow:hidden}
+.jrow{display:flex;gap:6px;justify-content:center;min-height:2.2em}
+.jrow .joker{width:calc(var(--cw)*1.9);flex:0 0 auto;font-size:max(9px,calc(var(--cw)*.16));padding:3px 4px;margin:0;position:relative}
+.joker b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prow{display:flex;gap:5px;justify-content:center;align-items:center;min-height:calc(var(--cw)*1.45)}
+.hrow{display:flex;gap:5px;justify-content:center;align-items:flex-end;padding-top:calc(var(--cw)*.2)}
+.hrow .sep{width:calc(var(--cw)*.3);flex:0 0 auto}
+.hrow .card.back{width:calc(var(--cw)*.85);height:calc(var(--cw)*1.21)}
+.hrow .card.sel{transform:translateY(calc(var(--cw)*-.16))}
+.card{flex:0 0 auto}
+/* tienda sin scroll */
+.shelf2{display:flex;flex-direction:column;justify-content:center;gap:10px;min-height:0;font-size:clamp(9.5px,2.1vh,13px)}
+.sr{display:flex;gap:6px;justify-content:center;align-items:stretch}
+.shelf2 .shc{flex:1 1 0;min-width:0;max-width:calc(var(--lw)*.85);width:auto;padding:1.4em .3em .3em;gap:.2em}
+.shelf2 .shc b{font-size:1em}.shelf2 .shc p{font-size:.85em}.shelf2 .shc button{font-size:.95em;padding:.4em .2em}
+.shc .br{display:flex;gap:3px}.shc .br .b3{flex:1}.shc .pinb{flex:0 0 auto;padding:.3em .5em;font-size:1em}
+.shelf2 .jc,.shelf2 .ic{width:2.8em;height:3.8em;font-size:1.5em}
+.shelf2 .pack{width:4.2em;height:5.8em}.shelf2 .pack .pi{font-size:2.1em}.shelf2 .pack em{font-size:.62em;bottom:1.1em}
+.grp{display:flex;flex-direction:column;gap:3px;min-width:0}.g3{flex:3}.g5{flex:5}.grp>small{opacity:.75;text-align:center}
+.gc{display:flex;gap:6px;justify-content:center}.gc .joker{flex:1 1 0;min-width:0;max-width:9em;margin:0;font-size:.95em}
+.sm{min-height:1.2em;text-align:center;color:var(--gold);font-size:.85em}
+.full{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.win h1{font-size:clamp(22px,5vh,38px);margin:0}.win table{font-size:clamp(12px,2.4vh,15px)}
+.winb{margin-top:8px}.winb button{font-size:clamp(14px,3vh,20px);padding:.6em 1.2em}
+.lostbox{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0004}
+.lostbox button{font-size:22px;padding:12px 40px}
+.scene{--ds:clamp(56px,17vh,120px);margin:12px auto 18px}
+/* sonido: botón arriba a la derecha solo en inicio; en juego va en el menú lateral */
+#snd{position:static;display:contents}
+#sbtn{position:fixed;top:8px;right:8px;left:auto;bottom:auto;z-index:60;display:none}
+body.pre #sbtn{display:block}
+#sndp{position:fixed;left:8px;bottom:46px;z-index:60}
+body.pre #sndp{left:auto;right:8px;top:58px;bottom:auto}
+
+.shelf2 .shc p{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-height:430px){
+ .shelf2{gap:6px;font-size:9px}.sr{gap:4px}
+ .shelf2 .shc{padding:1.2em .2em .2em}.shelf2 .shc p{-webkit-line-clamp:3;font-size:.9em}
+ .shelf2 .jc,.shelf2 .ic{width:2em;height:2.6em;font-size:1.25em}.shelf2 .pack{width:3.2em;height:4.4em;margin-bottom:0}.shelf2 .pack .pi{font-size:1.7em}
+ .shelf2 .shc .price{font-size:1.15em;top:-1em;padding:1px 8px}.shelf2 .grp>small{font-size:.9em}
+ .lc .bigbtn{padding:.5em}.lc .pn .big{font-size:1.6em}
+}
 </style>
 </head>
-<body>
+<body class="pre">
 <div id="start"><img src="Logo_pixelado_PokerLike.png" alt="PokerLike"><div id="dif" class="center" style="color:#f4f1e6"></div><button onclick="startGame()">JUGAR</button><button class="alt" onclick="showGuide(false)">📖 Cómo jugar</button><button class="alt" style="background:#db2777" onclick="showCol()">🎨 Colección</button></div><div id="story" style="display:none"><div class="sbox">
  <img src="Logo_pixelado_PokerLike.png" alt="PokerLike">
  <div class="txt"><p class="n" style="animation-delay:0.30s">El Gran Casino Dorado fue construido por tu abuelo, un hombre que dedicó su vida a levantar un imperio entre apuestas, fortuna y ambición.</p>
@@ -263,9 +325,10 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}
  </div>
  <div class="bt"><button onclick="endStory()">Continuar</button></div>
 </div></div>
-<div id="app"></div><div id="guide" style="display:none"></div><div id="snd"><button id="sbtn" onclick="togSnd()" title="Sonido">🔊</button><div id="sndp" style="display:none"><button id="mbtn" onclick="toggleMute()">🔊 Silenciar</button><div class="vrow"><input id="vr" type="range" min="0" max="100" value="50" oninput="setVol(this.value)" onchange="sfx('select.mp3')"><b id="vpct">50%</b></div></div></div>
-<div id="tools"><button id="cbtn" onclick="showCol()">🎨 Colección</button><button id="hbtn" onclick="showHands()">📊 Manos</button><button id="gbtn" onclick="showGuide(false)">📖 Guía</button></div>
+<div id="rotate"><div><div class="ri">📱</div><b>Girá tu dispositivo</b><p>PokerLike se juega en horizontal</p></div></div>
+<div id="app"></div><div id="guide" style="display:none"></div><div id="snd"><button id="sbtn" class="sbi" onclick="togSnd()" title="Sonido">🔊</button><div id="sndp" style="display:none"><button id="mbtn" onclick="toggleMute()">🔊 Silenciar</button><div class="vrow"><input id="vr" type="range" min="0" max="100" value="50" oninput="setVol(this.value)" onchange="sfx('select.mp3')"><b id="vpct">50%</b></div></div></div>
 <script>
+let AC=null,MG=null;const WB={};
 const SU=["♠","♥","♦","♣"],RK={11:"J",12:"Q",13:"K",14:"A"};
 // [fichas, multi, +fichas/nivel, +multi/nivel, nombre]
 const HT={hi:[5,1,10,1,"Carta alta"],pa:[10,2,15,1,"Pareja"],tp:[20,2,20,1,"Doble pareja"],tk:[30,3,20,2,"Trío"],
@@ -274,8 +337,10 @@ const HC={hi:"#cbd5e1",pa:"#93c5fd",tp:"#67e8f9",tk:"#86efac",st:"#fde047",fl:"#
 const PAIRY=["pa","tp","tk","fh","fk"];
 const BL=[["Ronda 1",1,3],["Ronda 2",1.5,4],["Jefe",2,5]];
 const ANTE=[350,1000,2800,7500,19000,40000,75000,130000];
-const DIF={f:["Fácil",.8,1.5],n:["Normal",1,1],d:["Difícil",1.5,.75]};
-const DV=()=>{const m=DIF[COL.dif||"n"][2],r=v=>Math.round(v*m*2)/2;return{a:r(1.5),b:r(2),c:r(7)}};
+const DIF={f:{name:"Fácil",dice:1,price:1,pay:1,icap:5,money:6,tm:null,boss:false},n:{name:"Normal",dice:1,price:1.5,pay:.6,icap:2,money:4,tm:[1.15,1.25,1.4,1.55,1.7,1.85,2,2.2],boss:true}};
+const DFC=()=>DIF[COL.dif]||DIF.n,tmul=()=>{const d=DFC();return d.tm?d.tm[G.ante-1]:1};
+const BOSSES=[{id:"wall",n:"El Muro",d:"objetivo ×1.5",t:1.5},{id:"eye",n:"El Ojo",d:"no repetir tipo de mano",t:0},{id:"head",n:"La Cabeza",d:"los corazones no puntúan",t:0},{id:"hook",n:"El Gancho",d:"2 cartas menos en la mano",t:0}];
+const DV=()=>{const m=DFC().dice,r=v=>Math.round(v*m*2)/2;return{a:r(1.5),b:r(2),c:r(7)}};
 // Jokers: f(ctx) -> [fichas, multi, xmulti]
 const cnt=(c,fn)=>c.sc.filter(fn).length;
 const suitJ=(n,s,t)=>({n,d:`+3 Multi por cada ${t} que puntúe`,c:5,f:c=>[0,3*cnt(c,x=>x.s==s),1]});
@@ -323,7 +388,7 @@ const PLJ={hi:"Para los que juegan en solitario.",pa:"Dos corazones, un solo des
 let G={};
 const $=id=>document.getElementById(id);
 function newRun(){
- G={ante:1,bi:0,money:6,jokers:[],lv:{},phase:"pick",score:0,target:0,hands:0,disc:0,hand:[],deck:[],msg:"",shop:[],sel:[],played:[],rr:3,gu:0,maxG:2,hs:8,mh:4,md:3,boost:[]};
+ G={ante:1,bi:0,money:DFC().money,jokers:[],lv:{},phase:"pick",score:0,target:0,hands:0,disc:0,hand:[],deck:[],msg:"",shop:[],sel:[],played:[],rr:3,gu:0,maxG:2,hs:8,mh:4,md:3,boost:[]};
  for(const k in HT)G.lv[k]=0;
  G.cards=[];let id=0;for(let q=0;q<4;q++)for(let r=2;r<=14;r++)G.cards.push({r,s:q,id:id++});
  G.pickOpts=[JK[0],...pick(JK.filter(j=>j.c<=4&&j!==JK[0]),2)];render();
@@ -332,12 +397,13 @@ function startBlind(){
  const d=G.cards.map(c=>({...c}));
  for(let i=d.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[d[i],d[j]]=[d[j],d[i]]}
  Object.assign(G,{deck:d,hand:[],sel:[],played:[],hands:G.mh,disc:G.md,gu:0,score:0,phase:"play",
-  target:Math.round(ANTE[G.ante-1]*BL[G.bi][1]*DIF[COL.dif||"n"][1]/10)*10,msg:"Tocá 💡 Mejor jugada para ver tu mejor combinación, o ♻️ Sugerir descarte para buscar una mejor."});
+  target:Math.round(ANTE[G.ante-1]*BL[G.bi][1]*tmul()/10)*10,msg:""});
+ G.boss=(DFC().boss&&G.bi==2)?BOSSES[rndInt(BOSSES.length)]:null;G.used={};G.hsb=G.boss&&G.boss.id=="hook"?2:0;if(G.boss&&G.boss.t)G.target=Math.round(G.target*G.boss.t/10)*10;
  draw();render();
 }
 function draw(){
  let vis=G.hand.filter(c=>!c.down).length,nd=G.hand.filter(c=>c.down).length;
- while(vis<G.hs&&G.deck.length){G.hand.push(G.deck.pop());vis++}
+ while(vis<G.hs-(G.hsb||0)&&G.deck.length){G.hand.push(G.deck.pop());vis++}
  while(nd<3&&G.deck.length){const c=G.deck.pop();c.down=1;G.hand.push(c);nd++}
  sortHand();
 }
@@ -361,7 +427,7 @@ function calc(cs){
  const e=ev(cs),h=HT[e.t],l=G.lv[e.t],lg=[];
  let ch=h[0]+l*h[2],mu=h[1]+l*h[3];
  lg.push(`${h[4]} base: ${ch}f ×${mu}`);
- e.sc.forEach(c=>{const v=c.rv?rvVal(c):valOf(c);ch+=v;let t=`${RK[c.r]||c.r}${SU[c.s]} +${v}f`;
+ e.sc.forEach(c=>{const v=(G.boss&&G.boss.id=="head"&&c.s==1)?0:c.rv?rvVal(c):valOf(c);ch+=v;let t=`${RK[c.r]||c.r}${SU[c.s]} +${v}f`;
   if(c.rv)t+=" · 👁️ Giro (valor ×2)";
   if(c.e=="b"){ch+=30;t+=" · Gordita +30f"}
   if(c.e=="m"){mu+=4;t+=" · Turbo +4m"}
@@ -396,9 +462,9 @@ function suggest(){if(G.phase!="play")return;G.sel=best();if(G.sel.length)sfx("s
 function play(){
  if(!G.sel.length||G.hands<1||G.phase!="play")return;
  const cs=G.sel.map(i=>G.hand[i]),r=calc(cs);cs.forEach(c=>delete c.down);
- sfx("colocar.mp3");stat("h_"+r.t);statMax("big",r.total);G.score+=r.total;G.money+=2*r.gold;G.hands--;G.played=cs;
+ sfx("colocar.mp3");if(G.boss&&G.boss.id=="eye"){if(G.used[r.t]){r.total=0;r.eye=1}G.used[r.t]=1}stat("h_"+r.t);statMax("big",r.total);G.score+=r.total;G.money+=2*r.gold;G.hands--;G.played=cs;
  G.hand=G.hand.filter((_,i)=>!G.sel.includes(i));G.sel=[];
- G.msg=`<span class="calc"><span class="chips">${fx(r.ch)}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br><span class="hname" style="color:${HC[r.t]}">${HT[r.t][4]}</span>${r.gold?` <span class="gold">+$${2*r.gold}</span>`:""}`;
+ G.msg=`<span class="calc"><span class="chips">${fx(r.ch)}</span> × <span class="mult">${r.mu}</span> = <span class="gold">${r.total}</span></span><br><span class="hname" style="color:${HC[r.t]}">${HT[r.t][4]}</span>${r.gold?` <span class="gold">+$${2*r.gold}</span>`:""}`;if(r.eye)G.msg+="<br>El Ojo: tipo repetido, 0 puntos";
  draw();
  if(G.score>=G.target){G.phase="won";winStats();sfx("ganar.mp3");render();return}
  if(G.hands==0){G.phase="lost";sfx("derrota2.mp3")}
@@ -417,12 +483,12 @@ function iN(it){return it.k=="j"?it.j.n:it.k=="p"?PLN[it.t]:it.k=="v"?"⭐ "+it.
 function iD(it){return it.k=="j"?it.j.d:it.k=="v"?it.v.d:it.k=="k"&&it.p=="d"?"Revela 1 dorso holográfico de un palo al azar. Se guarda en tu colección.":it.k=="k"&&it.p=="t"?"Revela 1 carta coleccionable pixelada, ¡con efecto holo!":it.k=="p"?`Sube ${HT[it.t][4]} (nv ${G.lv[it.t]}): +${HT[it.t][2]} Fichas y +${HT[it.t][3]} Multi. ${PLJ[it.t]}`:"Elegí 1 de 3 "+(it.p=="c"?"planetas. Viaje sin escalas.":it.p=="a"?"mejoras: se aplican a 2 cartas al azar de tu mazo. Sorpresa garantizada.":"jokers. Prometen portarse bien.")}
 function packH(){
  const P=G.pack;
- return`<h2 class="center">🎁 ${PN[P.p]}: elegí 1 (costo $${PC[P.p]})</h2><div class="row shop">${P.o.map((x,i)=>`<div class="item"><b>${P.p=="c"?PLN[x]:P.p=="a"?ENH[x][0]:x.n}</b><p>${P.p=="c"?`Nivel ${G.lv[x]} → ${G.lv[x]+1}. ${PLJ[x]}`:P.p=="a"?ENH[x][1]:x.d}</p><button class="b3" ${P.p=="j"&&G.jokers.length>=5?"disabled":""} onclick="choose(${i})">${P.p=="j"&&G.jokers.length>=5?"Sin espacio":"Elegir"}</button></div>`).join("")}</div>
+ return`<h2 class="center">🎁 ${PN[P.p]}: elegí 1 (costo $${G.shop[G.pack.idx].c})</h2><div class="row shop">${P.o.map((x,i)=>`<div class="item"><b>${P.p=="c"?PLN[x]:P.p=="a"?ENH[x][0]:x.n}</b><p>${P.p=="c"?`Nivel ${G.lv[x]} → ${G.lv[x]+1}. ${PLJ[x]}`:P.p=="a"?ENH[x][1]:x.d}</p><button class="b3" ${P.p=="j"&&G.jokers.length>=5?"disabled":""} onclick="choose(${i})">${P.p=="j"&&G.jokers.length>=5?"Sin espacio":"Elegir"}</button></div>`).join("")}</div>
  <div class="center"><button class="b2" onclick="G.pack=null;render()">Volver a la tienda</button></div><h3 class="center">Tus jokers ${G.jokers.length}/5</h3><div class="row">${jokersH(0)}</div>`;
 }
 function choose(i){
  const P=G.pack,x=P.o[i];
- G.money-=PC[P.p];G.shop.splice(P.idx,1);
+ G.money-=G.shop[P.idx].c;G.shop.splice(P.idx,1);
  if(P.p=="c"){G.lv[x]++;G.shopMsg=`${HT[x][4]} sube a nivel ${G.lv[x]}.`}
  else if(P.p=="a"){
   const pool=G.cards.filter(c=>!c.e),src=(pool.length>=2?pool:G.cards),ch=pick(src,2);
@@ -430,21 +496,20 @@ function choose(i){
  }else{G.jokers.push({...x,uid:++UID});G.shopMsg=`Obtuviste ${x.n}.`}
  G.pack=null;sfx();render();
 }
-function pay(){const p=BL[G.bi][2]+G.hands+Math.min(5,Math.floor(G.money/5));G.money+=p;G.payout=p}
+function payInfo(){const d=DFC(),base=Math.max(1,Math.round(BL[G.bi][2]*d.pay)),hand=Math.round(G.hands*d.pay),it=Math.min(d.icap,Math.floor(G.money/5));return{base,hand,it,total:base+hand+it}}
+function pay(){const P=payInfo();G.money+=P.total;G.payout=P.total}
 function packArt(p){const I={c:"🪐",a:"🔮",j:"🃏",d:"🎴",t:"🐉"},L={c:"CÓSMICO",a:"MISTERIOSO",j:"BUFONES",d:"DORSO HOLO",t:"POKERLIKE HOLO"};return`<div class="pack ${p}"><i class="pc"></i><span class="pi">${I[p]}</span><em>${L[p]}</em><i class="pc b"></i></div>`}
 function shopCard(it,i){
- const full=it.k=="j"&&G.jokers.length>=5,dis=G.money<it.c||full?"disabled":"",tier=it.k=="j"?(it.c<=3?"t1":it.c<=6?"t2":"t3"):"";
+ const full=it.k=="j"&&G.jokers.length>=5,dis=G.money<it.c||full?"disabled":"",tier=it.k=="j"?(it.j.c<=3?"t1":it.j.c<=6?"t2":"t3"):"";
  const art=it.k=="k"?packArt(it.p):it.k=="j"?`<div class="jc">🃏</div>`:`<div class="ic">${it.k=="p"?"🪐":"⭐"}</div>`;
  const lab=full?"Sin espacio":it.k=="k"?(it.p=="d"||it.p=="t"?"Abrir":"Ver"):"Comprar";
- return`<div class="shc ${tier} ${it.k=="k"&&"dt".includes(it.p)?"hp":""} ${it.pin?"pinned":""}"><span class="price">$${it.c}</span>${art}<b>${iN(it)}</b><p>${iD(it)}</p><button class="b3" ${dis} onclick="buy(${i})">${lab}</button><button class="pinb" onclick="pin(${i})">${it.pin?"📌 Fijado":"📌 Fijar"}</button></div>`;
+ return`<div class="shc ${tier} ${it.k=="k"&&"dt".includes(it.p)?"hp":""} ${it.pin?"pinned":""}"><span class="price">$${it.c}</span>${art}<b>${iN(it)}</b><p>${iD(it).split(". ")[0]}</p><div class="br"><button class="b3" ${dis} onclick="buy(${i})">${lab}</button><button class="pinb" title="Fijar para la próxima tienda" onclick="pin(${i})">${it.pin?"📌":"📍"}</button></div></div>`;
 }
 function shopH(){
- const idx=G.shop.map((it,i)=>[it,i]),a=idx.filter(([it])=>it.k!="k"),k=idx.filter(([it])=>it.k=="k");
- return`<div class="board shopb"><aside class="side"><div class="pn sp2"><small>Dinero</small><b class="big gold">$${G.money}</b><small>Cobraste +$${G.payout}</small></div>
- <button class="bigbtn nxt" onclick="next()">Siguiente ronda ▶</button><button class="bigbtn rer" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll · $${G.rr}</button></aside>
- <main class="main"><div class="smsg">${G.shopMsg||"&nbsp;"}</div><h3 class="sh">Jokers y mejoras</h3><div class="row shelf">${a.map(([it,i])=>shopCard(it,i)).join("")||"<small>Agotado</small>"}</div>
- <h3 class="sh">Sobres</h3><div class="row shelf">${k.map(([it,i])=>shopCard(it,i)).join("")||"<small>Agotado</small>"}</div>
- <h3 class="sh">Tus jokers ${G.jokers.length}/5 <small>(tocá uno para venderlo)</small></h3><div class="row jr">${jokersH(1)}</div></main></div>`;
+ const idx=G.shop.map((it,i)=>[it,i]),a=idx.filter(([it])=>it.k!="k"),k=idx.filter(([it])=>it.k=="k"),c=([it,i])=>shopCard(it,i);
+ return`<div class="gm"><aside class="lc"><div class="pn"><small>Dinero</small><b class="big gold">$${G.money}</b><small>+$${G.payout}</small></div>
+ <button class="bigbtn nxt" onclick="next()">Siguiente ronda ▶</button><button class="bigbtn rer" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll · $${G.rr}</button><div class="sm">${G.shopMsg||""}</div>${menuH()}</aside>
+ <section class="shelf2"><div class="sr">${a.map(c).join("")}</div><div class="sr"><div class="grp g3"><small>Sobres</small><div class="gc">${k.map(c).join("")}</div></div><div class="grp g5"><small>Tus jokers · tocá para vender</small><div class="gc">${jokersH(1)}</div></div></div></section></div>`;
 }
 function cash(){pay();G.phase="shop";G.shopMsg="";G.rr=3;fillShop();render()}
 const rnd6=()=>{const a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=4294967292);return a[0]%6+1};
@@ -467,7 +532,7 @@ function diceH(){
  if(D.rolling)return`<h2 class="center">🎲 Tirando el dado...</h2>${cubeH(n,false)}`;
  const sb=SU.map((x,s)=>`<button class="${s==1||s==2?"b2":"b4"}" ${dis} style="padding:6px 12px" onclick="applyDice(2,${s})">${n}${x}</button>`).join(" ");
  return`<h2 class="center">🎲 Salió el ${n}</h2>${cubeH(n,true)}
- <p class="center">${no?"Con el 1 solo podés usar la opción C.":"Elegí tu mejora (dura hasta que pierdas):"}<br><small>Premios de dificultad ${DIF[COL.dif||"n"][0]}</small></p><div class="row shop">
+ <p class="center">${no?"Con el 1 solo podés usar la opción C.":"Elegí tu mejora (dura hasta que pierdas):"}</p><div class="row shop">
  <div class="item"><b>A) +${v.a} a todos los ${n}</b><p>Suma ${v.a} al valor del ${n} en los 4 palos (pasa a ${n+v.a}).</p><button class="b3" ${dis} onclick="applyDice(1)">Elegir</button></div>
  <div class="item"><b>B) +${v.b} a un ${n}</b><p>Suma ${v.b} al ${n} del palo que elijas:</p>${sb}</div>
  <div class="item" style="border-color:#fff;box-shadow:0 0 14px var(--gold)"><b>C) +${v.c} a una carta al azar</b><p>El premio más alto: sube +${v.c} la base de una carta cualquiera (número o letra, de cualquier palo).</p><button class="b3" onclick="applyDice(3)">Elegir</button></div></div>`;
@@ -487,11 +552,10 @@ function fillShop(){
  for(let i=0;i<2;i++){const p=["c","a","j"][Math.random()*3|0];gen.push({k:"k",p,c:PC[p]})}
  const v=VCH[Math.random()*VCH.length|0];gen.push({k:"v",v,c:v.c});
  if(Math.random()<.75){const p=Math.random()<.5?"d":"t";gen.push({k:"k",p,c:PC[p]})}
- G.shop=[...keep,...gen.slice(0,Math.max(3,10-keep.length))];
+ gen.forEach(it=>it.c=Math.ceil(it.c*DFC().price));G.shop=[...keep,...gen.slice(0,Math.max(3,10-keep.length))];
 }
 function pin(i){G.shop[i].pin=!G.shop[i].pin;render()}
 let UID=0;
-function sfx(f="compra.mp3",v=1){try{const a=new Audio(f);a.volume=Math.min(1,v*MV());a.play().catch(()=>{})}catch(e){}}
 function buy(i){
  const it=G.shop[i];
  if(!it||G.money<it.c)return;
@@ -524,7 +588,7 @@ function cardH(c,i,cls=""){
 }
 const jbH=(pv,i)=>{const[a,b,x]=pv&&pv.jb[i]||[0,0,1],t=[a?`+${a}f`:"",b?`+${b}m`:"",x!=1?`×${x}`:""].filter(Boolean).join(" ");return t?`<span class="jb">${t}</span>`:""};
 function jokersH(shopMode,pv){
- return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}>${jbH(pv,i)}<b>${j.n}</b>${j.d}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"<small>Sin jokers todavía (máx. 5)</small>";
+ return G.jokers.map((j,i)=>`<div class="joker" ${shopMode?`onclick="sell(${i})" style="cursor:pointer" title="Vender"`:""}>${jbH(pv,i)}<b>${j.n}</b>${j.d.split(". ")[0]}${shopMode?`<br><small>Vender $${Math.ceil(j.c/2)}</small>`:""}</div>`).join("")||"";
 }
 const moneyH=()=>`<div class="top"><div class="box" style="max-width:220px;margin:auto"><small>Dinero</small><b class="gold">$${G.money}</b></div></div>`;
 function pickH(){return`<h2 class="center">🃏 Elegí tu joker inicial</h2><p class="center note">Es gratis y lo conservás toda la partida. Después podés comprar más en la tienda.</p><div class="row shop">${G.pickOpts.map((j,i)=>`<div class="item"><b>${j.n}</b><p>${j.d}</p><button class="b3" onclick="choosePick(${i})">Elegir</button></div>`).join("")}</div>`}
@@ -534,10 +598,11 @@ function suggestDisc(){
  const keep=new Set(best()),cand=G.hand.map((c,i)=>({c,i})).filter(o=>!keep.has(o.i)&&!o.c.down).sort((a,b)=>a.c.r-b.c.r).slice(0,5);
  G.sel=cand.map(o=>o.i);if(G.sel.length)sfx("select.mp3");render();
 }
+function menuH(){return`<div class="menu"><button title="Manos" onclick="showHands()">📊</button><button title="Guía" onclick="showGuide(false)">📖</button><button title="Colección" onclick="showCol()">🎨</button><button class="sbi" title="Sonido" onclick="togSnd()">${sndIcon()}</button></div>`}
 function handH(pv){
  const cl=(c,i)=>G.sel.includes(i)?"sel "+(c.down?"":pv.sc.includes(c)?"sc":"ns"):"",h=G.hand.map((c,i)=>[c,i]);
- const up=h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn=h.filter(([c])=>c.down);
- return`<div class="row hand">${up}</div><div class="cnt">Mano ${h.length-dn.length}/${G.hs}</div>`+(dn.length?`<div class="note center">🎴 ${dn.length} cartas extra boca abajo · tocá una para girarla (te quedan ${G.maxG-G.gu} Giros)</div><div class="row hidd">${dn.map(([c,i])=>cardH(c,i,cl(c,i))).join("")}</div>`:"");
+ const up=h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn=h.filter(([c])=>c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join("");
+ return`<div class="hrow">${up}${dn?`<i class="sep"></i>${dn}`:""}</div>`;
 }
 function render(){
  document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop"||G.phase=="dice"||G.phase=="pick");
@@ -558,34 +623,23 @@ function render(){
   if(G.pack){A.innerHTML=moneyH()+packH();return}
   A.innerHTML=shopH();return}
  if(G.phase=="won"){
-  const base=b[2],hl=G.hands,it=Math.min(5,Math.floor(G.money/5));
-  A.innerHTML=`${head}<div class="center win"><h1>🎉 ${G.bi==2?"¡Jefe derrotado!":"¡Ronda ganada!"}</h1><p>Hiciste <b class="gold">${G.score}</b> puntos (objetivo ${G.target})</p>
-  <table><tr><td>Recompensa de la ronda</td><td class="gold">+$${base}</td></tr><tr><td>Manos sin usar (${hl})</td><td class="gold">+$${hl}</td></tr><tr><td>Interés</td><td class="gold">+$${it}</td></tr><tr><th>Total</th><th class="gold">+$${base+hl+it}</th></tr></table>
-  <p class="note">Elegí una opción (el dado se tira una sola vez):</p><p><button class="b3" style="font-size:20px" onclick="cash()">🛒 Ir a la tienda</button> <button class="b4" style="font-size:20px" onclick="roll()">🎲 Tirar el dado</button></p></div>`;return}
+  const P=payInfo();
+  A.innerHTML=`<div class="full center win"><h1>🎉 ${G.bi==2?"¡Jefe derrotado!":"¡Ronda ganada!"}</h1><p>Hiciste <b class="gold">${G.score}</b> puntos (objetivo ${G.target})</p>
+  <table><tr><td>Recompensa</td><td class="gold">+$${P.base}</td></tr><tr><td>Manos sin usar (${G.hands})</td><td class="gold">+$${P.hand}</td></tr><tr><td>Interés</td><td class="gold">+$${P.it}</td></tr><tr><th>Total</th><th class="gold">+$${P.total}</th></tr></table>
+  <p class="winb"><button class="b3" onclick="cash()">🛒 Ir a la tienda</button> <button class="b4" onclick="roll()">🎲 Tirar el dado</button></p></div>`;return}
  
  const over=G.phase=="lost"?`<div class="center lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:
   G.phase=="won"?`<div class="center"><h2>🎉 ¡Ronda ganada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
- const pct=Math.min(100,G.score/G.target*100),prevH=pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span>
-  <div class="strip"><span class="sb chips">FICHAS<b>${fx(pv.ch)}</b></span><span>×</span><span class="sb mult">MULTI<b>${pv.mu}</b></span><span>=</span><span class="sb gold">PUNTOS<b>${pv.total}</b></span></div>
-  ${pv.sc.length<fu.length?'<div class="lg">Solo suman las cartas con brillo dorado</div>':""}${fu.length<G.sel.length?'<div class="lg">+ cartas ocultas: se revelan al jugar</div>':""}`:G.msg;
-  A.innerHTML=`<div class="board"><aside class="side">
-  <div class="pn blind ${G.bi==2?"boss":""}"><div class="bh">Ante ${G.ante}/8 · ${b[0]}</div><div class="bb"><small>Puntos para superar</small><b class="big">${G.target}</b><div class="bar"><i style="width:${pct}%"></i><i class="ghost" style="left:${pct}%;width:${pv?Math.max(0,Math.min(100-pct,pv.total/G.target*100)):0}%"></i></div><small>Recompensa: <span class="gold">$${b[2]}</span> + $1 por mano sobrante</small></div></div>
-  <div class="pn sp2"><small>Puntos de la ronda</small><b class="big gold">${G.score}</b></div>
+ const pct=Math.min(100,G.score/G.target*100),gh=pv?Math.max(0,Math.min(100-pct,pv.total/G.target*100)):0;
+  const prevH=pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span><div class="strip"><span class="sb chips">FICHAS<b>${fx(pv.ch)}</b></span><span>×</span><span class="sb mult">MULTI<b>${pv.mu}</b></span><span>=</span><span class="sb gold">PUNTOS<b>${pv.total}</b></span></div>`:(G.msg||"");
+  A.innerHTML=`<div class="gm" style="--n:${Math.max(11,G.hand.length)}"><aside class="lc">
+  <div class="pn blind ${G.bi==2?"boss":""}"><div class="bh">Ante ${G.ante}/8 · ${b[0]}</div><div class="bb"><div class="ob"><span><small>Objetivo</small><b>${G.target}</b></span><span><small>Puntos</small><b class="gold">${G.score}</b></span></div><div class="bar"><i style="width:${pct}%"></i><i class="ghost" style="left:${pct}%;width:${gh}%"></i></div>${G.boss?`<div class="bossr">⚔ ${G.boss.n}: ${G.boss.d}</div>`:""}</div></div>
   <div class="pn hpn">${prevH}</div>
-  <div class="two"><div class="pn"><small>Manos</small><b class="big2 chips">${G.hands}</b></div><div class="pn"><small>Descartes</small><b class="big2 mult">${G.disc}</b></div></div>
-  <div class="two"><div class="pn"><small>Dinero</small><b class="big2 gold">$${G.money}</b></div><div class="pn"><small>Giro Bonus</small><b class="big2">${G.gu}/${G.maxG}</b></div></div>
-  </aside><main class="main">
-  <div class="rowlab"><span>Jokers ${G.jokers.length}/5</span><span>Mazo ${G.deck.length}/52</span></div>
-  <div class="row jr">${jokersH(0,pv)}</div>
-  <div class="row pl">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>
-  <div class="info">${prevH}</div>
-  ${handH(pv)}
-  ${over||`<div class="center btns"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar mano</button>
-  <button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button>
-  <button class="b5" onclick="suggest()">💡 Mejor jugada</button>
-  <button class="b5" onclick="suggestDisc()">♻️ Sugerir descarte</button>
-  <button class="b4" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">Ordenar: ${sortBy=="r"?"valor":"palo"}</button></div>`}
-  </main></div>`;
+  <div class="st6"><div class="pn"><small>Manos</small><b class="chips">${G.hands}</b></div><div class="pn"><small>Descartes</small><b class="mult">${G.disc}</b></div><div class="pn"><small>Dinero</small><b class="gold">$${G.money}</b></div><div class="pn"><small>Giro</small><b>${G.gu}/${G.maxG}</b></div><div class="pn"><small>Mazo</small><b>${G.deck.length}</b></div><div class="pn"><small>Jokers</small><b>${G.jokers.length}/5</b></div></div>
+  <div class="acts"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar</button><button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button></div>
+  <div class="acts3"><button class="b5" title="Mejor jugada" onclick="suggest()">💡 Mejor</button><button class="b5" title="Sugerir descarte" onclick="suggestDisc()">♻️ Sugerir</button><button class="b4" title="Ordenar" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">↕ ${sortBy=="r"?"Valor":"Palo"}</button></div>
+  ${menuH()}</aside>
+  <section class="table"><div class="jrow">${jokersH(0,pv)}</div><div class="prow">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>${handH(pv)}</section></div>${G.phase=="lost"?`<div class="lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:""}`;
 }
 const EX={sf:[[9,1],[8,1],[7,1],[6,1],[5,1]],fk:[[10,0],[10,1],[10,2],[10,3],[3,0]],fh:[[13,0],[13,1],[13,2],[4,1],[4,3]],fl:[[14,2],[11,2],[8,2],[5,2],[3,2]],st:[[9,0],[8,1],[7,3],[6,2],[5,0]],tk:[[7,0],[7,1],[7,2],[12,3],[2,1]],tp:[[11,0],[11,3],[6,1],[6,2],[3,0]],pa:[[12,1],[12,3],[9,0],[5,2],[2,1]],hi:[[14,0],[10,3],[8,1],[6,2],[3,3]]};
 function handsH(){
@@ -625,9 +679,9 @@ function showGuide(first){
  <h3>🎴 Cartas boca abajo y Giro Bonus</h3><p>Además de tus 8 cartas visibles, siempre tenés 3 cartas extra boca abajo. Cada ronda tenés <b>2 Giros</b> (panel Giro Bonus): tocá una carta oculta para darla vuelta y gastar 1 Giro. Mientras dure la ronda, la carta girada vale el doble: 2 a 10 = su valor ×2 · J, Q, K = 20 · A = 25 (sin Multi). Sin Giros, tocar una oculta la selecciona a ciegas: podés descartarla o jugarla sin saber qué es.</p>
  <h3>✨ Mejoras de carta</h3><p>Algunas cartas de tu mazo pueden mejorarse (se ven con color): <b>Carta Gordita</b> +30 fichas, <b>Carta Turbo</b> +4 multi, <b>Carta de Cristal</b> X1.5 multi, <b>Carta Ricachona</b> +$2. Solo actúan cuando la carta puntúa, y se conservan toda la partida.</p>
  <h3>🎁 Sobres</h3><p>En la tienda hay sobres: <b>Cósmico</b> (elegís un planeta), <b>Misterioso</b> (elegís una mejora que se aplica a 2 cartas al azar de tu mazo) y <b>de Bufones</b> (elegís un joker). Tocá <b>Ver</b> para mirar las 3 opciones: solo pagás si elegís una; si no, volvés a la tienda sin gastar.</p>
- <h3>⚙️ Dificultad</h3><p>En la pantalla de inicio elegís <b>Fácil</b> (objetivos −20%), <b>Normal</b> o <b>Difícil</b> (objetivos +50%). Se guarda para la próxima vez.</p>
+ <h3>⚙️ Dificultad</h3><p>La elegís en la pantalla de inicio. <b>Fácil</b>: precios normales y más dinero por ronda. <b>Normal</b>: objetivos más altos, precios +50%, menos dinero por ronda y Jefes con una regla especial que se muestra en el panel izquierdo.</p>
  <h3>🎨 Colección y misiones</h3><p>Hay 100 criaturas de Casino, Póker y Bingo para coleccionar. Se consiguen con los <b>Sobres PokerLike Holo</b> de la tienda o cumpliendo <b>misiones</b> (por ejemplo, ganar rondas sin usar descartes). Son solo para coleccionar. Entrá desde 🎨 Colección.</p>
- <h3>🎲 Dado</h3><p>Al ganar una ronda elegís: <b>🛒 ir a la tienda</b> o <b>🎲 tirar el dado</b> (una sola tirada). Si sale del 2 al 6 elegís: <b>A)</b> suma al valor de ese número en los 4 palos, <b>B)</b> suma un poco más a ese número en un solo palo, o <b>C)</b> suma muchísimo más a una carta al azar (el premio más alto). Con el 1 solo vale la C. Los premios se ajustan a la dificultad elegida (Fácil ×1.5, Difícil ×0.75) y duran hasta que pierdas. En Normal: A +1.5, B +2 y C +7.</p>
+ <h3>🎲 Dado</h3><p>Al ganar una ronda elegís: <b>🛒 ir a la tienda</b> o <b>🎲 tirar el dado</b> (una sola tirada). Si sale del 2 al 6 elegís: <b>A)</b> suma al valor de ese número en los 4 palos, <b>B)</b> suma un poco más a ese número en un solo palo, o <b>C)</b> suma muchísimo más a una carta al azar (el premio más alto). Con el 1 solo vale la C. Duran hasta que pierdas: A +1.5, B +2 y C +7.</p>
  <h3>🛒 Tienda ampliada</h3><p>Hay más jokers (con precios que varían), planetas, sobres y <b>mejoras permanentes</b> (+1 mano, +1 descarte, +1 carta en mano, +1 Giro...). Con <b>📌 Fijar</b> guardás una oferta para la próxima visita y así juntás dinero para comprarla.</p>
  <h3>💰 Dinero y tienda</h3><p>Al superar una ronda cobrás $3/$4/$5 según la ronda, +$1 por mano que te sobre y +$1 de interés por cada $5 que tengas (máx. $5). En la tienda comprás jokers y planetas; <b>Reroll</b> renueva las ofertas (el costo sube cada vez).</p>
  <h3>💀 Derrota</h3><p>Si te quedás sin manos sin llegar al objetivo, perdés la partida.</p>
@@ -636,15 +690,31 @@ function showGuide(first){
 }
 function closeGuide(first){$("guide").style.display="none";if(first){fadeIntro();newRun()}}
 const intro=new Audio("introGame.mp3");intro.volume=.25;intro.loop=true;
-const playIntro=()=>{if(intro.currentTime>0)return;intro.play().catch(()=>{})};
+const playIntro=()=>{initAudio();try{if(AC&&AC.state=="suspended")AC.resume()}catch(e){}if(intro.currentTime>0)return;intro.play().catch(()=>{})};
 function fadeIntro(){const t=setInterval(()=>{if(intro.volume>.012)intro.volume=Math.max(0,intro.volume-.012);else{intro.pause();clearInterval(t)}},150)}
-playIntro();["pointerdown","keydown"].forEach(e=>document.addEventListener(e,playIntro,{once:true}));
+intro.play().catch(()=>{});["pointerdown","keydown"].forEach(e=>document.addEventListener(e,playIntro,{once:true}));
 document.addEventListener("keydown",e=>{if(e.key=="Escape")closeGuide(false)});
-function renderDif(){$("dif").innerHTML="Dificultad: "+Object.keys(DIF).map(k=>`<button class="${COL.dif==k?"on":""}" onclick="setDif('${k}')">${DIF[k][0]}</button>`).join("")}
+function renderDif(){$("dif").innerHTML="Dificultad: "+Object.keys(DIF).map(k=>`<button class="${COL.dif==k?"on":""}" onclick="setDif('${k}')">${DIF[k].name}</button>`).join("")}
 function setDif(k){COL.dif=k;saveCol();renderDif()}
 const MV=()=>COL.mute?0:COL.vol;
-function applyVol(){intro.volume=.5*MV()}
-function syncSnd(){const m=COL.mute||COL.vol==0;$("sbtn").textContent=m?"🔇":COL.vol<.4?"🔈":COL.vol<.75?"🔉":"🔊";$("vpct").textContent=Math.round(COL.vol*100)+"%";$("vr").value=Math.round(COL.vol*100);$("mbtn").textContent=COL.mute?"🔇 Activar sonido":"🔊 Silenciar"}
+function initAudio(){
+ if(AC||!/^https?:/.test(location.protocol))return;
+ try{AC=new(window.AudioContext||window.webkitAudioContext)();MG=AC.createGain();MG.connect(AC.destination);
+  const src=AC.createMediaElementSource(intro),ig=AC.createGain();ig.gain.value=.5;src.connect(ig);ig.connect(MG);applyVol()}catch(e){AC=null}
+}
+function applyVol(){
+ if(AC&&MG){MG.gain.value=MV();intro.volume=1;intro.muted=false}
+ else{intro.volume=Math.min(1,.5*MV());intro.muted=MV()==0}
+}
+function sfx(f="compra.mp3",v=1){
+ try{
+  if(AC&&MG&&WB[f]){if(AC.state=="suspended")AC.resume();const b=AC.createBufferSource(),g=AC.createGain();b.buffer=WB[f];g.gain.value=v;b.connect(g);g.connect(MG);b.start();return}
+  const a=new Audio(f);a.volume=Math.min(1,v*MV());a.muted=MV()==0;a.play().catch(()=>{});
+  if(AC&&!WB[f]&&!WB["_"+f]){WB["_"+f]=1;fetch(f).then(r=>r.arrayBuffer()).then(x=>AC.decodeAudioData(x)).then(buf=>{WB[f]=buf}).catch(()=>{})}
+ }catch(e){}
+}
+const sndIcon=()=>(COL.mute||COL.vol==0)?"🔇":COL.vol<.4?"🔈":COL.vol<.75?"🔉":"🔊";
+function syncSnd(){try{document.querySelectorAll(".sbi").forEach(e=>e.textContent=sndIcon())}catch(e){}$("vpct").textContent=Math.round(COL.vol*100)+"%";$("vr").value=Math.round(COL.vol*100);$("mbtn").textContent=COL.mute?"🔇 Activar sonido":"🔊 Silenciar"}
 function setVol(v){COL.vol=+v/100;if(+v>0)COL.mute=false;saveCol();applyVol();syncSnd()}
 function toggleMute(){COL.mute=!COL.mute;saveCol();applyVol();syncSnd()}
 function togSnd(){const p=$("sndp");p.style.display=p.style.display=="none"?"flex":"none"}
@@ -654,7 +724,7 @@ function fitStory(){
 }
 if(typeof addEventListener=="function")addEventListener("resize",()=>{if($("story").style.display=="flex")fitStory()});
 function startGame(){$("start").style.display="none";$("story").style.display="flex";fitStory()}
-function endStory(){$("story").style.display="none";fadeIntro();newRun()}
+function endStory(){$("story").style.display="none";document.body.classList.remove("pre");fadeIntro();newRun()}
 (()=>{const f=(x,y,c,n,t)=>`<path d='M${x} ${y-60}L${x+60} ${y}L${x} ${y+60}L${x-60} ${y}Z' fill='none' stroke='%23874a12' stroke-width='2'/><text x='${x}' y='${y+16}' font-size='46' text-anchor='middle' fill='%23${c}' font-family='serif'>${t}</text>`;
  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><rect width='240' height='240' fill='%230d0905'/>${f(60,60,"a8611d",0,"♠")}${f(180,60,"a8611d",0,"♥")}${f(60,180,"a8611d",0,"♣")}${f(180,180,"a8611d",0,"♦")}</svg>`;
  document.documentElement.style.setProperty("--shopbg",`url("data:image/svg+xml,${svg.replace(/</g,"%3C").replace(/>/g,"%3E")}")`)})();
