@@ -298,13 +298,35 @@ body.pre #sbtn{display:block}
 body.pre #sndp{left:auto;right:8px;top:58px;bottom:auto}
 
 .shelf2 .shc p{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-@media (max-height:430px){
- .shelf2{gap:6px;font-size:9px}.sr{gap:4px}
- .shelf2 .shc{padding:1.2em .2em .2em}.shelf2 .shc p{-webkit-line-clamp:3;font-size:.9em}
- .shelf2 .jc,.shelf2 .ic{width:2em;height:2.6em;font-size:1.25em}.shelf2 .pack{width:3.2em;height:4.4em;margin-bottom:0}.shelf2 .pack .pi{font-size:1.7em}
- .shelf2 .shc .price{font-size:1.15em;top:-1em;padding:1px 8px}.shelf2 .grp>small{font-size:.9em}
- .lc .bigbtn{padding:.5em}.lc .pn .big{font-size:1.6em}
-}
+/* ===== Mesa: cartas más grandes (8 visibles) y columna izquierda aprovechada ===== */
+.gm{--lw:clamp(150px,20vw,230px);--cw:min(84px,calc((100vw - var(--lw) - 60px - var(--n,8)*5px)/(var(--n,8) + .3)),calc((100vh - 64px)/4.6))}
+@supports (height:100dvh){.gm{--cw:min(84px,calc((100vw - var(--lw) - 60px - var(--n,8)*5px)/(var(--n,8) + .3)),calc((100dvh - 64px)/4.6))}}
+.lc{font-size:clamp(12px,3.2vh,19px)}
+.lc .hpn{flex:1 1 auto}.lc .hpn .hname{font-size:1.7em}.hpn .calc{font-size:1.25em}
+.lc .acts button{padding:.75em .3em;font-size:1.05em}.lc .acts3 button{padding:.6em .1em;font-size:.88em}
+.lc .st6 .pn{padding:.35em .2em}.lc .st6 b{font-size:1.15em}
+.lc .bigbtn{font-size:1.15em}.lc .bigbtn.nxt{flex:1.4 1 auto}.lc .bigbtn.rer{flex:1 1 auto}
+.lc .menu button{padding:.55em 0}
+.table{justify-content:space-around;gap:4px;padding:6px 8px}
+.jrow .joker{width:calc(var(--cw)*1.5)}
+.mrow{display:flex;align-items:center;gap:8px;min-height:calc(var(--cw)*1.45)}.mrow .prow{flex:1;min-height:0}
+.xrow{display:flex;gap:4px;flex:0 0 auto}.xrow .card.back{width:calc(var(--cw)*.78);height:calc(var(--cw)*1.1)}
+.hrow{padding-top:calc(var(--cw)*.22)}
+/* ===== Tienda en cuadrícula ordenada ===== */
+.shelf2{display:flex;flex-direction:column;justify-content:stretch;gap:8px;min-height:0;font-size:clamp(10px,2.7vh,14px)}
+.ra,.rb{display:grid;grid-template-columns:repeat(var(--cols,6),minmax(0,1fr));gap:8px;flex:1 1 0;min-height:0}
+.shelf2 .shc{max-width:none;width:auto;min-height:0;padding:1.5em .35em .35em}
+.own{grid-column:span 3;background:#1a1208;border:2px solid #ffffff33;border-radius:12px;padding:.5em;display:flex;flex-direction:column;gap:.35em;min-height:0;overflow:hidden}
+.own>small{text-align:center;opacity:.8}.oc{display:flex;flex-wrap:wrap;gap:.35em;align-content:flex-start}
+.own .joker{flex:1 1 40%;min-width:0;max-width:none;width:auto;margin:0;font-size:.9em;padding:.25em .4em}
+/* ===== Dado ===== */
+.dl{align-items:center;justify-content:center;text-align:center}.dl h2{margin:0;font-size:1.4em}
+.dl .scene{--ds:clamp(48px,min(15vh,calc(var(--lw) - 70px)),100px);margin:.8em auto 1em}
+.dopts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:center;font-size:clamp(11px,2.8vh,15px)}
+.opt{background:#1a1208;border:2px solid var(--gold);border-radius:12px;padding:.7em .5em;text-align:center;display:flex;flex-direction:column;gap:.4em}
+.opt.top{border-color:#fff;box-shadow:0 0 14px var(--gold)}.opt b{font-size:1.05em}.opt p{margin:0;font-size:.9em;opacity:.9;flex:1}
+.opt button{padding:.45em .3em;font-size:1em}.sg{display:grid;grid-template-columns:1fr 1fr;gap:.3em}
+
 </style>
 </head>
 <body class="pre">
@@ -326,9 +348,9 @@ body.pre #sndp{left:auto;right:8px;top:58px;bottom:auto}
  <div class="bt"><button onclick="endStory()">Continuar</button></div>
 </div></div>
 <div id="rotate"><div><div class="ri">📱</div><b>Girá tu dispositivo</b><p>PokerLike se juega en horizontal</p></div></div>
-<div id="app"></div><div id="guide" style="display:none"></div><div id="snd"><button id="sbtn" class="sbi" onclick="togSnd()" title="Sonido">🔊</button><div id="sndp" style="display:none"><button id="mbtn" onclick="toggleMute()">🔊 Silenciar</button><div class="vrow"><input id="vr" type="range" min="0" max="100" value="50" oninput="setVol(this.value)" onchange="sfx('select.mp3')"><b id="vpct">50%</b></div></div></div>
+<div id="app"></div><div id="guide" style="display:none"></div><button id="sbtn" class="sbi" onclick="togSnd()" title="Sonido">🔊</button>
 <script>
-let AC=null,MG=null;const WB={};
+let AC=null,MG=null,IG=null;const WB={},SFXV=.05,MUSV=.02;
 const SU=["♠","♥","♦","♣"],RK={11:"J",12:"Q",13:"K",14:"A"};
 // [fichas, multi, +fichas/nivel, +multi/nivel, nombre]
 const HT={hi:[5,1,10,1,"Carta alta"],pa:[10,2,15,1,"Pareja"],tp:[20,2,20,1,"Doble pareja"],tk:[30,3,20,2,"Trío"],
@@ -509,13 +531,13 @@ function shopH(){
  const idx=G.shop.map((it,i)=>[it,i]),a=idx.filter(([it])=>it.k!="k"),k=idx.filter(([it])=>it.k=="k"),c=([it,i])=>shopCard(it,i);
  return`<div class="gm"><aside class="lc"><div class="pn"><small>Dinero</small><b class="big gold">$${G.money}</b><small>+$${G.payout}</small></div>
  <button class="bigbtn nxt" onclick="next()">Siguiente ronda ▶</button><button class="bigbtn rer" ${G.money<G.rr?"disabled":""} onclick="reroll()">Reroll · $${G.rr}</button><div class="sm">${G.shopMsg||""}</div>${menuH()}</aside>
- <section class="shelf2"><div class="sr">${a.map(c).join("")}</div><div class="sr"><div class="grp g3"><small>Sobres</small><div class="gc">${k.map(c).join("")}</div></div><div class="grp g5"><small>Tus jokers · tocá para vender</small><div class="gc">${jokersH(1)}</div></div></div></section></div>`;
+ <section class="shelf2"><div class="ra" style="--cols:${Math.max(6,a.length)}">${a.map(c).join("")}</div><div class="rb" style="--cols:${Math.max(6,k.length+3)}">${k.map(c).join("")}<div class="own"><small>Tus jokers · tocá para vender</small><div class="oc">${jokersH(1)}</div></div></div></section></div>`;
 }
 function cash(){pay();G.phase="shop";G.shopMsg="";G.rr=3;fillShop();render()}
 const rnd6=()=>{const a=new Uint32Array(1);do{crypto.getRandomValues(a)}while(a[0]>=4294967292);return a[0]%6+1};
 const rndInt=n=>{const a=new Uint32Array(1),lim=4294967296-4294967296%n;do{crypto.getRandomValues(a)}while(a[0]>=lim);return a[0]%n};
-const DF={1:[0,0],2:[0,-90],3:[-90,0],4:[90,0],5:[0,90],6:[0,180]};
-const cubeT=(n,fin)=>fin?`rotateX(-24deg) rotateY(-28deg) rotateX(${DF[n][0]+720}deg) rotateY(${DF[n][1]+1080}deg)`:"rotateX(-24deg) rotateY(-28deg)";
+const DF={1:[90,0],2:[90,-90],3:[0,0],4:[180,0],5:[90,90],6:[-90,0]};
+const cubeT=(n,fin)=>fin?`rotateX(-52deg) rotateY(-28deg) rotateX(${DF[n][0]+720}deg) rotateY(${DF[n][1]+1080}deg)`:"rotateX(-52deg) rotateY(-28deg)";
 function roll(){
  pay();stat("dice");G.phase="dice";G.dice={n:rnd6(),rolling:true};render();
  const n=G.dice.n;
@@ -529,13 +551,12 @@ function cubeH(n,fin){
 }
 function diceH(){
  const D=G.dice,n=D.n,no=n==1,dis=no?"disabled":"",v=DV();
- if(D.rolling)return`<h2 class="center">🎲 Tirando el dado...</h2>${cubeH(n,false)}`;
- const sb=SU.map((x,s)=>`<button class="${s==1||s==2?"b2":"b4"}" ${dis} style="padding:6px 12px" onclick="applyDice(2,${s})">${n}${x}</button>`).join(" ");
- return`<h2 class="center">🎲 Salió el ${n}</h2>${cubeH(n,true)}
- <p class="center">${no?"Con el 1 solo podés usar la opción C.":"Elegí tu mejora (dura hasta que pierdas):"}</p><div class="row shop">
- <div class="item"><b>A) +${v.a} a todos los ${n}</b><p>Suma ${v.a} al valor del ${n} en los 4 palos (pasa a ${n+v.a}).</p><button class="b3" ${dis} onclick="applyDice(1)">Elegir</button></div>
- <div class="item"><b>B) +${v.b} a un ${n}</b><p>Suma ${v.b} al ${n} del palo que elijas:</p>${sb}</div>
- <div class="item" style="border-color:#fff;box-shadow:0 0 14px var(--gold)"><b>C) +${v.c} a una carta al azar</b><p>El premio más alto: sube +${v.c} la base de una carta cualquiera (número o letra, de cualquier palo).</p><button class="b3" onclick="applyDice(3)">Elegir</button></div></div>`;
+ if(D.rolling)return`<div class="gm"><aside class="lc dl"><h2>Tirando...</h2>${cubeH(n,false)}</aside><section class="dopts"></section></div>`;
+ const sb=SU.map((x,s)=>`<button class="${s==1||s==2?"b2":"b4"}" ${dis} onclick="applyDice(2,${s})">${n}${x}</button>`).join("");
+ return`<div class="gm"><aside class="lc dl"><h2>Salió el ${n}</h2>${cubeH(n,true)}</aside><section class="dopts">
+ <div class="opt"><b>A) +${v.a} a todos los ${n}</b><p>En los 4 palos (pasa a ${n+v.a}).</p><button class="b3" ${dis} onclick="applyDice(1)">Elegir</button></div>
+ <div class="opt"><b>B) +${v.b} a un ${n}</b><p>Elegí el palo:</p><div class="sg">${sb}</div></div>
+ <div class="opt top"><b>C) +${v.c} a una carta al azar</b><p>El premio más alto, para cualquier carta.</p><button class="b3" onclick="applyDice(3)">Elegir</button></div></section></div>`;
 }
 function applyDice(o,s){
  const n=G.dice.n,v=DV();let m;
@@ -599,10 +620,9 @@ function suggestDisc(){
  G.sel=cand.map(o=>o.i);if(G.sel.length)sfx("select.mp3");render();
 }
 function menuH(){return`<div class="menu"><button title="Manos" onclick="showHands()">📊</button><button title="Guía" onclick="showGuide(false)">📖</button><button title="Colección" onclick="showCol()">🎨</button><button class="sbi" title="Sonido" onclick="togSnd()">${sndIcon()}</button></div>`}
-function handH(pv){
+function handParts(pv){
  const cl=(c,i)=>G.sel.includes(i)?"sel "+(c.down?"":pv.sc.includes(c)?"sc":"ns"):"",h=G.hand.map((c,i)=>[c,i]);
- const up=h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn=h.filter(([c])=>c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join("");
- return`<div class="hrow">${up}${dn?`<i class="sep"></i>${dn}`:""}</div>`;
+ return{up:h.filter(([c])=>!c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join(""),dn:h.filter(([c])=>c.down).map(([c,i])=>cardH(c,i,cl(c,i))).join("")};
 }
 function render(){
  document.body.classList.toggle("lost",G.phase=="lost");document.body.classList.toggle("shop",G.phase=="shop"||G.phase=="dice"||G.phase=="pick");
@@ -617,7 +637,7 @@ function render(){
  <div class="box"><small>Dinero</small><b class="gold">$${G.money}</b></div></div>`;
  if(G.phase=="victory"){A.innerHTML=`<div class="center"><h1>🏆 ¡Has ganado la partida!</h1><p>Superaste los 8 antes.</p><button class="b3" onclick="newRun()">Jugar de nuevo</button></div>`;return}
  if(G.phase=="pick"){A.innerHTML=pickH();return}
- if(G.phase=="dice"){A.innerHTML=moneyH()+diceH();return}
+ if(G.phase=="dice"){A.innerHTML=diceH();return}
  if(G.phase=="shop"){
   if(G.reveal){A.innerHTML=moneyH()+revealH();return}
   if(G.pack){A.innerHTML=moneyH()+packH();return}
@@ -632,14 +652,15 @@ function render(){
   G.phase=="won"?`<div class="center"><h2>🎉 ¡Ronda ganada!</h2><button class="b3" onclick="cash()">Cobrar y ir a la tienda</button></div>`:"";
  const pct=Math.min(100,G.score/G.target*100),gh=pv?Math.max(0,Math.min(100-pct,pv.total/G.target*100)):0;
   const prevH=pv?`<span class="hname" style="color:${HC[pv.t]}">${HT[pv.t][4]}</span><div class="strip"><span class="sb chips">FICHAS<b>${fx(pv.ch)}</b></span><span>×</span><span class="sb mult">MULTI<b>${pv.mu}</b></span><span>=</span><span class="sb gold">PUNTOS<b>${pv.total}</b></span></div>`:(G.msg||"");
-  A.innerHTML=`<div class="gm" style="--n:${Math.max(11,G.hand.length)}"><aside class="lc">
+  const hp=handParts(pv);
+  A.innerHTML=`<div class="gm" style="--n:${Math.max(8,G.hand.filter(c=>!c.down).length)}"><aside class="lc">
   <div class="pn blind ${G.bi==2?"boss":""}"><div class="bh">Ante ${G.ante}/8 · ${b[0]}</div><div class="bb"><div class="ob"><span><small>Objetivo</small><b>${G.target}</b></span><span><small>Puntos</small><b class="gold">${G.score}</b></span></div><div class="bar"><i style="width:${pct}%"></i><i class="ghost" style="left:${pct}%;width:${gh}%"></i></div>${G.boss?`<div class="bossr">⚔ ${G.boss.n}: ${G.boss.d}</div>`:""}</div></div>
   <div class="pn hpn">${prevH}</div>
   <div class="st6"><div class="pn"><small>Manos</small><b class="chips">${G.hands}</b></div><div class="pn"><small>Descartes</small><b class="mult">${G.disc}</b></div><div class="pn"><small>Dinero</small><b class="gold">$${G.money}</b></div><div class="pn"><small>Giro</small><b>${G.gu}/${G.maxG}</b></div><div class="pn"><small>Mazo</small><b>${G.deck.length}</b></div><div class="pn"><small>Jokers</small><b>${G.jokers.length}/5</b></div></div>
   <div class="acts"><button class="b1" ${G.sel.length?"":"disabled"} onclick="play()">Jugar</button><button class="b2" ${G.sel.length&&G.disc?"":"disabled"} onclick="discard()">Descartar</button></div>
   <div class="acts3"><button class="b5" title="Mejor jugada" onclick="suggest()">💡 Mejor</button><button class="b5" title="Sugerir descarte" onclick="suggestDisc()">♻️ Sugerir</button><button class="b4" title="Ordenar" onclick="sortBy=sortBy=='r'?'s':'r';sortHand();render()">↕ ${sortBy=="r"?"Valor":"Palo"}</button></div>
   ${menuH()}</aside>
-  <section class="table"><div class="jrow">${jokersH(0,pv)}</div><div class="prow">${G.played.map(c=>cardH(c,0,"played")).join("")}</div>${handH(pv)}</section></div>${G.phase=="lost"?`<div class="lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:""}`;
+  <section class="table"><div class="jrow">${jokersH(0,pv)}</div><div class="mrow"><div class="prow">${G.played.map(c=>cardH(c,0,"played")).join("")}</div><div class="xrow">${hp.dn}</div></div><div class="hrow">${hp.up}</div></section></div>${G.phase=="lost"?`<div class="lostbox"><h2>💀 Derrota</h2><button class="b2" onclick="newRun()">Reintentar</button></div>`:""}`;
 }
 const EX={sf:[[9,1],[8,1],[7,1],[6,1],[5,1]],fk:[[10,0],[10,1],[10,2],[10,3],[3,0]],fh:[[13,0],[13,1],[13,2],[4,1],[4,3]],fl:[[14,2],[11,2],[8,2],[5,2],[3,2]],st:[[9,0],[8,1],[7,3],[6,2],[5,0]],tk:[[7,0],[7,1],[7,2],[12,3],[2,1]],tp:[[11,0],[11,3],[6,1],[6,2],[3,0]],pa:[[12,1],[12,3],[9,0],[5,2],[2,1]],hi:[[14,0],[10,3],[8,1],[6,2],[3,3]]};
 function handsH(){
@@ -689,35 +710,36 @@ function showGuide(first){
  g.style.display="flex";
 }
 function closeGuide(first){$("guide").style.display="none";if(first){fadeIntro();newRun()}}
-const intro=new Audio("introGame.mp3");intro.volume=.25;intro.loop=true;
+const intro=new Audio("introGame.mp3");intro.volume=.02;intro.loop=true;
 const playIntro=()=>{initAudio();try{if(AC&&AC.state=="suspended")AC.resume()}catch(e){}if(intro.currentTime>0)return;intro.play().catch(()=>{})};
-function fadeIntro(){const t=setInterval(()=>{if(intro.volume>.012)intro.volume=Math.max(0,intro.volume-.012);else{intro.pause();clearInterval(t)}},150)}
+function fadeIntro(){
+ if(AC&&IG){try{IG.gain.cancelScheduledValues(AC.currentTime);IG.gain.setValueAtTime(IG.gain.value,AC.currentTime);IG.gain.linearRampToValueAtTime(0,AC.currentTime+3)}catch(e){}setTimeout(()=>intro.pause(),3200);return}
+ const t=setInterval(()=>{if(intro.volume>.004)intro.volume=Math.max(0,intro.volume-.004);else{intro.pause();clearInterval(t)}},300)}
 intro.play().catch(()=>{});["pointerdown","keydown"].forEach(e=>document.addEventListener(e,playIntro,{once:true}));
 document.addEventListener("keydown",e=>{if(e.key=="Escape")closeGuide(false)});
 function renderDif(){$("dif").innerHTML="Dificultad: "+Object.keys(DIF).map(k=>`<button class="${COL.dif==k?"on":""}" onclick="setDif('${k}')">${DIF[k].name}</button>`).join("")}
 function setDif(k){COL.dif=k;saveCol();renderDif()}
-const MV=()=>COL.mute?0:COL.vol;
+const MV=()=>COL.mute?0:1;
 function initAudio(){
  if(AC||!/^https?:/.test(location.protocol))return;
  try{AC=new(window.AudioContext||window.webkitAudioContext)();MG=AC.createGain();MG.connect(AC.destination);
-  const src=AC.createMediaElementSource(intro),ig=AC.createGain();ig.gain.value=.5;src.connect(ig);ig.connect(MG);applyVol()}catch(e){AC=null}
+  IG=AC.createGain();IG.gain.value=MUSV;AC.createMediaElementSource(intro).connect(IG);IG.connect(MG);
+  ["compra","ganar","derrota2","select","colocar","girar"].forEach(n=>fetch(n+".mp3").then(r=>r.arrayBuffer()).then(x=>AC.decodeAudioData(x)).then(b=>{WB[n+".mp3"]=b}).catch(()=>{}));
+  applyVol()}catch(e){AC=null}
 }
 function applyVol(){
  if(AC&&MG){MG.gain.value=MV();intro.volume=1;intro.muted=false}
- else{intro.volume=Math.min(1,.5*MV());intro.muted=MV()==0}
+ else{intro.volume=MUSV*MV();intro.muted=MV()==0}
 }
 function sfx(f="compra.mp3",v=1){
  try{
-  if(AC&&MG&&WB[f]){if(AC.state=="suspended")AC.resume();const b=AC.createBufferSource(),g=AC.createGain();b.buffer=WB[f];g.gain.value=v;b.connect(g);g.connect(MG);b.start();return}
-  const a=new Audio(f);a.volume=Math.min(1,v*MV());a.muted=MV()==0;a.play().catch(()=>{});
-  if(AC&&!WB[f]&&!WB["_"+f]){WB["_"+f]=1;fetch(f).then(r=>r.arrayBuffer()).then(x=>AC.decodeAudioData(x)).then(buf=>{WB[f]=buf}).catch(()=>{})}
+  if(AC&&MG){if(WB[f]){if(AC.state=="suspended")AC.resume();const b=AC.createBufferSource(),g=AC.createGain();b.buffer=WB[f];g.gain.value=SFXV*v;b.connect(g);g.connect(MG);b.start()}return}
+  const a=new Audio(f);a.volume=Math.min(1,SFXV*v*MV());a.muted=MV()==0;a.play().catch(()=>{});
  }catch(e){}
 }
-const sndIcon=()=>(COL.mute||COL.vol==0)?"🔇":COL.vol<.4?"🔈":COL.vol<.75?"🔉":"🔊";
-function syncSnd(){try{document.querySelectorAll(".sbi").forEach(e=>e.textContent=sndIcon())}catch(e){}$("vpct").textContent=Math.round(COL.vol*100)+"%";$("vr").value=Math.round(COL.vol*100);$("mbtn").textContent=COL.mute?"🔇 Activar sonido":"🔊 Silenciar"}
-function setVol(v){COL.vol=+v/100;if(+v>0)COL.mute=false;saveCol();applyVol();syncSnd()}
-function toggleMute(){COL.mute=!COL.mute;saveCol();applyVol();syncSnd()}
-function togSnd(){const p=$("sndp");p.style.display=p.style.display=="none"?"flex":"none"}
+const sndIcon=()=>COL.mute?"🔇":"🔊";
+function syncSnd(){try{document.querySelectorAll(".sbi").forEach(e=>e.textContent=sndIcon())}catch(e){}}
+function togSnd(){COL.mute=!COL.mute;saveCol();applyVol();syncSnd()}
 function fitStory(){
  try{const st=$("story"),b=st.querySelector(".sbox"),W=window.innerWidth,H=window.innerHeight;let f=Math.min(22,W/18);
   b.classList.toggle("mini",H<700);b.classList.toggle("micro",H<600);b.style.fontSize=f+"px";while(f>10.5&&b.offsetHeight>H-16){f-=.5;b.style.fontSize=f+"px"}}catch(e){}
